@@ -9,7 +9,8 @@ class BottomSheet extends StatefulWidget {
   State<BottomSheet> createState() => _BottomSheetState();
 }
 
-class _BottomSheetState extends State<BottomSheet> {
+class _BottomSheetState extends State<BottomSheet>
+    with AutomaticKeepAliveClientMixin {
   String? selectedGovernorate;
   String? selectedCity;
   final String hint = 'Add Address manually'; // Hint text for DropdownButton
@@ -161,4 +162,8 @@ class _BottomSheetState extends State<BottomSheet> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

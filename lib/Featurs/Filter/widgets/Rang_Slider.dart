@@ -18,7 +18,8 @@ class Rang_Slider extends StatefulWidget {
   State<Rang_Slider> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<Rang_Slider> {
+class _MyWidgetState extends State<Rang_Slider>
+    with AutomaticKeepAliveClientMixin {
   late double _minPrice;
   late double _maxPrice;
   late TextEditingController _minPriceController;
@@ -223,4 +224,8 @@ class _MyWidgetState extends State<Rang_Slider> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

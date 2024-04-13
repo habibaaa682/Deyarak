@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
-class BuildingAge extends StatelessWidget {
+class BuildingAge extends StatefulWidget {
   const BuildingAge({
     super.key,
   });
 
+  @override
+  State<BuildingAge> createState() => _BuildingAgeState();
+}
+
+class _BuildingAgeState extends State<BuildingAge>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,9 +46,12 @@ class BuildingAge extends StatelessWidget {
       //     ),
       //   ),
 
-      // ), 
       // ),
-
+      // ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

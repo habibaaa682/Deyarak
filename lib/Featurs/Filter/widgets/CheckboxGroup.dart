@@ -5,7 +5,8 @@ class CheckboxGroup extends StatefulWidget {
   _CheckboxGroupState createState() => _CheckboxGroupState();
 }
 
-class _CheckboxGroupState extends State<CheckboxGroup> {
+class _CheckboxGroupState extends State<CheckboxGroup>
+    with AutomaticKeepAliveClientMixin {
   late double containerWidth;
   late double containerHeight;
   late double leadingSize;
@@ -120,4 +121,8 @@ class _CheckboxGroupState extends State<CheckboxGroup> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

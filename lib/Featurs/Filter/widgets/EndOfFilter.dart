@@ -17,10 +17,17 @@ class _EndOfAddFilterState extends State<EndOfAddFilter> {
         const Spacer(
           flex: 1,
         ),
-        const Text(
-          'Clear All',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
+        ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                elevation: 0, backgroundColor: Colors.transparent),
+            onPressed: () {},
+            child: const Text(
+              'Clear All',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+            )),
         const Spacer(
           flex: 5,
         ),

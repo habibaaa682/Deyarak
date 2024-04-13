@@ -13,7 +13,8 @@ class Add_Address extends StatefulWidget {
   State<Add_Address> createState() => _Add_AddressState();
 }
 
-class _Add_AddressState extends State<Add_Address> {
+class _Add_AddressState extends State<Add_Address>
+    with AutomaticKeepAliveClientMixin {
   String? selectedGovernorate;
   String? selectedCity;
   final String hint = 'Add Address manually'; // Hint text for DropdownButton
@@ -214,4 +215,8 @@ class _Add_AddressState extends State<Add_Address> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

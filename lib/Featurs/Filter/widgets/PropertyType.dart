@@ -7,7 +7,8 @@ class PropertyType extends StatefulWidget {
   State<PropertyType> createState() => _PropertyTypeState();
 }
 
-class _PropertyTypeState extends State<PropertyType> {
+class _PropertyTypeState extends State<PropertyType>
+    with AutomaticKeepAliveClientMixin {
   Map<String, bool> selectedTypes = {
     'Apartment': true, // Apartment is true by default
     'Furnished Apartment': false,
@@ -163,4 +164,8 @@ class _PropertyTypeState extends State<PropertyType> {
       print(selectedTypes);
     });
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

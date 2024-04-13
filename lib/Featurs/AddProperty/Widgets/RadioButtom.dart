@@ -15,7 +15,7 @@ class Radio_ extends StatefulWidget {
 Color colorYes = Colors.white;
 Color colorNo = Colors.white;
 
-class _RadioState extends State<Radio_> {
+class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -114,4 +114,8 @@ class _RadioState extends State<Radio_> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
