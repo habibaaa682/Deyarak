@@ -12,7 +12,7 @@ class Rooms extends StatefulWidget {
   State<Rooms> createState() => _RoomsState();
 }
 
-class _RoomsState extends State<Rooms> {
+class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
   Map<String, bool> selectedTypes = {
     'Any': true, // Apartment is true by default
     '1': false,
@@ -247,6 +247,10 @@ class _RoomsState extends State<Rooms> {
       print(selectedTypes);
     });
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
 
 

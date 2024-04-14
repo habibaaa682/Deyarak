@@ -16,7 +16,8 @@ class Slider_M extends StatefulWidget {
   State<Slider_M> createState() => _Slider_MState();
 }
 
-class _Slider_MState extends State<Slider_M> {
+class _Slider_MState extends State<Slider_M>
+    with AutomaticKeepAliveClientMixin {
   late TextEditingController Controller;
   late double value;
   @override
@@ -118,4 +119,8 @@ class _Slider_MState extends State<Slider_M> {
       ],
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

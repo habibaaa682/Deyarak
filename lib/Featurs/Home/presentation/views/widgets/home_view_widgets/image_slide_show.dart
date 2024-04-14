@@ -12,7 +12,10 @@ final List<String> imgpaths = [
   'assets/images/villa2.jpg',
   'assets/images/villa1.jpg',
   'assets/images/villa3.jpg',
-  'assets/images/villa4.jpg'
+  'assets/images/villa4.jpg',
+  'assets/images/villa4.jpg',
+  'assets/images/villa4.jpg',
+  'assets/images/villa4.jpg',
 ];
 late List<Widget> pages;
 int activeimg = 0;

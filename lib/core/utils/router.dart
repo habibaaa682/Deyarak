@@ -2,6 +2,7 @@ import 'package:deyarakapp/Featurs/Home/presentation/views/Home_View.dart';
 import 'package:deyarakapp/Featurs/aboutus/presentation/aboutusview.dart';
 import 'package:deyarakapp/Featurs/contactus/presentation/contactusview.dart';
 import 'package:deyarakapp/Featurs/login_screen/Login_Screen.dart';
+import 'package:deyarakapp/Featurs/login_screen/Reset_pass_screen.dart';
 import 'package:deyarakapp/Featurs/menu/presentation/views/menuview.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/emailview.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/personalinformationview.dart';
@@ -38,7 +39,7 @@ abstract class AppRouter {
   static const kAddProperty = '/AddProperty';
   static const kdeactivateaccount = '/deactivateaccountview';
   static const kconfirmpass = '/confirmpass';
-
+  static const kresetpass = '/ResetPasswordScreen';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -112,6 +113,10 @@ abstract class AppRouter {
       GoRoute(
         path: kconfirmpass,
         builder: (context, state) => confirmpasswidget(),
+      ),
+      GoRoute(
+        path: kresetpass,
+        builder: (context, state) => ResetPasswordScreen(),
       ),
     ],
   );

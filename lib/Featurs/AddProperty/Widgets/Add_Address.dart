@@ -1,7 +1,9 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
 import 'package:deyarakapp/constants.dart';
+import 'package:deyarakapp/core/permission_service.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 // import 'package:flutter/widgets.dart';
 // import 'package:deyarak/components/_showBottomSheet.dart';
 
@@ -13,7 +15,8 @@ class Add_Address extends StatefulWidget {
   State<Add_Address> createState() => _Add_AddressState();
 }
 
-class _Add_AddressState extends State<Add_Address> {
+class _Add_AddressState extends State<Add_Address>
+    with AutomaticKeepAliveClientMixin {
   String? selectedGovernorate;
   String? selectedCity;
   final String hint = 'Add Address manually'; // Hint text for DropdownButton
@@ -59,15 +62,21 @@ class _Add_AddressState extends State<Add_Address> {
           ),
           Container(
             margin: const EdgeInsets.only(top: 0, left: 15, bottom: 15),
-            child: const Row(
+            child: Row(
               children: [
-                Icon(Icons.near_me),
-                Text(
-                  'Use my current location',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
+                const Icon(Icons.near_me),
+                GestureDetector(
+                  onTap: () {
+                    Permission_Checker();
+                    //openAppSettings();
+                  },
+                  child: const Text(
+                    'Use my current location',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ],
@@ -214,4 +223,8 @@ class _Add_AddressState extends State<Add_Address> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

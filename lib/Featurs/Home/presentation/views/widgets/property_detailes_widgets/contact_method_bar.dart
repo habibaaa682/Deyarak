@@ -9,7 +9,7 @@ class ContactMethodBar extends StatelessWidget {
   ContactMethodBar({super.key});
 
   final String phone = '+96612345678';
-
+  final String email = 'hasnaa.n.zanaty@gmail.com';
   final Uri _url = Uri.parse('https://wa.me/+201099999999');
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class ContactMethodBar extends StatelessWidget {
                 }
               },
               icon: const Icon(
-                Icons.email_outlined,
+                Icons.sms_outlined,
                 color: Colors.white,
                 size: 30,
               )),
@@ -48,10 +48,10 @@ class ContactMethodBar extends StatelessWidget {
               )),
           IconButton(
               onPressed: () async {
-                launchUrl(_url, mode: LaunchMode.externalApplication);
+                launch('mailto:$email?subject=Subject Title &body=Message');
               },
               icon: const Icon(
-                FontAwesomeIcons.whatsapp,
+                Icons.email_outlined,
                 color: Colors.white,
                 size: 30,
               )),

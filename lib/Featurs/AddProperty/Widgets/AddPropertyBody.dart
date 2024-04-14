@@ -4,6 +4,7 @@ import 'package:deyarakapp/Featurs/AddProperty/Widgets/BuildingAge.dart';
 import 'package:deyarakapp/Featurs/AddProperty/Widgets/EndOfAddProperty.dart';
 import 'package:deyarakapp/Featurs/AddProperty/Widgets/RadioButtom.dart';
 import 'package:deyarakapp/Featurs/AddProperty/Widgets/Slider_M.dart';
+import 'package:deyarakapp/Featurs/AddProperty/Widgets/property_discription.dart';
 import 'package:deyarakapp/Featurs/Filter/widgets/CheckboxGroup.dart';
 import 'package:deyarakapp/Featurs/Filter/widgets/Divider.dart';
 import 'package:deyarakapp/Featurs/Filter/widgets/PropertyType.dart';
@@ -18,7 +19,8 @@ class AddPropertyBody extends StatefulWidget {
   State<AddPropertyBody> createState() => _AddPropertyState();
 }
 
-class _AddPropertyState extends State<AddPropertyBody> {
+class _AddPropertyState extends State<AddPropertyBody>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,24 +84,7 @@ class _AddPropertyState extends State<AddPropertyBody> {
 //---------------------------------------------------------------------------------------------
 // Radio_
           const BuildingAge(),
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: TextFormField(
-                maxLines: 12,
-                minLines: 5,
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 20),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide(color: Colors.black),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    labelText: 'Description',
-                    labelStyle: TextStyle(color: Colors.grey))),
-          ),
+          const PropertyDiscription(),
 
           const Radio_(text: 'Finished :'),
           const Radio_(text: 'Furnished :'),
@@ -131,4 +116,8 @@ class _AddPropertyState extends State<AddPropertyBody> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

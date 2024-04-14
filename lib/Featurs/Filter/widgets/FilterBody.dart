@@ -14,7 +14,8 @@ class FilterBody extends StatefulWidget {
   State<FilterBody> createState() => _FilterState();
 }
 
-class _FilterState extends State<FilterBody> {
+class _FilterState extends State<FilterBody>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,4 +91,8 @@ class _FilterState extends State<FilterBody> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

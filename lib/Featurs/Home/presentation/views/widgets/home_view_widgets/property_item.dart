@@ -1,5 +1,6 @@
 import 'package:deyarakapp/Featurs/Home/presentation/views/property_detailes_view.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_slide_show.dart';
+import 'package:deyarakapp/constants.dart';
 
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,9 @@ class _PropertyItemState extends State<PropertyItem> {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 24,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -40,42 +43,54 @@ class _PropertyItemState extends State<PropertyItem> {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
+                    SizedBox(
+                      height: 4,
+                    ),
                     Row(
                       children: [
                         Icon(
                           Icons.window,
-                          color: Colors.grey,
+                          color: propertyinfocolor,
                         ),
-                        Text('150 M^2',
+                        Text('150 M',
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.grey)),
+                                color: propertyinfocolor)),
+                        SizedBox(
+                          width: 15,
+                        ),
                         Icon(
                           Icons.bedroom_child_sharp,
-                          color: Colors.grey,
+                          color: propertyinfocolor,
                         ),
                         Text('3',
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.grey)),
+                                color: propertyinfocolor)),
+                        SizedBox(
+                          width: 15,
+                        ),
                         Icon(
                           Icons.bathroom,
-                          color: Colors.grey,
+                          color: propertyinfocolor,
                         ),
                         Text('2',
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.grey))
+                                color: propertyinfocolor))
                       ],
+                    ),
+                    SizedBox(
+                      height: 4,
                     ),
                     Text('Nile Cornishe Street ,Maadi ,Cairo',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: Colors.grey))
+                            color: propertyinfocolor))
                   ],
                 ),
               ),
