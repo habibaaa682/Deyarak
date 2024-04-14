@@ -170,8 +170,8 @@ class registerView extends StatelessWidget {
                     GoRouter.of(context).push(AppRouter.klogin);
                   },
                   child: Create_account_text(
-                    text1: 'Already have an account',
-                    text2: 'login now',
+                    text1: 'Already have an account?',
+                    text2: '  login now',
                   ),
                 )
               ],
