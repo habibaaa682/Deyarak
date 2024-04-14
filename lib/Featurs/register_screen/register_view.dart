@@ -25,7 +25,7 @@ class registerView extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(
                 top: queryheight / 40, bottom: queryheight / 20),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     colors: [Color(0xffFF725E), Color(0xffDF8256)],
                     begin: Alignment.topCenter,
