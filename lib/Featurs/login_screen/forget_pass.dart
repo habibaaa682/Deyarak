@@ -1,6 +1,8 @@
 import 'package:deyarakapp/constants.dart';
+import 'package:deyarakapp/core/utils/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class forget_pass_text extends StatelessWidget {
   @override
@@ -14,8 +16,17 @@ class forget_pass_text extends StatelessWidget {
       child: Align(
         alignment: Alignment.centerRight,
         child: GestureDetector(
-          onTap: () {},
-          child: Text('Forgot Password ?', style: myStyle(color: Colors.white)),
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kresetpass);
+          },
+          child: const Text(
+            'Forgot Password ?',
+            style: TextStyle(
+                fontSize: 15,
+                color: Colors.white,
+                decoration: TextDecoration.underline,
+                decorationThickness: 1),
+          ),
         ),
       ),
     );
