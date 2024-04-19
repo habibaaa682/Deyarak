@@ -1,4 +1,4 @@
-import 'package:deyarakapp/Featurs/login_screen/confirm_pass.dart';
+import 'package:deyarakapp/Featurs/login_screen/confirm_pass_view.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';
 import 'package:deyarakapp/constants.dart';
@@ -99,24 +99,20 @@ class ResetPasswordScreen extends StatelessWidget {
                   height: 70,
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * .57,
-                  height: MediaQuery.of(context).size.height * .06,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      GoRouter.of(context).push(AppRouter.kconfirmnewpassword);
-                    },
-                    child: Text(
-                      'Reset',
-                      style: Fonts.textstyle16.copyWith(
-                          color: kprimarycolor, fontWeight: FontWeight.w500),
-                    ),
-                    style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
-                      backgroundColor: MaterialStatePropertyAll(Colors.white),
-                    ),
-                  ),
-                )
+                    width: MediaQuery.of(context).size.width * .57,
+                    height: MediaQuery.of(context).size.height * .06,
+                    child: Button(
+                        text: 'Reset',
+                        ontap: () {
+                          GoRouter.of(context)
+                              .push(AppRouter.kconfirmnewpassword);
+                        },
+                        raduis: 24,
+                        colorr: Colors.white,
+                        width: 150,
+                        marginn: 0,
+                        height: 100,
+                        textcolor: kprimarycolor))
               ],
             ),
           ),

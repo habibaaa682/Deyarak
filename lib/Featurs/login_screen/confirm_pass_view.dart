@@ -1,5 +1,6 @@
 import 'package:deyarakapp/Featurs/login_screen/widgets/confirm_pass_text_field.dart';
 import 'package:deyarakapp/Featurs/login_screen/widgets/custom_button.dart';
+import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
 
 import 'package:deyarakapp/constants.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
@@ -86,11 +87,18 @@ class _ConfirmNewPasswordState extends State<ConfirmNewPassword> {
                     const SizedBox(
                       height: 80,
                     ),
-                    CustomButton(
-                      txt: 'Reset Password',
-                      bordradius: BorderRadius.circular(30),
-                      buttcolor: kprimarycolor,
-                      txtcolor: Colors.white,
+                    SizedBox(
+                      width: 250,
+                      height: 65,
+                      child: Button(
+                          text: 'Reset Password',
+                          ontap: () {},
+                          raduis: 32,
+                          colorr: kprimarycolor,
+                          width: 0,
+                          marginn: 0,
+                          height: 0,
+                          textcolor: Colors.white),
                     )
                   ],
                 ),
