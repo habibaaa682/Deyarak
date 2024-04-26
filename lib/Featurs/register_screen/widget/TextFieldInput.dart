@@ -4,15 +4,19 @@ import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class TextFieldInputt extends StatelessWidget {
-  TextFieldInputt(
-      {required this.text,
-      required this.function,
-      required this.icon,
-      required this.formatter,
-      this.keybordtype,
-      required this.password,
-      required this.validatee,
-      required this.colorr});
+  final TextEditingController textEditingController;
+
+  TextFieldInputt({
+    required this.text,
+    required this.function,
+    required this.icon,
+    required this.formatter,
+    this.keybordtype,
+    required this.password,
+    required this.validatee,
+    required this.colorr,
+    required this.textEditingController,
+  });
 
   Color? colorr;
   String? errormessage;
@@ -39,6 +43,7 @@ class TextFieldInputt extends StatelessWidget {
       padding: EdgeInsets.only(left: querywidth / 15, right: querywidth / 15),
       child: Form(
         child: TextFormField(
+          controller: textEditingController,
           validator: validatee,
           obscureText: password,
           inputFormatters: formatter,
