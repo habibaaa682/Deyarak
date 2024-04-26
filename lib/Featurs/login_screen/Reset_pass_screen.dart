@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import 'package:deyarakapp/Featurs/login_screen/confirm_pass_view.dart';
+import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
+>>>>>>> 86798b157cf905b4a86e4619e2849b5d2f02ddb8
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';
 import 'package:deyarakapp/constants.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
@@ -21,15 +26,15 @@ class ResetPasswordScreen extends StatelessWidget {
       ),
       body: ListView(physics: NeverScrollableScrollPhysics(), children: [
         Image.asset(
-          'assets/images/padlock (1).png',
-          width: MediaQuery.of(context).size.width * .5,
-          height: MediaQuery.of(context).size.height * .28,
+          'assets/images/refresh.png',
+          width: MediaQuery.of(context).size.width * .2,
+          height: MediaQuery.of(context).size.height * .25,
         ),
-        SizedBox(
-          height: 70,
+        const SizedBox(
+          height: 80,
         ),
         Container(
-          height: MediaQuery.of(context).size.height * .7,
+          height: MediaQuery.of(context).size.height * .6,
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [Color(0xffFF725E), Color(0xffDF8256)],
@@ -39,61 +44,78 @@ class ResetPasswordScreen extends StatelessWidget {
                 topLeft: Radius.circular(25),
                 topRight: Radius.circular(25),
               )),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 70,
-              ),
-              Text(
-                'Forget Pssword',
-                style: Fonts.textstyle30.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 70,
                 ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              TextFieldInputt(
-                text: 'Email',
-                colorr: Colors.white,
-                function: () {},
-                icon: Icons.person,
-                formatter: [],
-                password: false,
-                validatee: (value) {
-                  // ignore: unnecessary_null_comparison
-                  if (value == null || value.isEmpty) {
-                    return 'Email cannot be empty.';
-                  } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                      .hasMatch(value)) {
-                    return 'Please enter a valid email.';
-                  } else {
-                    return null;
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 70,
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * .57,
-                height: MediaQuery.of(context).size.height * .06,
-                child: ElevatedButton(
-                  onPressed: () {},
+                Align(
+                  alignment: Alignment.centerLeft,
                   child: Text(
-                    'Reset',
-                    style: Fonts.textstyle16.copyWith(
-                        color: kprimarycolor, fontWeight: FontWeight.w500),
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30))),
-                    backgroundColor: MaterialStatePropertyAll(Colors.white),
+                    'Forget Password',
+                    style: Fonts.textstyle30.copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              )
-            ],
+                const SizedBox(
+                  height: 10,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Enter your email for the verification process,we will send a link to your email',
+                    maxLines: 2,
+                    style: Fonts.textstyle14.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                TextFieldInputt(
+                  text: 'Email',
+                  colorr: Colors.white,
+                  function: () {},
+                  icon: Icons.person,
+                  formatter: [],
+                  password: false,
+                  validatee: (value) {
+                    // ignore: unnecessary_null_comparison
+                    if (value == null || value.isEmpty) {
+                      return 'Email cannot be empty.';
+                    } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                        .hasMatch(value)) {
+                      return 'Please enter a valid email.';
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 70,
+                ),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * .57,
+                    height: MediaQuery.of(context).size.height * .06,
+                    child: Button(
+                        text: 'Reset',
+                        ontap: () {
+                          GoRouter.of(context)
+                              .push(AppRouter.kconfirmnewpassword);
+                        },
+                        raduis: 24,
+                        colorr: Colors.white,
+                        width: 150,
+                        marginn: 0,
+                        height: 100,
+                        textcolor: kprimarycolor))
+              ],
+            ),
           ),
         ),
       ]),
