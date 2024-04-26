@@ -59,11 +59,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: klogin,
-        builder: (context, state) => const Login_screen(),
+        builder: (context, state) => Login_screen(),
       ),
       GoRoute(
         path: kregister,
-        builder: (context, state) => const registerView(),
+        builder: (context, state) => registerView(),
       ),
       GoRoute(
         path: ksplash,

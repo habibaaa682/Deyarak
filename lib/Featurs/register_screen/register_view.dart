@@ -3,14 +3,20 @@ import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widget
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';
 
 import 'package:deyarakapp/constants.dart';
+
+import 'package:deyarakapp/controllers/registeration_controller.dart';
 import 'package:deyarakapp/core/utils/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 class registerView extends StatelessWidget {
-  const registerView({super.key});
+  RegisterationController registerationController =
+      Get.put(RegisterationController());
+
+  registerView({super.key});
   @override
   Widget build(BuildContext context) {
     var queryheight = MediaQuery.of(context).size.height;
@@ -36,6 +42,7 @@ class registerView extends StatelessWidget {
             child: Column(
               children: [
                 TextFieldInputt(
+                  textEditingController: registerationController.nameController,
                   text: 'User Name',
                   icon: Icons.person,
                   function: () {},
@@ -60,6 +67,8 @@ class registerView extends StatelessWidget {
                   height: queryheight / 45,
                 ),
                 TextFieldInputt(
+                  textEditingController:
+                      registerationController.phoneController,
                   text: 'Mobile Number',
                   icon: Icons.phone,
                   keybordtype: TextInputType.phone,
@@ -81,6 +90,8 @@ class registerView extends StatelessWidget {
                   height: queryheight / 45,
                 ),
                 TextFieldInputt(
+                  textEditingController:
+                      registerationController.emailController,
                   text: 'Email',
                   icon: Icons.mail,
                   function: () {},
@@ -103,6 +114,8 @@ class registerView extends StatelessWidget {
                   height: queryheight / 45,
                 ),
                 TextFieldInputt(
+                  textEditingController:
+                      registerationController.passwordController,
                   text: 'Password',
                   icon: Icons.lock,
                   function: () {},
@@ -127,6 +140,8 @@ class registerView extends StatelessWidget {
                   height: queryheight / 45,
                 ),
                 TextFieldInputt(
+                  textEditingController:
+                      registerationController.passwordConfirmController,
                   text: 'Confirm Password',
                   icon: Icons.lock,
                   function: () {},
@@ -153,7 +168,7 @@ class registerView extends StatelessWidget {
                 Button(
                   text: 'Sign UP',
                   ontap: () {
-                    GoRouter.of(context).push(AppRouter.klogin);
+                    registerationController.registerWithEmail();
                   },
                   raduis: 35,
                   colorr: Colors.white,

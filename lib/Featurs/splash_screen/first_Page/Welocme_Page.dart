@@ -1,4 +1,7 @@
+import 'package:deyarakapp/Featurs/Home/presentation/views/Home_View.dart';
+import 'package:deyarakapp/Featurs/login_screen/Login_Screen.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
+import 'package:deyarakapp/Featurs/register_screen/register_view.dart';
 
 import 'package:deyarakapp/constants.dart';
 import 'package:deyarakapp/core/utils/router.dart';
@@ -6,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 class welcome_page extends StatelessWidget {

@@ -1,7 +1,9 @@
+import 'package:deyarakapp/Featurs/splash_screen/splashScreen.dart';
 import 'package:deyarakapp/core/utils/router.dart';
 import 'package:deyarakapp/theme/themeprovider.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 void main() {

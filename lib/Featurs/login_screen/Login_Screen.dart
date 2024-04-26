@@ -1,16 +1,22 @@
 import 'package:deyarakapp/Featurs/login_screen/widgets/forget_pass.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
+import 'package:deyarakapp/Featurs/register_screen/register_view.dart';
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';
 import 'package:deyarakapp/constants.dart';
+import 'package:deyarakapp/controllers/login_controller.dart';
+import 'package:deyarakapp/controllers/registeration_controller.dart';
 import 'package:deyarakapp/core/utils/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:go_router/go_router.dart';
 import 'CreateAccount_Text.dart';
 // import 'forget_pass.dart';
 
 class Login_screen extends StatelessWidget {
-  const Login_screen({super.key});
+  LoginController loginController = Get.put(LoginController());
+  Login_screen({super.key});
   @override
   Widget build(BuildContext context) {
     var querywidth = MediaQuery.of(context).size.width;
@@ -35,6 +41,7 @@ class Login_screen extends StatelessWidget {
         child: Column(
           children: [
             TextFieldInputt(
+              textEditingController: loginController.emailController,
               text: 'Email',
               colorr: Colors.white,
               function: () {},
@@ -57,6 +64,7 @@ class Login_screen extends StatelessWidget {
               height: queryheight / 45,
             ),
             TextFieldInputt(
+              textEditingController: loginController.passwordController,
               text: 'Password',
               colorr: Colors.white,
               function: () {},
@@ -87,6 +95,7 @@ class Login_screen extends StatelessWidget {
             Button(
               text: 'Sign IN',
               ontap: () {
+                loginController.loginWithEmail();
                 GoRouter.of(context).push(AppRouter.khome);
               },
               raduis: 35,

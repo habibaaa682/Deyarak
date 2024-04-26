@@ -2,14 +2,20 @@ import 'package:deyarakapp/Featurs/login_screen/confirm_pass_view.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';
 import 'package:deyarakapp/constants.dart';
+import 'package:deyarakapp/controllers/registeration_controller.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:deyarakapp/core/utils/router.dart';
 import 'package:deyarakapp/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:go_router/go_router.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+  RegisterationController registerationController =
+      Get.put(RegisterationController());
+
+  ResetPasswordScreen({super.key});
 
   get querywidth => null;
 
@@ -77,6 +83,8 @@ class ResetPasswordScreen extends StatelessWidget {
                   height: 50,
                 ),
                 TextFieldInputt(
+                  textEditingController:
+                      registerationController.passwordController,
                   text: 'Email',
                   colorr: Colors.white,
                   function: () {},
