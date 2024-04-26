@@ -1,13 +1,13 @@
-<<<<<<< HEAD
-=======
 import 'package:deyarakapp/Featurs/login_screen/confirm_pass_view.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
->>>>>>> 86798b157cf905b4a86e4619e2849b5d2f02ddb8
+
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';
 import 'package:deyarakapp/constants.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
+import 'package:deyarakapp/core/utils/router.dart';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
