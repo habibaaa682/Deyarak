@@ -34,6 +34,9 @@ class welcome_page extends StatelessWidget {
             SizedBox(
               height: queryheight / 30,
             ),
+            SizedBox(
+              height: queryheight / 10,
+            ),
             Button(
               text: 'Sign UP',
               ontap: () {
@@ -47,7 +50,7 @@ class welcome_page extends StatelessWidget {
               textcolor: Colors.white,
             ),
             SizedBox(
-              height: queryheight / 20,
+              height: queryheight / 25,
             ),
             Button(
               text: 'Sign IN',

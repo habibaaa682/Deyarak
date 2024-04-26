@@ -19,7 +19,22 @@ class _MapState extends State<Map_w> {
 
   @override
   Widget build(BuildContext context) {
-    var queryheight = MediaQuery.of(context).size.height;
+    /*var queryheight = MediaQuery.of(context).size.height;
+    return Scaffold(
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Positioned.fill(
+            child: GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: LatLng(30.5972455, 30.9876321),
+                zoom: 19,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );*/
 
     return SizedBox(
       height: MediaQuery.of(context).size.height * .66,

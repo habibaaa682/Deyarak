@@ -104,7 +104,7 @@ class Login_screen extends StatelessWidget {
                 GoRouter.of(context).push(AppRouter.kregister);
               },
               child: Create_account_text(
-                  text1: 'Dont have an account ?', text2: 'Register now'),
+                  text1: 'Dont have an account ?', text2: '  Register now'),
             ),
           ],
         ),

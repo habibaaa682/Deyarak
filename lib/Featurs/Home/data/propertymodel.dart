@@ -1,7 +1,5 @@
-import 'package:flaticon_downloader/flaticon_downloader.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iconsax/iconsax.dart';
 
 abstract class PropertyModel {
   static IconData amentiesIcon({required String amentyname}) {

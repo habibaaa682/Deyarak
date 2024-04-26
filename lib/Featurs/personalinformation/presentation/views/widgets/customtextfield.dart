@@ -23,6 +23,7 @@ class customtextfield extends StatelessWidget {
         validator: validatee,
         obscureText: password,
         keyboardType: keyboard,
+        textAlign: TextAlign.start,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 20),
             border: OutlineInputBorder(
@@ -35,7 +36,9 @@ class customtextfield extends StatelessWidget {
             ),
             hintText: hinttext,
             labelText: labeltext,
-            labelStyle: TextStyle(color: Colors.grey)),
+            labelStyle: TextStyle(
+              color: Colors.grey,
+            )),
       ),
     );
   }
