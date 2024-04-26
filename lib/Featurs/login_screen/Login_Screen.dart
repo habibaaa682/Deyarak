@@ -96,7 +96,6 @@ class Login_screen extends StatelessWidget {
               text: 'Sign IN',
               ontap: () {
                 loginController.loginWithEmail();
-                GoRouter.of(context).push(AppRouter.khome);
               },
               raduis: 35,
               colorr: Colors.white,
