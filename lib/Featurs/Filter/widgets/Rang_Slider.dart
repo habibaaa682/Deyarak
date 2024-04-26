@@ -36,6 +36,7 @@ class _MyWidgetState extends State<Rang_Slider>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     var queryWidth = MediaQuery.of(context).size.width;
     var queryHeight = MediaQuery.of(context).size.height;
 

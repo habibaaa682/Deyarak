@@ -1,15 +1,20 @@
+<<<<<<< HEAD
+=======
 import 'package:deyarakapp/Featurs/login_screen/confirm_pass_view.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
+>>>>>>> 86798b157cf905b4a86e4619e2849b5d2f02ddb8
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';
 import 'package:deyarakapp/constants.dart';
 import 'package:deyarakapp/controllers/registeration_controller.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
-import 'package:deyarakapp/core/utils/router.dart';
-import 'package:deyarakapp/core/utils/styles.dart';
+
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:go_router/go_router.dart';
+=======
+>>>>>>> f6654f28b9fc466f032676745aa4088650250e6d
 
 class ResetPasswordScreen extends StatelessWidget {
   RegisterationController registerationController =

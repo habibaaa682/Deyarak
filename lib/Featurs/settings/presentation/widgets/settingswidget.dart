@@ -1,7 +1,6 @@
-import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/appbarwidget.dart';
 import 'package:deyarakapp/Featurs/settings/presentation/widgets/deactivateaccountitem.dart';
-import 'package:deyarakapp/constants.dart';
+
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:deyarakapp/core/utils/router.dart';
 
@@ -23,7 +22,6 @@ class settingswidget extends StatelessWidget {
               text: 'Settings',
               h: 0.03,
             ),
-            MyDropdownList(),
             GestureDetector(
                 onTap: () {
                   Provider.of<ThemeProvide>(context, listen: false)
@@ -44,47 +42,6 @@ class settingswidget extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class MyDropdownList extends StatefulWidget {
-  @override
-  _MyDropdownListState createState() => _MyDropdownListState();
-}
-
-class _MyDropdownListState extends State<MyDropdownList> {
-  String selectedValue = 'English';
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 2),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: DropdownButton<String>(
-        alignment: Alignment.centerLeft,
-        iconSize: 50,
-        underline: SizedBox(),
-        focusColor: Colors.black,
-        itemHeight: 60,
-        isExpanded: true,
-        style: Fonts.textstyle18
-            .copyWith(color: const Color.fromARGB(255, 108, 108, 108)),
-        value: selectedValue,
-        onChanged: (newValue) {
-          setState(() {
-            selectedValue = newValue!;
-          });
-        },
-        items: <String>['English', 'Arabic'].map((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
       ),
     );
   }
