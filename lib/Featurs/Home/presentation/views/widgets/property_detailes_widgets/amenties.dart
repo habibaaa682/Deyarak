@@ -1,4 +1,4 @@
-import 'package:deyarakapp/Featurs/Home/data/propertymodel.dart';
+import 'package:deyarakapp/Featurs/Home/data/Models/propertymodel.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/amenties_row.dart';
 
 import 'package:flutter/material.dart';
