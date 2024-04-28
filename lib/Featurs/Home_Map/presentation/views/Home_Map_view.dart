@@ -1,7 +1,7 @@
 // import 'dart:async';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/home_search_bar.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/home_tab_bar.dart';
-import 'package:deyarakapp/Featurs/Home_Map/widgets/map.dart';
+import 'package:deyarakapp/Featurs/Home_Map/presentation/views/widgets/map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

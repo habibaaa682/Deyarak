@@ -6,7 +6,7 @@ import 'package:deyarakapp/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../Home_Map/Home_Map_view.dart';
+import '../../../Home_Map/presentation/views/Home_Map_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

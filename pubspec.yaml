@@ -30,6 +30,9 @@ environment:
 dependencies:
   animated_text_kit: ^4.2.2
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  dio: ^5.4.3+1
+  equatable: ^2.0.5
   flaticon_downloader: ^0.0.2
   flutter:
     sdk: flutter
@@ -46,12 +49,6 @@ dependencies:
   material_design_icons_flutter: ^7.0.7296
   material_icons_named: ^3.16.0
   multi_image_picker: ^4.8.1
-
-  
- 
- 
-
-
   permission_handler: ^11.0.1
   provider: ^6.1.2
   shared_preferences: ^2.2.3
