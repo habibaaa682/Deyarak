@@ -253,10 +253,8 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
   bool get wantKeepAlive => true;
 }
 
-
-  
-  // -------------- Data --------------
- /* Color colorContainer = const Color(0xffFF725E);
+// -------------- Data --------------
+/* Color colorContainer = const Color(0xffFF725E);
   Color colorText = Color.fromARGB(255, 255, 255, 255);
   List<int> stateOfNO = List.filled(11, 0); // Initialize with 11 elements
   List<Color> colors = List.generate(10, (_) => const Color(0xffD9D9D9));
@@ -405,4 +403,3 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
       ),
     );
   }*/
-

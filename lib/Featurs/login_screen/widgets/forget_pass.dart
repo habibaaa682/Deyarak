@@ -1,8 +1,9 @@
+<<<<<<< HEAD
 import 'package:deyarakapp/Featurs/login_screen/Reset_pass_screen.dart';
+=======
+>>>>>>> 644f76258d5a1de8dc9d57990c407985b0add6ab
 import 'package:deyarakapp/core/utils/router.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 class forget_pass_text extends StatelessWidget {
