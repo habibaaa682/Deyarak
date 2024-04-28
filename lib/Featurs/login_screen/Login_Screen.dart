@@ -1,10 +1,10 @@
 import 'package:deyarakapp/Featurs/login_screen/widgets/forget_pass.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
-import 'package:deyarakapp/Featurs/register_screen/register_view.dart';
+
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';
 import 'package:deyarakapp/constants.dart';
 import 'package:deyarakapp/controllers/login_controller.dart';
-import 'package:deyarakapp/controllers/registeration_controller.dart';
+
 import 'package:deyarakapp/core/utils/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
