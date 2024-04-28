@@ -1,3 +1,4 @@
+import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/home_list_view.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/property_item.dart';
 import 'package:flutter/material.dart';
 
@@ -19,16 +20,11 @@ class _HomeTabBarViewState extends State<HomeTabBarView>
         behavior: const ScrollBehavior().copyWith(overscroll: false),
         child: TabBarView(
           controller: widget.tabController,
-          children: [
-            ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-              itemBuilder: (context, index) {
-                return const PropertyItem();
-              },
-            ),
-            const Text('home only'),
-            const Text('furnitured only'),
-            const Text('villas only'),
+          children: const [
+            HomePropertiesListView(),
+            Text('home only'),
+            Text('furnitured only'),
+            Text('villas only'),
           ],
         ),
       ),
