@@ -1,3 +1,4 @@
+import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_slide_show.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class _PropertyItemState extends State<PropertyItem> {
       height: MediaQuery.of(context).size.height * .8,
       child: Column(
         children: [
-          ImageSlideShow(),
+          ImageSlideShow(homeModel: HomeModel()),
           SizedBox(
             height: 10,
           ),
@@ -74,3 +75,5 @@ class _PropertyItemState extends State<PropertyItem> {
     );
   }
 }
+
+class HomesModel {}

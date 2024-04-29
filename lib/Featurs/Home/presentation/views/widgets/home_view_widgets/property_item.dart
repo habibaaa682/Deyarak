@@ -1,3 +1,4 @@
+import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/property_detailes_view.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_slide_show.dart';
 import 'package:deyarakapp/constants.dart';
@@ -5,7 +6,8 @@ import 'package:deyarakapp/constants.dart';
 import 'package:flutter/material.dart';
 
 class PropertyItem extends StatefulWidget {
-  const PropertyItem({super.key});
+  const PropertyItem({super.key, required this.homeModelobject});
+  final HomeModel homeModelobject;
 
   @override
   State<PropertyItem> createState() => _PropertyItemState();
@@ -23,10 +25,10 @@ class _PropertyItemState extends State<PropertyItem> {
         ));
       },
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * .38,
-        child: const Column(
+        height: MediaQuery.of(context).size.height * .4,
+        child: Column(
           children: [
-            ImageSlideShow(),
+            ImageSlideShow(homeModel: widget.homeModelobject),
             SizedBox(
               height: 10,
             ),
@@ -39,7 +41,7 @@ class _PropertyItemState extends State<PropertyItem> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '2.000 EGP',
+                      widget.homeModelobject.price.toString(),
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -52,7 +54,7 @@ class _PropertyItemState extends State<PropertyItem> {
                           Icons.window,
                           color: propertyinfocolor,
                         ),
-                        Text('150 M',
+                        Text(widget.homeModelobject.size.toString(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -64,7 +66,7 @@ class _PropertyItemState extends State<PropertyItem> {
                           Icons.bedroom_child_sharp,
                           color: propertyinfocolor,
                         ),
-                        Text('3',
+                        Text(widget.homeModelobject.numberOfRooms.toString(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -76,7 +78,8 @@ class _PropertyItemState extends State<PropertyItem> {
                           Icons.bathroom,
                           color: propertyinfocolor,
                         ),
-                        Text('2',
+                        Text(
+                            widget.homeModelobject.numberOfBathrooms.toString(),
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -86,7 +89,9 @@ class _PropertyItemState extends State<PropertyItem> {
                     SizedBox(
                       height: 4,
                     ),
-                    Text('Nile Cornishe Street ,Maadi ,Cairo',
+                    Text(widget.homeModelobject.locations!.address.toString(),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,

@@ -18,7 +18,7 @@ final class HomePropertiesFailure extends HomePropertiesState {
 }
 
 final class HomePropertiesSuccess extends HomePropertiesState {
-  final List<HomePropertiesModel> homeProperties;
+  final List<HomeModel> homeProperties;
 
   const HomePropertiesSuccess(this.homeProperties);
 }

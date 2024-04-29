@@ -16,9 +16,12 @@ class HomePropertiesListView extends StatelessWidget {
       builder: (context, state) {
         if (state is HomePropertiesSuccess) {
           return ListView.builder(
+            itemCount: state.homeProperties.length,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
             itemBuilder: (context, index) {
-              return const PropertyItem();
+              return PropertyItem(
+                homeModelobject: state.homeProperties[index],
+              );
             },
           );
         } else if (state is HomePropertiesFailure) {

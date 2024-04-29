@@ -1,14 +1,15 @@
+import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_place_holder.dart';
 import 'package:flutter/material.dart';
 
 class ImageSlideShow extends StatefulWidget {
-  const ImageSlideShow({super.key});
-
+  const ImageSlideShow({super.key, required this.homeModel});
+  final HomeModel homeModel;
   @override
   State<ImageSlideShow> createState() => _ImageSlideShow();
 }
 
-final List<String> imgpaths = [
+/*final List<String> imgpaths = [
   'assets/images/villa2.jpg',
   'assets/images/villa1.jpg',
   'assets/images/villa3.jpg',
@@ -16,7 +17,7 @@ final List<String> imgpaths = [
   'assets/images/villa4.jpg',
   'assets/images/villa4.jpg',
   'assets/images/villa4.jpg',
-];
+];*/
 late List<Widget> pages;
 int activeimg = 0;
 PageController _pageController = PageController(initialPage: 0);
@@ -31,11 +32,11 @@ class _ImageSlideShow extends State<ImageSlideShow>
   void initState() {
     // TODO: implement initState
     super.initState();
-    pages = List.generate(
-        imgpaths.length, (index) => ImagePlaceHolder(imgpath: imgpaths[index]));
+    /*pages = List.generate(
+        widget.homePropertiesModel.images!.length, (index) => ImagePlaceHolder(imgpath:widget.homePropertiesModel.images![index].url.toString()));*/
     sizeanimationcontroller = AnimationController(
         vsync: this,
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 100),
         value: 1,
         upperBound: 1.5,
         lowerBound: 1);
@@ -52,6 +53,10 @@ class _ImageSlideShow extends State<ImageSlideShow>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    List<Widget> pages = widget.homeModel.images
+            ?.map((image) => ImagePlaceHolder(imgpath: image.url.toString()))
+            .toList() ??
+        [];
     return Stack(children: [
       SizedBox(
         width: double.infinity,
@@ -65,7 +70,7 @@ class _ImageSlideShow extends State<ImageSlideShow>
               });
             },
             controller: _pageController,
-            itemCount: imgpaths.length,
+            itemCount: pages.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -84,7 +89,7 @@ class _ImageSlideShow extends State<ImageSlideShow>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List<Widget>.generate(
-                pages.length,
+                widget.homeModel.images!.length,
                 (index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: InkWell(
