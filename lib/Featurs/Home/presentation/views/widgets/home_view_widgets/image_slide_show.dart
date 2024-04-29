@@ -1,10 +1,10 @@
-import 'package:deyarakapp/Featurs/Home/data/Models/home_properties_model/home_properties_model.dart';
+import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_place_holder.dart';
 import 'package:flutter/material.dart';
 
 class ImageSlideShow extends StatefulWidget {
-  const ImageSlideShow({super.key, required this.homePropertiesModel});
-final HomePropertiesModel homePropertiesModel;
+  const ImageSlideShow({super.key, required this.homeModel});
+  final HomeModel homeModel;
   @override
   State<ImageSlideShow> createState() => _ImageSlideShow();
 }
@@ -53,30 +53,33 @@ class _ImageSlideShow extends State<ImageSlideShow>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    List<Widget> pages = widget.homePropertiesModel.images?.map((image) => ImagePlaceHolder(imgpath: image.url.toString())).toList() ?? [];
+    List<Widget> pages = widget.homeModel.images
+            ?.map((image) => ImagePlaceHolder(imgpath: image.url.toString()))
+            .toList() ??
+        [];
     return Stack(children: [
       SizedBox(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height / 4,
-      child: ScrollConfiguration(
-        behavior: const ScrollBehavior().copyWith(overscroll: false),
-        child: PageView.builder(
-          onPageChanged: (value) {
-            setState(() {
-              activeimg = value;
-            });
-          },
-          controller: _pageController,
-          itemCount: pages.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: pages[index],
-            );
-          },
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height / 4,
+        child: ScrollConfiguration(
+          behavior: const ScrollBehavior().copyWith(overscroll: false),
+          child: PageView.builder(
+            onPageChanged: (value) {
+              setState(() {
+                activeimg = value;
+              });
+            },
+            controller: _pageController,
+            itemCount: pages.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: pages[index],
+              );
+            },
+          ),
         ),
       ),
-    ),
       Positioned(
         bottom: 10,
         left: 0,
@@ -86,8 +89,7 @@ class _ImageSlideShow extends State<ImageSlideShow>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List<Widget>.generate(
-
-                widget.homePropertiesModel.images!.length,
+                widget.homeModel.images!.length,
                 (index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: InkWell(

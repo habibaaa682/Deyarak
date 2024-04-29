@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:deyarakapp/Featurs/Home/data/Models/home_properties_model/home_properties_model.dart';
+import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
+
 import 'package:deyarakapp/Featurs/Home/data/repos/home_properties_repo.dart';
 import 'package:deyarakapp/core/Errors/Failure.dart';
 import 'package:deyarakapp/core/utils/api_service.dart';
@@ -10,16 +11,13 @@ class HomeRepoImpl implements HomePropertiesRepo {
 
   HomeRepoImpl(this.apiService);
   @override
-  Future<Either<Failure, List<HomePropertiesModel>>>
-      fetchHomeProperties() async {
+  Future<Either<Failure, List<HomeModel>>> fetchHomeProperties() async {
     try {
       print('hello');
-      var data = await apiService.get(
-          endPointPath:
-              'properties?fields=price,size,numberOfRooms,location,images,numberOfBathrooms,address');
-      List<HomePropertiesModel> homePropertiesList = [];
+      var data = await apiService.get(endPointPath: 'properties');
+      List<HomeModel> homePropertiesList = [];
       for (var property in data['data']['data']) {
-        homePropertiesList.add(HomePropertiesModel.fromJson(property));
+        homePropertiesList.add(HomeModel.fromJson(property));
       }
       print(homePropertiesList[1].price);
       return right(homePropertiesList);

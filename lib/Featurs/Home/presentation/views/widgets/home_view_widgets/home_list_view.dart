@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePropertiesListView extends StatelessWidget {
   const HomePropertiesListView({
-
     super.key,
   });
 
@@ -20,7 +19,9 @@ class HomePropertiesListView extends StatelessWidget {
             itemCount: state.homeProperties.length,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
             itemBuilder: (context, index) {
-              return  PropertyItem(homePropertiesModel: state.homeProperties[index],);
+              return PropertyItem(
+                homeModelobject: state.homeProperties[index],
+              );
             },
           );
         } else if (state is HomePropertiesFailure) {
