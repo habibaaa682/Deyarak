@@ -8,13 +8,10 @@ import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:deyarakapp/core/utils/router.dart';
 
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
+import 'package:get/get.dart';
 
 import 'package:go_router/go_router.dart';
 
-=======
->>>>>>> 146c9139df60c6a8530635b0d1d0d4600523daf1
-import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:go_router/go_router.dart';
 
