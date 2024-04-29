@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import 'image.dart';
 import 'locations.dart';
 import 'owner.dart';

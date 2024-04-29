@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:equatable/equatable.dart';
 
+
 class Locations extends Equatable {
   final String? type;
   final List<double>? coordinates;
