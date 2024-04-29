@@ -1,3 +1,4 @@
+import 'package:deyarakapp/Featurs/Home/data/Models/home_properties_model/home_properties_model.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/property_item.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class RelatedSuggestion extends StatelessWidget {
             return SizedBox(
                 width: MediaQuery.of(context).size.width * .7,
                 height: MediaQuery.of(context).size.height * .9,
-                child: const PropertyItem());
+                child: const PropertyItem(homePropertiesModel: HomePropertiesModel(),));
           },
         ),
       ),

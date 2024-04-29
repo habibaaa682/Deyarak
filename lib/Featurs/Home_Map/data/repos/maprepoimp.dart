@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:deyarakapp/Featurs/Home_Map/data/models/mapmodel.dart';
 import 'package:deyarakapp/Featurs/Home_Map/data/repos/maprepo.dart';
-import 'package:deyarakapp/core/errors/failure.dart';
+import 'package:deyarakapp/core/Errors/Failure.dart';
+
 import 'package:deyarakapp/core/utils/api_endpoints.dart';
 
 class maprepoimp implements maprepo {
@@ -9,7 +10,7 @@ class maprepoimp implements maprepo {
 
   maprepoimp(this.apiEndpoint);
   @override
-  Future<Either<failure, List<Mapmodel>>> getpropritieslocations() async {
+  Future<Either<Failure, List<Mapmodel>>> getpropritieslocations() async {
     try {
       var data =
           await apiEndpoint.get(endpoint: 'api/v1/properties/all-locations');
@@ -19,7 +20,7 @@ class maprepoimp implements maprepo {
       }
       return right(map);
     } catch (e) {
-      return left(serverfailure());
+      return left(ServerFailure(e.toString()));
     }
   }
 }

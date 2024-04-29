@@ -21,7 +21,7 @@ class HomeRepoImpl implements HomePropertiesRepo {
       for (var property in data['data']['data']) {
         homePropertiesList.add(HomePropertiesModel.fromJson(property));
       }
-      print('data');
+      print(homePropertiesList[1].price);
       return right(homePropertiesList);
     } catch (e) {
       if (e is DioException) {

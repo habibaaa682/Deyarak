@@ -1,3 +1,4 @@
+import 'package:deyarakapp/Featurs/Home/data/Models/home_properties_model/home_properties_model.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/amenties.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_slide_show.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/profilecard.dart';
@@ -21,7 +22,7 @@ class PropertyDetailesBody extends StatelessWidget {
           children: [
             const Padding(
               padding: EdgeInsets.only(bottom: 32),
-              child: ImageSlideShow(),
+              child: ImageSlideShow(homePropertiesModel: HomePropertiesModel()),
             ),
             const Padding(
                 padding: EdgeInsets.only(left: 24, right: 24, bottom: 8),

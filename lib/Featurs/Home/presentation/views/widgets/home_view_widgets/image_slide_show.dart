@@ -1,14 +1,15 @@
+import 'package:deyarakapp/Featurs/Home/data/Models/home_properties_model/home_properties_model.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_place_holder.dart';
 import 'package:flutter/material.dart';
 
 class ImageSlideShow extends StatefulWidget {
-  const ImageSlideShow({super.key});
-
+  const ImageSlideShow({super.key, required this.homePropertiesModel});
+final HomePropertiesModel homePropertiesModel;
   @override
   State<ImageSlideShow> createState() => _ImageSlideShow();
 }
 
-final List<String> imgpaths = [
+/*final List<String> imgpaths = [
   'assets/images/villa2.jpg',
   'assets/images/villa1.jpg',
   'assets/images/villa3.jpg',
@@ -16,7 +17,7 @@ final List<String> imgpaths = [
   'assets/images/villa4.jpg',
   'assets/images/villa4.jpg',
   'assets/images/villa4.jpg',
-];
+];*/
 late List<Widget> pages;
 int activeimg = 0;
 PageController _pageController = PageController(initialPage: 0);
@@ -31,11 +32,11 @@ class _ImageSlideShow extends State<ImageSlideShow>
   void initState() {
     // TODO: implement initState
     super.initState();
-    pages = List.generate(
-        imgpaths.length, (index) => ImagePlaceHolder(imgpath: imgpaths[index]));
+    /*pages = List.generate(
+        widget.homePropertiesModel.images!.length, (index) => ImagePlaceHolder(imgpath:widget.homePropertiesModel.images![index].url.toString()));*/
     sizeanimationcontroller = AnimationController(
         vsync: this,
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 100),
         value: 1,
         upperBound: 1.5,
         lowerBound: 1);
@@ -52,29 +53,30 @@ class _ImageSlideShow extends State<ImageSlideShow>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    List<Widget> pages = widget.homePropertiesModel.images?.map((image) => ImagePlaceHolder(imgpath: image.url.toString())).toList() ?? [];
     return Stack(children: [
       SizedBox(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height / 4,
-        child: ScrollConfiguration(
-          behavior: const ScrollBehavior().copyWith(overscroll: false),
-          child: PageView.builder(
-            onPageChanged: (value) {
-              setState(() {
-                activeimg = value;
-              });
-            },
-            controller: _pageController,
-            itemCount: imgpaths.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: pages[index],
-              );
-            },
-          ),
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height / 4,
+      child: ScrollConfiguration(
+        behavior: const ScrollBehavior().copyWith(overscroll: false),
+        child: PageView.builder(
+          onPageChanged: (value) {
+            setState(() {
+              activeimg = value;
+            });
+          },
+          controller: _pageController,
+          itemCount: pages.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: pages[index],
+            );
+          },
         ),
       ),
+    ),
       Positioned(
         bottom: 10,
         left: 0,
@@ -84,7 +86,8 @@ class _ImageSlideShow extends State<ImageSlideShow>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List<Widget>.generate(
-                pages.length,
+
+                widget.homePropertiesModel.images!.length,
                 (index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: InkWell(

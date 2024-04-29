@@ -39,7 +39,7 @@ class _ImagePlaceHolderState extends State<ImagePlaceHolder>
         borderRadius: BorderRadius.circular(24),
         child: Container(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(24)),
-          child: Image.asset(
+          child: Image.network(
             widget.imgpath,
             fit: BoxFit.cover,
           ),
