@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:bloc/bloc.dart';
 import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
 import 'package:deyarakapp/Featurs/Home/data/repos/home_properties_repo.dart';
