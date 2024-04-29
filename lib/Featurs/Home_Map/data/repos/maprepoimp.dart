@@ -2,24 +2,31 @@ import 'package:dartz/dartz.dart';
 import 'package:deyarakapp/Featurs/Home_Map/data/models/mapmodel.dart';
 import 'package:deyarakapp/Featurs/Home_Map/data/repos/maprepo.dart';
 import 'package:deyarakapp/core/errors/failure.dart';
-import 'package:deyarakapp/core/utils/api_endpoints.dart';
+import 'package:deyarakapp/core/utils/api_service.dart';
+
+import 'package:dio/dio.dart';
 
 class maprepoimp implements maprepo {
-  final ApiEndpoint apiEndpoint;
+  final ApiService apiService;
 
-  maprepoimp(this.apiEndpoint);
+  maprepoimp(this.apiService);
+
   @override
-  Future<Either<failure, List<Mapmodel>>> getpropritieslocations() async {
+  Future<Either<Failure, List<Mapmodel>>> getpropritieslocations() async {
     try {
       var data =
-          await apiEndpoint.get(endpoint: 'api/v1/properties/all-locations');
+          await apiService.get(endPointPath: 'api/v1/properties/all-locations');
       List<Mapmodel> map = [];
       for (var location in data['locations']) {
         map.add(Mapmodel.fromJson(location));
       }
       return right(map);
     } catch (e) {
-      return left(serverfailure());
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
     }
   }
 }
