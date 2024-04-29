@@ -6,10 +6,10 @@ import 'package:deyarakapp/constants.dart';
 import 'package:deyarakapp/controllers/login_controller.dart';
 
 import 'package:deyarakapp/core/utils/router.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 import 'package:go_router/go_router.dart';
 import 'CreateAccount_Text.dart';
 // import 'forget_pass.dart';

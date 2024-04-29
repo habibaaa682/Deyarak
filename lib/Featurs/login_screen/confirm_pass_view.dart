@@ -1,5 +1,5 @@
 import 'package:deyarakapp/Featurs/login_screen/widgets/confirm_pass_text_field.dart';
-import 'package:deyarakapp/Featurs/login_screen/widgets/custom_button.dart';
+
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
 
 import 'package:deyarakapp/constants.dart';
