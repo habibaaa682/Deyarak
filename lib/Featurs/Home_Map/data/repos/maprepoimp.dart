@@ -8,8 +8,6 @@ import 'package:dio/dio.dart';
 
 import 'package:deyarakapp/core/Errors/Failure.dart';
 
-import 'package:deyarakapp/core/utils/api_endpoints.dart';
-
 class maprepoimp implements maprepo {
   final ApiService apiService;
 
@@ -18,12 +16,12 @@ class maprepoimp implements maprepo {
   @override
   Future<Either<Failure, List<Mapmodel>>> getpropritieslocations() async {
     try {
-      var data =
-          await apiService.get(endPointPath: 'api/v1/properties/all-locations');
+      var data = await apiService.get(endPointPath: 'properties');
       List<Mapmodel> map = [];
-      for (var location in data['locations']) {
+      for (var location in data['data']['data']) {
         map.add(Mapmodel.fromJson(location));
       }
+      print(map);
       return right(map);
     } catch (e) {
       if (e is DioException) {
@@ -31,8 +29,6 @@ class maprepoimp implements maprepo {
       } else {
         return left(ServerFailure(e.toString()));
       }
-
-      return left(ServerFailure(e.toString()));
     }
   }
 }

@@ -57,6 +57,7 @@ class _ImageSlideShow extends State<ImageSlideShow>
             ?.map((image) => ImagePlaceHolder(imgpath: image.url.toString()))
             .toList() ??
         [];
+
     return Stack(children: [
       SizedBox(
         width: double.infinity,
