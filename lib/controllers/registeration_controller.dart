@@ -39,6 +39,10 @@ class RegisterationController {
       }
     } catch (e) {
       print('Error during registration: $e');
+      if (e is DioError) {
+        print('DioError response: ${e.response}');
+        print('DioError message: ${e.message}');
+      }
     }
   }
 }
