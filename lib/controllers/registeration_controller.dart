@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:deyarakapp/Featurs/register_screen/register_view.dart';
 import 'package:deyarakapp/core/utils/api_endpoints.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,9 @@ class RegisterationController {
   TextEditingController passwordConfirmController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   Dio dio = Dio();
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Future<void> registerWithEmail() async {
+    SharedPreferences prefs=await SharedPreferences.getInstance();
     try {
       var headers = {'Content-Type': 'application/json'};
       var url = Uri.parse(
@@ -26,23 +27,26 @@ class RegisterationController {
         "phone": phoneController.text,
         "role": "user"
       };
-      final response = await dio.post(url.toString(),
-          data: jsonEncode(body), options: Options(headers: headers));
+      final response = await dio.post(
+        url.toString(),
+        data: jsonEncode(body),
+        options: Options(headers: headers),
+      );
+
+
       if (response.statusCode == 201) {
-        final json = jsonDecode(response.data);
         nameController.clear();
         emailController.clear();
         passwordController.clear();
         passwordConfirmController.clear();
         phoneController.clear();
         print('Registered successfully');
+        String userToken=response.data['token'];
+        prefs.setString('token', userToken);
+        print(prefs.getString('token'));
       }
     } catch (e) {
       print('Error during registration: $e');
-      if (e is DioError) {
-        print('DioError response: ${e.response}');
-        print('DioError message: ${e.message}');
-      }
     }
   }
 }
