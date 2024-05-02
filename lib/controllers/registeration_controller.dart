@@ -14,7 +14,7 @@ class RegisterationController {
   Dio dio = Dio();
 
   Future<void> registerWithEmail() async {
-    SharedPreferences prefs=await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       var headers = {'Content-Type': 'application/json'};
       var url = Uri.parse(
@@ -33,7 +33,6 @@ class RegisterationController {
         options: Options(headers: headers),
       );
 
-
       if (response.statusCode == 201) {
         nameController.clear();
         emailController.clear();
@@ -41,7 +40,7 @@ class RegisterationController {
         passwordConfirmController.clear();
         phoneController.clear();
         print('Registered successfully');
-        String userToken=response.data['token'];
+        String userToken = response.data['token'];
         prefs.setString('token', userToken);
         print(prefs.getString('token'));
       }
