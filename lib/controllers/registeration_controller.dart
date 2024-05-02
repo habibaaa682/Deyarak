@@ -1,20 +1,16 @@
 import 'dart:convert';
-
-import 'package:deyarakapp/Featurs/Home/presentation/views/Home_View.dart';
 import 'package:deyarakapp/core/utils/api_endpoints.dart';
-import 'package:deyarakapp/core/utils/router.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart ' as http;
 
-class RegisterationController extends GetxController {
+class RegisterationController {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordConfirmController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-
+  Dio dio = Dio();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Future<void> registerWithEmail() async {
@@ -30,32 +26,19 @@ class RegisterationController extends GetxController {
         "phone": phoneController.text,
         "role": "user"
       };
-      http.Response response =
-          await http.post(url, body: jsonEncode(body), headers: headers);
-
-      if (response.statusCode == 200) {
-        final json = jsonDecode(response.body);
-
-        var token = json['token'];
-        print(token);
-        final SharedPreferences? prefs = await _prefs;
-        await prefs?.setString('token', token);
+      final response = await dio.post(url.toString(),
+          data: jsonEncode(body), options: Options(headers: headers));
+      if (response.statusCode == 201) {
+        final json = jsonDecode(response.data);
         nameController.clear();
         emailController.clear();
         passwordController.clear();
         passwordConfirmController.clear();
         phoneController.clear();
-        // Get.to(HomeView());
-        print('registered successfully');
-      } else if (response.statusCode == 400) {
-        throw 'Bad request. Missing or invalid parameters.';
-      } else if (response.statusCode == 500) {
-        throw 'Internal server error';
-      } else {
-        throw 'unknown error occured';
+        print('Registered successfully');
       }
     } catch (e) {
-      print(e.toString());
+      print('Error during registration: $e');
     }
   }
 }

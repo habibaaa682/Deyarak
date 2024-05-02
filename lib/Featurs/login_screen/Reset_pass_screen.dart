@@ -1,4 +1,4 @@
-import 'package:deyarakapp/Featurs/login_screen/confirm_pass_view.dart';
+import 'package:deyarakapp/Featurs/login_screen/presentation/widgets/confirm_pass_view.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
 
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';

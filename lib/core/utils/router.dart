@@ -3,7 +3,7 @@ import 'package:deyarakapp/Featurs/aboutus/presentation/aboutusview.dart';
 import 'package:deyarakapp/Featurs/contactus/presentation/contactusview.dart';
 import 'package:deyarakapp/Featurs/login_screen/Login_Screen.dart';
 import 'package:deyarakapp/Featurs/login_screen/Reset_pass_screen.dart';
-import 'package:deyarakapp/Featurs/login_screen/confirm_pass_view.dart';
+import 'package:deyarakapp/Featurs/login_screen/presentation/widgets/confirm_pass_view.dart';
 import 'package:deyarakapp/Featurs/menu/presentation/views/menuview.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/emailview.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/personalinformationview.dart';
