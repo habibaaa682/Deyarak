@@ -29,9 +29,9 @@ class RelatedSuggestion extends StatelessWidget {
               itemBuilder: (context, index) {
                 return SizedBox(
                     width: MediaQuery.of(context).size.width * .85,
-                    child: PropertyItem(
+                    child: Text('there was a property item widget here!!')/*PropertyItem(
                       homeModelobject: HomeModel(),
-                    ));
+                    )*/);
               },
             ),
           ),
