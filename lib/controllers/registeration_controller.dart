@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:deyarakapp/core/utils/api_endpoints.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterationController {
   TextEditingController nameController = TextEditingController();
@@ -11,7 +10,6 @@ class RegisterationController {
   TextEditingController passwordConfirmController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   Dio dio = Dio();
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Future<void> registerWithEmail() async {
     try {
@@ -26,10 +24,12 @@ class RegisterationController {
         "phone": phoneController.text,
         "role": "user"
       };
-      final response = await dio.post(url.toString(),
-          data: jsonEncode(body), options: Options(headers: headers));
+      final response = await dio.post(
+        url.toString(),
+        data: jsonEncode(body),
+        options: Options(headers: headers),
+      );
       if (response.statusCode == 201) {
-        final json = jsonDecode(response.data);
         nameController.clear();
         emailController.clear();
         passwordController.clear();
@@ -39,10 +39,6 @@ class RegisterationController {
       }
     } catch (e) {
       print('Error during registration: $e');
-      if (e is DioError) {
-        print('DioError response: ${e.response}');
-        print('DioError message: ${e.message}');
-      }
     }
   }
 }
