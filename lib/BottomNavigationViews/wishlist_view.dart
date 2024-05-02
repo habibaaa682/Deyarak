@@ -31,9 +31,9 @@ class WishlistView extends StatelessWidget {
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
               itemBuilder: (context, index) {
-                return const PropertyItem(
+                return const Text('THERE WAS A PROPERTY ITEM WIDGET HERE!')/*PropertyItem(
                   homeModelobject: HomeModel(),
-                );
+                )*/;
               },
             ),
           ),

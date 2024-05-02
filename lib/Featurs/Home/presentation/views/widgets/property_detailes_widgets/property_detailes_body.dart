@@ -22,7 +22,7 @@ class PropertyDetailesBody extends StatelessWidget {
           children: [
             const Padding(
               padding: EdgeInsets.only(bottom: 32),
-              child: ImageSlideShow(homeModel: HomeModel()),
+              child:Text('There was an image slide show widget here!!')/*ImageSlideShow(homeModel: HomeModel())*/,
             ),
             const Padding(
                 padding: EdgeInsets.only(left: 24, right: 24, bottom: 8),
