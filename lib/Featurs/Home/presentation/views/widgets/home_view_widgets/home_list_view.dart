@@ -14,7 +14,7 @@ class HomePropertiesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomePropertiesCubit, HomePropertiesState>(
       builder: (context, state) {
-        if (state is HomePropertiesSuccess) {
+        if (state is AllHomePropertiesSuccess) {
           return ListView.builder(
             itemCount: state.homeProperties.length,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
@@ -24,7 +24,8 @@ class HomePropertiesListView extends StatelessWidget {
               );
             },
           );
-        } else if (state is HomePropertiesFailure) {
+        }
+        else if (state is HomePropertiesFailure) {
           return CustomErrorWidget(errMsg: state.errMsg);
         } else {
           return const CustomLoadingIndicator();

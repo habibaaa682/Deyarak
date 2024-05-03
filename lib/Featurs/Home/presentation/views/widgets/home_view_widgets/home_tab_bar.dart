@@ -26,6 +26,12 @@ class _HomeTabBarState extends State<HomeTabBar>
           tabs: const [
             Tab(
               icon: Icon(
+                Icons.all_inclusive,
+              ),
+              text: 'All',
+            ),
+            Tab(
+              icon: Icon(
                 Icons.apartment,
               ),
               text: 'Apartment ',

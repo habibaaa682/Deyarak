@@ -17,8 +17,8 @@ final class HomePropertiesFailure extends HomePropertiesState {
   const HomePropertiesFailure(this.errMsg);
 }
 
-final class HomePropertiesSuccess extends HomePropertiesState {
+final class AllHomePropertiesSuccess extends HomePropertiesState {
   final List<HomeModel> homeProperties;
 
-  const HomePropertiesSuccess(this.homeProperties);
+  const AllHomePropertiesSuccess(this.homeProperties);
 }

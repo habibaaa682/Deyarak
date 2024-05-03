@@ -168,7 +168,7 @@ class registerView extends StatelessWidget {
                 Button(
                   text: 'Sign UP',
                   ontap: () {
-                    registerationController.registerWithEmail();
+                    registerationController.registerWithEmail(context);
                   },
                   raduis: 35,
                   colorr: Colors.white,

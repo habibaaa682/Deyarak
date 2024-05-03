@@ -11,15 +11,15 @@ class HomeRepoImpl implements HomePropertiesRepo {
 
   HomeRepoImpl(this.apiService);
   @override
-  Future<Either<Failure, List<HomeModel>>> fetchHomeProperties() async {
+  Future<Either<Failure, List<HomeModel>>> fetchHomeProperties({String fields=''}) async {
     try {
       print('hello');
-      var data = await apiService.get(endPointPath: 'properties');
+      var data = await apiService.get(endPointPath: 'properties$fields');
       List<HomeModel> homePropertiesList = [];
       for (var property in data['data']['data']) {
         homePropertiesList.add(HomeModel.fromJson(property));
       }
-      print(homePropertiesList[1].price);
+     // print(homePropertiesList[1].price);
       return right(homePropertiesList);
     } catch (e) {
       if (e is DioException) {

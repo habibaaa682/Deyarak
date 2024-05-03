@@ -15,7 +15,7 @@ class _HomeViewBodyState extends State<HomeViewBody>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(vsync: this, length: 4);
+    TabController tabController = TabController(vsync: this, length: 5);
     return Scaffold(
       floatingActionButton: const AddFloatingActionButton(),
       body: Column(children: [

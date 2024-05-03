@@ -19,8 +19,11 @@ class _HomeTabBarViewState extends State<HomeTabBarView>
       child: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
         child: TabBarView(
+
           controller: widget.tabController,
           children: const [
+
+            HomePropertiesListView(),
             HomePropertiesListView(),
             Text('home only'),
             Text('furnitured only'),

@@ -16,8 +16,9 @@ class HomePropertiesCubit extends Cubit<HomePropertiesState> {
       emit(HomePropertiesFailure(failure.errMessage));
     }, (homeProperties) {
       emit(
-        HomePropertiesSuccess(homeProperties),
+        AllHomePropertiesSuccess(homeProperties),
       );
     });
   }
+
 }

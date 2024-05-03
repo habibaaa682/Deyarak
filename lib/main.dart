@@ -12,7 +12,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+import 'controllers/sharedPrefrenceController.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await GlobalSharedPreferences.init();
   setupServiceLocator();
   runApp(
     ChangeNotifierProvider(
@@ -31,6 +35,7 @@ class DeyarakApp extends StatelessWidget {
           create: (context) => HomePropertiesCubit(getIt.get<HomeRepoImpl>())
             ..fetchHomeProperties(),
         ),
+
         BlocProvider(
           create: (context) =>
               MapCubit(getIt.get<maprepoimp>())..getpropritylocation(),
