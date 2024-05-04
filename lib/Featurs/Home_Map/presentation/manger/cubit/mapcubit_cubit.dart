@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:deyarakapp/Featurs/Home_Map/data/models/mapmodel.dart';
+import 'package:deyarakapp/Featurs/Home_Map/data/models/mymapmodel/mymapmodel.dart';
 import 'package:deyarakapp/Featurs/Home_Map/data/repos/maprepo.dart';
 import 'package:equatable/equatable.dart';
 
