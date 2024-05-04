@@ -8,3 +8,15 @@ sealed class ApartmentCubitState extends Equatable {
 }
 
 final class ApartmentCubitInitial extends ApartmentCubitState {}
+final class ApartmentCubitLoading extends ApartmentCubitState {}
+final class ApartmentCubitFailure extends ApartmentCubitState {
+  final String errMsg;
+
+  const ApartmentCubitFailure(this.errMsg);
+}
+
+final class ApartmentCubitSuccess extends ApartmentCubitState {
+  final List<HomeModel> homeProperties;
+
+  const ApartmentCubitSuccess (this.homeProperties);
+}

@@ -15,7 +15,7 @@ class Mapmodel extends Equatable {
 
   factory Mapmodel.fromJson(Map<String, dynamic> json) => Mapmodel(
         type: json['type'] as String?,
-        coordinates: json['coordinates'] as List<double>?,
+        coordinates: (json['coordinates'] as List<dynamic>?)?.cast<double>(),
         address: json['address'] as String?,
         description: json['description'] as String?,
       );

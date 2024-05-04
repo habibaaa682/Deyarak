@@ -8,6 +8,8 @@ import 'package:dio/dio.dart';
 
 import 'package:deyarakapp/core/Errors/Failure.dart';
 
+import '../../../../controllers/sharedPrefrenceController.dart';
+
 class maprepoimp implements maprepo {
   final ApiService apiService;
 
@@ -16,9 +18,13 @@ class maprepoimp implements maprepo {
   @override
   Future<Either<Failure, List<Mapmodel>>> getpropritieslocations() async {
     try {
-      var data = await apiService.get(endPointPath: 'properties');
+      print('token from map end point');
+
+      String token=GlobalSharedPreferences.getString('token');
+      print(token);
+      var data = await apiService.get(endPointPath:'properties/all-locations',token:token);
       List<Mapmodel> map = [];
-      for (var location in data['data']['data']) {
+      for (var location in data['data']['locations']) {
         map.add(Mapmodel.fromJson(location));
       }
       print(map);

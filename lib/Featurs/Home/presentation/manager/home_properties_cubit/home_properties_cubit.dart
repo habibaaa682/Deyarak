@@ -21,4 +21,6 @@ class HomePropertiesCubit extends Cubit<HomePropertiesState> {
     });
   }
 
+
+
 }

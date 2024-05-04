@@ -25,6 +25,7 @@ class _HomeTabBarState extends State<HomeTabBar>
           controller: widget.tabController,
           tabs: const [
             Tab(
+
               icon: Icon(
                 Icons.all_inclusive,
               ),

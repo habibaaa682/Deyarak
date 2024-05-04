@@ -1,3 +1,4 @@
+import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/apartment_list_view.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/home_list_view.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/property_item.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class _HomeTabBarViewState extends State<HomeTabBarView>
           children: const [
 
             HomePropertiesListView(),
-            HomePropertiesListView(),
+            ApartmentPropertiesListView(),
             Text('home only'),
             Text('furnitured only'),
             Text('villas only'),
