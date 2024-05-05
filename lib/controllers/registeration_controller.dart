@@ -4,7 +4,6 @@ import 'package:deyarakapp/core/utils/api_endpoints.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/utils/router.dart';
 
@@ -17,7 +16,6 @@ class RegisterationController {
   Dio dio = Dio();
 
   Future<void> registerWithEmail(BuildContext context) async {
-
     try {
       var headers = {'Content-Type': 'application/json'};
       var url = Uri.parse(
@@ -50,13 +48,11 @@ class RegisterationController {
         );
         GoRouter.of(context).push(AppRouter.klogin);
         String userToken = response.data['token'];
-          GlobalSharedPreferences.setString('token', userToken);
+        GlobalSharedPreferences.setString('token', userToken);
         GlobalSharedPreferences.getString('token');
       }
     } on DioError catch (e) {
-
       if (e.response != null) {
-
         final errorData = e.response!.data;
         if (errorData.containsKey('message')) {
           final errorMessage = errorData['message'];
@@ -75,7 +71,6 @@ class RegisterationController {
           );
         }
       } else {
-
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Error during registration: ${e.message}'),
@@ -84,7 +79,6 @@ class RegisterationController {
         );
       }
     } catch (e) {
-
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error during registration: $e'),

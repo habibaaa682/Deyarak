@@ -5,15 +5,10 @@ import 'package:deyarakapp/core/utils/api_endpoints.dart';
 import 'package:dio/dio.dart';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../core/utils/router.dart';
 
-
-class LoginController  {
+class LoginController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   Dio dio = Dio();
@@ -27,11 +22,10 @@ class LoginController  {
         "email": emailController.text.trim(),
         "password": passwordController.text,
       };
-      final response =
-          await dio.post(url.toString(), data: jsonEncode(body), options: Options(headers: headers));
+      final response = await dio.post(url.toString(),
+          data: jsonEncode(body), options: Options(headers: headers));
 
       if (response.statusCode == 200) {
-
         emailController.clear();
         passwordController.clear();
         print('this is the token');
@@ -42,13 +36,10 @@ class LoginController  {
             content: Text('logged in successfully!'),
             backgroundColor: Colors.green,
           ),
-
         );
         GoRouter.of(context).push(AppRouter.khome);
-
       }
     } on DioError catch (e) {
-
       if (e.response != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -56,7 +47,7 @@ class LoginController  {
             backgroundColor: Colors.red,
           ),
         );
-   }
+      }
     }
   }
 }

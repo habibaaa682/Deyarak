@@ -19,7 +19,7 @@ class MapView extends StatefulWidget {
 class _MapViewState extends State<MapView> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(vsync: this, length: 4);
+    TabController tabController = TabController(vsync: this, length: 5);
     return Scaffold(
       // backgroundColor: Colors.white,
 //--------------------------------------------------

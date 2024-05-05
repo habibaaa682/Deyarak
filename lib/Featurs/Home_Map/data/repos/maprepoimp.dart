@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:deyarakapp/Featurs/Home_Map/data/models/mapmodel.dart';
-import 'package:deyarakapp/Featurs/Home_Map/data/models/mymapmodel/mymapmodel.dart';
+
+import 'package:deyarakapp/Featurs/Home_Map/data/models/mappmodel.dart';
+
 import 'package:deyarakapp/Featurs/Home_Map/data/repos/maprepo.dart';
 
 import 'package:deyarakapp/core/utils/api_service.dart';
@@ -17,7 +18,7 @@ class maprepoimp implements maprepo {
   maprepoimp(this.apiService);
 
   @override
-  Future<Either<Failure, List<Mymapmodel>>> getpropritieslocations() async {
+  Future<Either<Failure, List<Mappmodel>>> getpropritieslocations() async {
     try {
       print('token from map end point');
 
@@ -25,9 +26,9 @@ class maprepoimp implements maprepo {
       print(token);
       var data = await apiService.get(
           endPointPath: 'properties/all-locations', token: token);
-      List<Mymapmodel> map = [];
+      List<Mappmodel> map = [];
       for (var location in data['data']['locations']) {
-        map.add(Mymapmodel.fromJson(location));
+        map.add(Mappmodel.fromJson(location));
       }
       print(map);
       return right(map);

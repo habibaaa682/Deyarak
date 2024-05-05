@@ -1,12 +1,6 @@
-import 'package:dio/dio.dart';
-
 class ApiEndpoint {
   static final String baseUrl = 'https://deyarak-app.onrender.com/';
   static _AuthEndPoints authEndPoint = _AuthEndPoints();
-  
-
-  
-  
 }
 
 class _AuthEndPoints {

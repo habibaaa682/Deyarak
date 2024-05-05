@@ -1,23 +1,26 @@
 import 'package:equatable/equatable.dart';
 
-class Locations extends Equatable {
+class Mappmodel extends Equatable {
   final String? type;
   final List<double>? coordinates;
   final String? address;
   final String? description;
+  final int? price;
 
-  const Locations({
+  const Mappmodel({
     this.type,
     this.coordinates,
     this.address,
     this.description,
+    this.price,
   });
 
-  factory Locations.fromJson(Map<String, dynamic> json) => Locations(
+  factory Mappmodel.fromJson(Map<String, dynamic> json) => Mappmodel(
         type: json['type'] as String?,
         coordinates: (json['coordinates'] as List<dynamic>?)?.cast<double>(),
         address: json['address'] as String?,
         description: json['description'] as String?,
+        price: json['price'] as int?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -25,8 +28,17 @@ class Locations extends Equatable {
         'coordinates': coordinates,
         'address': address,
         'description': description,
+        'price': price,
       };
 
   @override
-  List<Object?> get props => [type, coordinates, address, description];
+  List<Object?> get props {
+    return [
+      type,
+      coordinates,
+      address,
+      description,
+      price,
+    ];
+  }
 }

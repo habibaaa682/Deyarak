@@ -1,5 +1,3 @@
-import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
-import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/property_item.dart';
 import 'package:flutter/material.dart';
 
 class WishlistView extends StatelessWidget {
@@ -31,9 +29,11 @@ class WishlistView extends StatelessWidget {
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
               itemBuilder: (context, index) {
-                return const Text('THERE WAS A PROPERTY ITEM WIDGET HERE!')/*PropertyItem(
+                return const Text(
+                        'THERE WAS A PROPERTY ITEM WIDGET HERE!') /*PropertyItem(
                   homeModelobject: HomeModel(),
-                )*/;
+                )*/
+                    ;
               },
             ),
           ),

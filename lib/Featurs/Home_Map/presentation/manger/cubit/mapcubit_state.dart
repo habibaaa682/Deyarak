@@ -18,7 +18,7 @@ final class MapcubitFailure extends MapState {
 }
 
 final class MapcubitSuccess extends MapState {
-  final List<Mymapmodel> map;
+  final List<Mappmodel> map;
 
   const MapcubitSuccess(this.map);
 }
