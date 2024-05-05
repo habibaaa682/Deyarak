@@ -18,6 +18,7 @@ class _FilterState extends State<FilterBody>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: ListView(
         children: [

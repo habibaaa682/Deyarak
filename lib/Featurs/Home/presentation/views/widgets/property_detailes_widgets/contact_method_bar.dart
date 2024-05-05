@@ -10,7 +10,6 @@ class ContactMethodBar extends StatelessWidget {
 
   final String phone = '+96612345678';
   final String email = 'hasnaa.n.zanaty@gmail.com';
-  final Uri _url = Uri.parse('https://wa.me/+201099999999');
   @override
   Widget build(BuildContext context) {
     return ClipRRect(

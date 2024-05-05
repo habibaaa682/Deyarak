@@ -23,6 +23,7 @@ class _AddPropertyState extends State<AddPropertyBody>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
 //---------------------------------------------------------------------------------------------
 // AppBar

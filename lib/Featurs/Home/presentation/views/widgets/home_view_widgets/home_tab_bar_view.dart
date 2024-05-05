@@ -1,6 +1,6 @@
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/apartment_list_view.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/home_list_view.dart';
-import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/property_item.dart';
+
 import 'package:flutter/material.dart';
 
 class HomeTabBarView extends StatefulWidget {
@@ -20,10 +20,8 @@ class _HomeTabBarViewState extends State<HomeTabBarView>
       child: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
         child: TabBarView(
-
           controller: widget.tabController,
           children: const [
-
             HomePropertiesListView(),
             ApartmentPropertiesListView(),
             Text('home only'),

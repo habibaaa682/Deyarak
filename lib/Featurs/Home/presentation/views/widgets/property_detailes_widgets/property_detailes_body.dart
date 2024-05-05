@@ -1,6 +1,5 @@
-import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/amenties.dart';
-import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_slide_show.dart';
+
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/profilecard.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/property_description.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/property_info_column.dart';
@@ -22,7 +21,8 @@ class PropertyDetailesBody extends StatelessWidget {
           children: [
             const Padding(
               padding: EdgeInsets.only(bottom: 32),
-              child:Text('There was an image slide show widget here!!')/*ImageSlideShow(homeModel: HomeModel())*/,
+              child: Text(
+                  'There was an image slide show widget here!!') /*ImageSlideShow(homeModel: HomeModel())*/,
             ),
             const Padding(
                 padding: EdgeInsets.only(left: 24, right: 24, bottom: 8),

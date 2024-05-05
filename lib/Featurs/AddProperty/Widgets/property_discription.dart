@@ -13,6 +13,7 @@ class _PropertyDiscriptionState extends State<PropertyDiscription>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Padding(
       padding: const EdgeInsets.all(12),
       child: TextFormField(

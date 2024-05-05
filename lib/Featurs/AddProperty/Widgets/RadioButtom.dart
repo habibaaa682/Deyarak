@@ -18,6 +18,7 @@ Color colorNo = Colors.white;
 class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
