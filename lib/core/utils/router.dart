@@ -63,7 +63,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kregister,
-        builder: (context, state) => registerView(),
+        builder: (context, state) => RegisterView(),
       ),
       GoRoute(
         path: ksplash,

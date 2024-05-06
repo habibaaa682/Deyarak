@@ -1,14 +1,21 @@
+import 'package:deyarakapp/Featurs/profile/data/models/user/user.profile.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class profilemenuwidget extends StatelessWidget {
-  String text;
+class profilemenuwidget extends StatefulWidget {
+  final List<User> userobj;
 
   profilemenuwidget({
     super.key,
-    required this.text,
+    required this.userobj,
   });
+
+  @override
+  State<profilemenuwidget> createState() => _profilemenuwidgetState();
+}
+
+class _profilemenuwidgetState extends State<profilemenuwidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,8 +29,8 @@ class profilemenuwidget extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(45),
-              child: Image.asset(
-                'assets/images/m.jpg',
+              child: Image.network(
+                widget.userobj[0].photo!.url.toString(),
                 width: 80,
                 height: 80,
                 fit: BoxFit.cover,
@@ -34,7 +41,7 @@ class profilemenuwidget extends StatelessWidget {
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
-                text,
+                widget.userobj[0].name.toString(),
                 style: Fonts.textstyle24,
               ),
               Text(

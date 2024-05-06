@@ -3,6 +3,9 @@ import 'package:deyarakapp/Featurs/Home/presentation/manager/apartment_cubit/apa
 import 'package:deyarakapp/Featurs/Home/presentation/manager/home_properties_cubit/home_properties_cubit.dart';
 import 'package:deyarakapp/Featurs/Home_Map/data/repos/maprepoimp.dart';
 import 'package:deyarakapp/Featurs/Home_Map/presentation/manger/cubit/mapcubit_cubit.dart';
+
+import 'package:deyarakapp/Featurs/profile/data/repos/profilerepoImp.dart';
+import 'package:deyarakapp/Featurs/profile/presentation/manger/cubit/userprofile_cubit.dart';
 import 'package:deyarakapp/core/utils/router.dart';
 import 'package:deyarakapp/core/utils/service_locator.dart';
 import 'package:deyarakapp/theme/themeprovider.dart';
@@ -12,7 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'controllers/sharedPrefrenceController.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GlobalSharedPreferences.init();
   setupServiceLocator();
@@ -40,6 +43,10 @@ class DeyarakApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               MapCubit(getIt.get<maprepoimp>())..getpropritylocation(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              UserprofileCubit(getIt.get<profilerepimp>())..getUserprofile(),
         ),
       ],
       child: MaterialApp.router(

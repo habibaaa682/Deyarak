@@ -29,6 +29,8 @@ class LoginController {
         emailController.clear();
         passwordController.clear();
         print('this is the token');
+        String userToken = response.data['token'];
+        GlobalSharedPreferences.setString('token', userToken);
         GlobalSharedPreferences.getString('token');
         print('this is the token');
         ScaffoldMessenger.of(context).showSnackBar(

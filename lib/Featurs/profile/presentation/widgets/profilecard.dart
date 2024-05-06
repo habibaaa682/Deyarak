@@ -1,19 +1,18 @@
+import 'package:deyarakapp/Featurs/profile/data/models/user/user.profile.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class profilecard extends StatelessWidget {
-  String firstname;
-  String lastname;
-  double rating;
-  int phone;
+class profilecard extends StatefulWidget {
+  final List<User> userobj;
 
-  profilecard(
-      {super.key,
-      required this.firstname,
-      required this.lastname,
-      required this.rating,
-      required this.phone});
+  profilecard({super.key, required this.userobj});
+
+  @override
+  State<profilecard> createState() => _profilecardState();
+}
+
+class _profilecardState extends State<profilecard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,8 +39,8 @@ class profilecard extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
-                    child: Image.asset(
-                      'assets/images/m.jpg',
+                    child: Image.network(
+                      widget.userobj[0].photo!.url.toString(),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -49,14 +48,10 @@ class profilecard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  firstname,
+                  widget.userobj[0].name.toString(),
                   style:
                       Fonts.textstyle30.copyWith(fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  lastname,
-                  style: Fonts.textstyle14,
-                )
               ],
             ),
           ),
@@ -65,10 +60,13 @@ class profilecard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: 18,
+                ),
                 Row(
                   children: [
                     Text(
-                      '$rating',
+                      widget.userobj[0].ratingsAverage.toString(),
                       style: Fonts.textstyle40,
                     ),
                     Icon(Icons.star),
@@ -79,12 +77,12 @@ class profilecard extends StatelessWidget {
                   style: Fonts.textstyle14,
                 ),
                 SizedBox(
-                  height: 18,
+                  height: 35,
                 ),
                 Text(
-                  '$phone',
+                  widget.userobj[0].phone.toString(),
                   style:
-                      Fonts.textstyle24.copyWith(fontWeight: FontWeight.bold),
+                      Fonts.textstyle18.copyWith(fontWeight: FontWeight.bold),
                 ),
                 Text(
                   'Phone Number',

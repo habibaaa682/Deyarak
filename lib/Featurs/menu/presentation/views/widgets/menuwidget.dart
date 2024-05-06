@@ -1,8 +1,12 @@
 import 'package:deyarakapp/Featurs/menu/presentation/views/widgets/menuitemwidget.dart';
 import 'package:deyarakapp/Featurs/menu/presentation/views/widgets/profilemenuwidget.dart';
+import 'package:deyarakapp/Featurs/profile/presentation/manger/cubit/userprofile_cubit.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:deyarakapp/core/utils/router.dart';
+import 'package:deyarakapp/core/widgets/custom_error_widget.dart';
+import 'package:deyarakapp/core/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,8 +27,18 @@ class menuwidget extends StatelessWidget {
           onTap: () {
             GoRouter.of(context).push(AppRouter.kprofile);
           },
-          child: profilemenuwidget(
-            text: 'Ahmed Mohamed',
+          child: BlocBuilder<UserprofileCubit, UserprofileState>(
+            builder: (context, state) {
+              if (state is UserprofileSuccess) {
+                return profilemenuwidget(userobj: state.userprofile);
+              } else if (state is UserprofileFailure) {
+                return CustomErrorWidget(errMsg: state.errMsg);
+              } else {
+                return Center(
+                  child: CustomLoadingIndicator(),
+                );
+              }
+            },
           ),
         ),
         GestureDetector(
