@@ -25,6 +25,7 @@ class _PropertyTypeState extends State<PropertyType>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     var queryWidth = MediaQuery.of(context).size.width;
     final double scaleFactor = queryWidth / 400;
     final double containerWidth = 165 * scaleFactor;

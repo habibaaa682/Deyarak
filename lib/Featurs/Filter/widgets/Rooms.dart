@@ -43,6 +43,7 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     var queryWidth = MediaQuery.of(context).size.width;
     // var queryHeight = MediaQuery.of(context).size.height;
     final double scaleFactor = queryWidth / 300;

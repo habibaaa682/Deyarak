@@ -1,5 +1,3 @@
-import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
-import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/property_item.dart';
 import 'package:flutter/material.dart';
 
 class RelatedSuggestion extends StatelessWidget {
@@ -29,9 +27,11 @@ class RelatedSuggestion extends StatelessWidget {
               itemBuilder: (context, index) {
                 return SizedBox(
                     width: MediaQuery.of(context).size.width * .85,
-                    child: Text('there was a property item widget here!!')/*PropertyItem(
+                    child: Text(
+                        'there was a property item widget here!!') /*PropertyItem(
                       homeModelobject: HomeModel(),
-                    )*/);
+                    )*/
+                    );
               },
             ),
           ),

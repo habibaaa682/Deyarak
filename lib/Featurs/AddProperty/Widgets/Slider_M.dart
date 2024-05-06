@@ -29,6 +29,7 @@ class _Slider_MState extends State<Slider_M>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Column(
       children: [
         Align(

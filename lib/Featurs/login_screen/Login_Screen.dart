@@ -14,6 +14,7 @@ import 'package:go_router/go_router.dart';
 import 'CreateAccount_Text.dart';
 // import 'forget_pass.dart';
 
+// ignore: must_be_immutable
 class Login_screen extends StatelessWidget {
   LoginController loginController = Get.put(LoginController());
   Login_screen({super.key});
@@ -96,7 +97,6 @@ class Login_screen extends StatelessWidget {
               text: 'Sign IN',
               ontap: () {
                 loginController.loginWithEmail(context);
-
               },
               raduis: 35,
               colorr: Colors.white,

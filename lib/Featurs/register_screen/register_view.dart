@@ -12,11 +12,12 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-class registerView extends StatelessWidget {
+// ignore: must_be_immutable
+class RegisterView extends StatelessWidget {
   RegisterationController registerationController =
       Get.put(RegisterationController());
 
-  registerView({super.key});
+  RegisterView({super.key});
   @override
   Widget build(BuildContext context) {
     var queryheight = MediaQuery.of(context).size.height;

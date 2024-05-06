@@ -1,11 +1,10 @@
 import 'package:deyarakapp/Featurs/splash_screen/building_animation/building_animation.dart';
 import 'package:deyarakapp/Featurs/splash_screen/deyark_animation/deyarak_text.dart';
-import 'package:deyarakapp/Featurs/splash_screen/first_Page/Welocme_Page.dart';
+
 import 'package:deyarakapp/Featurs/splash_screen/roof_Animation/roof_Animation.dart';
 import 'package:deyarakapp/core/utils/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:go_router/go_router.dart';
 

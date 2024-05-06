@@ -1,4 +1,3 @@
-import 'package:deyarakapp/Featurs/login_screen/presentation/widgets/confirm_pass_view.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
 
 import 'package:deyarakapp/Featurs/register_screen/widget/TextFieldInput.dart';
@@ -13,8 +12,8 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:get/get_core/src/get_main.dart';
-import 'package:go_router/go_router.dart';
 
+// ignore: must_be_immutable
 class ResetPasswordScreen extends StatelessWidget {
   RegisterationController registerationController =
       Get.put(RegisterationController());

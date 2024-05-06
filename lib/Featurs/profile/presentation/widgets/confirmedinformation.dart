@@ -1,10 +1,19 @@
+import 'package:deyarakapp/Featurs/profile/data/models/user/user.profile.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
-class confirmation extends StatelessWidget {
+class confirmation extends StatefulWidget {
+  final List<User> userobj;
   confirmation({
     super.key,
+    required this.userobj,
   });
+
+  @override
+  State<confirmation> createState() => _confirmationState();
+}
+
+class _confirmationState extends State<confirmation> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,7 +22,7 @@ class confirmation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Ahmed's Confirmed Information",
+            "${widget.userobj[0].name.toString()}'s Confirmed Information ",
             style: Fonts.textstyle16.copyWith(fontWeight: FontWeight.bold),
           ),
           SizedBox(
