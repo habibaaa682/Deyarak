@@ -11,6 +11,7 @@ class HomeTabBar extends StatefulWidget {
 
 class _HomeTabBarState extends State<HomeTabBar>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -18,6 +19,7 @@ class _HomeTabBarState extends State<HomeTabBar>
       width: double.maxFinite,
       height: MediaQuery.of(context).size.height * .1,
       child: TabBar(
+
           isScrollable: true,
           indicatorColor: kprimarycolor,
           labelColor: kprimarycolor,

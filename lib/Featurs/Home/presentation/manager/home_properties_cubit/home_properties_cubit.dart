@@ -9,15 +9,22 @@ class HomePropertiesCubit extends Cubit<HomePropertiesState> {
   HomePropertiesCubit(this.homePropertiesRepo) : super(HomePropertiesInitial());
   final HomePropertiesRepo homePropertiesRepo;
 
-  Future<void> fetchHomeProperties() async {
+  Future<void> fetchHomeProperties({String fields=''}) async {
     emit(HomePropertiesLoading());
-    var result = await homePropertiesRepo.fetchHomeProperties();
+    var result = await homePropertiesRepo.fetchHomeProperties(fields:fields);
     result.fold((failure) {
       emit(HomePropertiesFailure(failure.errMessage));
     }, (homeProperties) {
+      if(fields==''){
       emit(
         AllHomePropertiesSuccess(homeProperties),
-      );
+      );}
+      else{
+
+        emit(
+          ApartmentPropertiesSuccess(homeProperties),
+        );
+      }
     });
   }
 

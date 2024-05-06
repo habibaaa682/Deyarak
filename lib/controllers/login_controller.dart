@@ -25,11 +25,15 @@ class LoginController {
       final response = await dio.post(url.toString(),
           data: jsonEncode(body), options: Options(headers: headers));
 
+
       if (response.statusCode == 200) {
+       // print(response.data['data']['user']['_id']);
         emailController.clear();
         passwordController.clear();
+        String userId=response.data['data']['user']['_id'];
+        GlobalSharedPreferences.setString('userId', userId);
         print('this is the token');
-        GlobalSharedPreferences.getString('token');
+       print(userId);
         print('this is the token');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

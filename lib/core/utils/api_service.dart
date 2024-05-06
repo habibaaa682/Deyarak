@@ -12,4 +12,11 @@ class ApiService {
     },));
     return response.data;
   }
+  Future<Response<dynamic>> post({required String endPointPath,required String token}) async {
+    var response = await _dio.post('$baseUrl$endPointPath',options:Options(headers: {
+      'Authorization':'Bearer $token',
+      'Content-Type': 'application/json',
+    },));
+    return response;
+  }
 }

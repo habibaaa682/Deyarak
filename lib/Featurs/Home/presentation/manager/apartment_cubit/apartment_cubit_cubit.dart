@@ -11,7 +11,7 @@ class ApartmentCubitCubit extends Cubit<ApartmentCubitState> {
   final HomePropertiesRepo homePropertiesRepo;
   Future<void> fetchApartmentProperties() async {
     emit(ApartmentCubitLoading());
-    var result = await homePropertiesRepo.fetchHomeProperties(fields:'?category=villa');
+    var result = await homePropertiesRepo.fetchHomeProperties(fields:'?category=apartment');
     result.fold((failure) {
       emit(ApartmentCubitFailure(failure.errMessage));
     }, (homeProperties) {

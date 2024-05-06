@@ -1,6 +1,11 @@
 import 'package:deyarakapp/Featurs/Home/data/Models/home_model/home_model.dart';
+import 'package:deyarakapp/Featurs/Home/data/Wishlist_controllers/add_to_user_wishlist.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_place_holder.dart';
+import 'package:deyarakapp/core/utils/api_service.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../controllers/sharedPrefrenceController.dart';
 
 class ImageSlideShow extends StatefulWidget {
   const ImageSlideShow({super.key, required this.homeModel});
@@ -24,6 +29,7 @@ PageController _pageController = PageController(initialPage: 0);
 
 class _ImageSlideShow extends State<ImageSlideShow>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+
   late AnimationController sizeanimationcontroller;
   late AnimationController coloranimationcontroller;
   late Animation changeColor;
@@ -122,9 +128,20 @@ class _ImageSlideShow extends State<ImageSlideShow>
                   onPressed: () {
                     sizeanimationcontroller.forward().then((value) => {
                           isActive
-                              ? coloranimationcontroller.forward()
-                              : coloranimationcontroller.reverse(),
+                              ? {coloranimationcontroller.forward(),
+                            sizeanimationcontroller.reverse(),
+                            WishlistController(ApiService(Dio())).addToWishlist(
+                                context, userId: GlobalSharedPreferences.getString('userId'),
+                                propertyId:'662eb3e293cecf21985e3af6',
+                                token:GlobalSharedPreferences.getString('token'))
+                          }: {coloranimationcontroller.reverse(),
                           sizeanimationcontroller.reverse(),
+                          WishlistController(ApiService(Dio())).removeFromWishlist(
+                            context, userId: GlobalSharedPreferences.getString('userId'),
+                            propertyId:'662eb3e293cecf21985e3af6' ,
+                            token: GlobalSharedPreferences.getString('token'),)
+                          }
+
                         });
                     isActive = !isActive;
                   },

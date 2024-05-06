@@ -1,6 +1,9 @@
 import 'package:deyarakapp/Featurs/Home/data/repos/home_repo_implementation.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/manager/apartment_cubit/apartment_cubit_cubit.dart';
+import 'package:deyarakapp/Featurs/Home/presentation/manager/family_house_cubit/family_house_cubit.dart';
+import 'package:deyarakapp/Featurs/Home/presentation/manager/furnitured_apartment_cubit/furnitured_apartment_cubit.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/manager/home_properties_cubit/home_properties_cubit.dart';
+import 'package:deyarakapp/Featurs/Home/presentation/manager/villa_cubit/villa_cubit.dart';
 import 'package:deyarakapp/Featurs/Home_Map/data/repos/maprepoimp.dart';
 import 'package:deyarakapp/Featurs/Home_Map/presentation/manger/cubit/mapcubit_cubit.dart';
 import 'package:deyarakapp/core/utils/router.dart';
@@ -33,10 +36,24 @@ class DeyarakApp extends StatelessWidget {
           create: (context) => HomePropertiesCubit(getIt.get<HomeRepoImpl>())
             ..fetchHomeProperties(),
         ),
+
         BlocProvider(
           create: (context) => ApartmentCubitCubit(getIt.get<HomeRepoImpl>())
             ..fetchApartmentProperties(),
         ),
+        BlocProvider(
+          create: (context) => FamilyHouseCubit(getIt.get<HomeRepoImpl>())
+            ..fetchFamilyHouseProperties(),
+        ),
+        BlocProvider(
+          create: (context) => FurnituredApartmentCubit(getIt.get<HomeRepoImpl>())
+            ..fetchFurnituredProperties(),
+        ),
+        BlocProvider(
+          create: (context) => VillaCubit(getIt.get<HomeRepoImpl>())
+            ..fetchVillaProperties(),
+        ),
+
         BlocProvider(
           create: (context) =>
               MapCubit(getIt.get<maprepoimp>())..getpropritylocation(),
