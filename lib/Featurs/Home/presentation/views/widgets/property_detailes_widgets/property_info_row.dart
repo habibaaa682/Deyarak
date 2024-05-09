@@ -17,15 +17,19 @@ class PropertyInfoRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            width: 85,
+            width: 90,
             child: Text(
               label,
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(
+                fontSize: 16,
+              ),
             ),
           ),
           Text(
             value,
-            style: const TextStyle(color: Color.fromARGB(255, 78, 78, 78)),
+            style: const TextStyle(
+                color: Color.fromARGB(255, 78, 78, 78),
+                fontWeight: FontWeight.w500),
           ),
           Icon(
             icon,

@@ -24,8 +24,7 @@ class HomePropertiesListView extends StatelessWidget {
               );
             },
           );
-        }
-        else if (state is HomePropertiesFailure) {
+        } else if (state is HomePropertiesFailure) {
           return CustomErrorWidget(errMsg: state.errMsg);
         } else {
           return const CustomLoadingIndicator();

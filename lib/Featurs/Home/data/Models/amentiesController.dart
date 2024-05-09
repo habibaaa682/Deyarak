@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-abstract class PropertyModel {
+abstract class AmentiesController {
   static IconData amentiesIcon({required String amentyname}) {
     if (amentyname == 'Wifi') {
       return Icons.wifi;

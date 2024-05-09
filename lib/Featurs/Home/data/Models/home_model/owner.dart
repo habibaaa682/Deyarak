@@ -36,7 +36,6 @@ class Owner extends Equatable {
         ratingsQuantity: json['ratingsQuantity'] as int?,
       );
 
-
   Map<String, dynamic> toJson() => {
         'photo': photo?.toJson(),
         '_id': id,

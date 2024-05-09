@@ -7,7 +7,7 @@ import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_wid
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/service_locator.dart';
-import '../../../../data/repos/home_repo_implementation.dart';
+import '../../../../data/repos/home repo/home_repo_implementation.dart';
 import '../../../manager/home_properties_cubit/home_properties_cubit.dart';
 
 class HomeTabBarView extends StatefulWidget {
@@ -18,8 +18,10 @@ class HomeTabBarView extends StatefulWidget {
   State<HomeTabBarView> createState() => _HomeTabBarViewState();
 }
 
-class _HomeTabBarViewState extends State<HomeTabBarView> with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  final HomePropertiesCubit _homePropertiesCubit = HomePropertiesCubit(getIt.get<HomeRepoImpl>());
+class _HomeTabBarViewState extends State<HomeTabBarView>
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+  final HomePropertiesCubit _homePropertiesCubit =
+      HomePropertiesCubit(getIt.get<HomeRepoImpl>());
 
   @override
   void initState() {
@@ -37,10 +39,11 @@ class _HomeTabBarViewState extends State<HomeTabBarView> with TickerProviderStat
     final index = widget.tabController.index;
     switch (index) {
       case 0:
-        _homePropertiesCubit.fetchHomeProperties(fields:'');
+        _homePropertiesCubit.fetchHomeProperties(fields: '');
         break;
       case 1:
-        _homePropertiesCubit.fetchHomeProperties(fields: '?category=family house');
+        _homePropertiesCubit.fetchHomeProperties(
+            fields: '?category=family house');
         break;
       case 2:
         _homePropertiesCubit.fetchHomeProperties(fields: '?category=villa');
@@ -64,7 +67,6 @@ class _HomeTabBarViewState extends State<HomeTabBarView> with TickerProviderStat
       child: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
         child: TabBarView(
-
           controller: widget.tabController,
           children: const [
             HomePropertiesListView(),

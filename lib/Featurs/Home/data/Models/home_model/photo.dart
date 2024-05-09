@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-
 class Photo extends Equatable {
   final String? url;
   final dynamic publicId;

@@ -10,7 +10,6 @@ class ApartmentPropertiesListView extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ApartmentCubitCubit, ApartmentCubitState>(
@@ -25,12 +24,12 @@ class ApartmentPropertiesListView extends StatelessWidget {
               );
             },
           );
-        }
-        else if (state is ApartmentCubitFailure) {
+        } else if (state is ApartmentCubitFailure) {
           return CustomErrorWidget(errMsg: state.errMsg);
         } else {
           return const CustomLoadingIndicator();
         }
       },
     );
-  }}
+  }
+}

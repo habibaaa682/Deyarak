@@ -1,4 +1,7 @@
-import 'package:deyarakapp/Featurs/Home/data/repos/home_repo_implementation.dart';
+import 'package:deyarakapp/Featurs/Home/data/repos/home%20repo/home_repo_implementation.dart';
+import 'package:deyarakapp/Featurs/Home/data/repos/property%20details%20rebo/property_datails_repo_impl.dart';
+import 'package:deyarakapp/Featurs/Home/data/repos/property%20details%20rebo/property_details_rebo.dart';
+import 'package:deyarakapp/Featurs/Home/data/repos/related%20suggestion%20repo/related_suggestion_repo_impl.dart';
 
 import 'package:deyarakapp/Featurs/Home_Map/data/repos/maprepoimp.dart';
 import 'package:deyarakapp/Featurs/profile/data/repos/profilerepoImp.dart';
@@ -25,6 +28,16 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<profilerepimp>(
     profilerepimp(
+      getIt.get<ApiService>(),
+    ),
+  );
+  getIt.registerSingleton<PropertyDetailesRepoImpl>(
+    PropertyDetailesRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+  getIt.registerSingleton<RelatedSuggestionsRepoImpl>(
+   RelatedSuggestionsRepoImpl(
       getIt.get<ApiService>(),
     ),
   );

@@ -8,12 +8,15 @@ sealed class FamilyHouseState extends Equatable {
 }
 
 final class FamilyHouseInitial extends FamilyHouseState {}
+
 final class FamilyHouseLoading extends FamilyHouseState {}
+
 final class FamilyHouseSuccess extends FamilyHouseState {
   final List<HomeModel> homeProperties;
 
   const FamilyHouseSuccess(this.homeProperties);
 }
+
 final class FamilyHouseFailure extends FamilyHouseState {
   final String errMsg;
 

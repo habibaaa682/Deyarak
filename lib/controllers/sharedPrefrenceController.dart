@@ -11,7 +11,6 @@ class GlobalSharedPreferences {
   static SharedPreferences get instance => _prefs;
 
   static String getString(String key) {
-
     return _prefs.getString(key) ?? "";
   }
 

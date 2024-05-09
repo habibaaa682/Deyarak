@@ -11,7 +11,6 @@ class FurnituredListView extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FurnituredApartmentCubit, FurnituredApartmentState>(
@@ -26,12 +25,12 @@ class FurnituredListView extends StatelessWidget {
               );
             },
           );
-        }
-        else if (state is FurnituredApartmentFailure) {
+        } else if (state is FurnituredApartmentFailure) {
           return CustomErrorWidget(errMsg: state.errMsg);
         } else {
           return const CustomLoadingIndicator();
         }
       },
     );
-  }}
+  }
+}

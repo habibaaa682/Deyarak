@@ -56,11 +56,8 @@ class _MapState extends State<Map_w> {
     );
   }
 }
-    
 
-    
-
-    /*var queryheight = MediaQuery.of(context).size.height;
+/*var queryheight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
@@ -76,6 +73,3 @@ class _MapState extends State<Map_w> {
         ],
       ),
     );*/
-  
-  
-

@@ -20,7 +20,9 @@ class _PropertyItemState extends State<PropertyItem> {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return const PropertyDetailesView();
+            return PropertyDetailesView(
+              propertyId: widget.homeModelobject.id!,
+            );
           },
         ));
       },

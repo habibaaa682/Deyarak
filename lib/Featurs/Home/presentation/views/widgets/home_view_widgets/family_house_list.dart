@@ -1,4 +1,3 @@
-
 import 'package:deyarakapp/Featurs/Home/presentation/manager/family_house_cubit/family_house_cubit.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/property_item.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,7 +10,6 @@ class HomeFamilyListView extends StatelessWidget {
   const HomeFamilyListView({
     super.key,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +25,12 @@ class HomeFamilyListView extends StatelessWidget {
               );
             },
           );
-        }
-        else if (state is FamilyHouseFailure) {
+        } else if (state is FamilyHouseFailure) {
           return CustomErrorWidget(errMsg: state.errMsg);
         } else {
           return const CustomLoadingIndicator();
         }
       },
     );
-  }}
+  }
+}

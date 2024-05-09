@@ -1,8 +1,24 @@
+import 'package:deyarakapp/Featurs/Home/presentation/manager/related_suggestions_cubit/related_suggestions_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class RelatedSuggestion extends StatelessWidget {
-  const RelatedSuggestion({super.key});
+class RelatedSuggestion extends StatefulWidget {
+  const RelatedSuggestion({super.key, required this.propertyId});
+final String propertyId;
 
+  @override
+  State<RelatedSuggestion> createState() => _RelatedSuggestionState();
+}
+
+class _RelatedSuggestionState extends State<RelatedSuggestion> {
+  late RelatedSuggestionsCubit relatedSuggestionsCubit;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    relatedSuggestionsCubit = context.read<RelatedSuggestionsCubit>();
+    relatedSuggestionsCubit.fetchRelatedSuggestions(propertyId: widget.propertyId);
+  }
   @override
   Widget build(BuildContext context) {
     return Column(

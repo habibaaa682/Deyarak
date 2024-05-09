@@ -8,12 +8,15 @@ sealed class VillaState extends Equatable {
 }
 
 final class VillaInitial extends VillaState {}
+
 final class VillaLoading extends VillaState {}
+
 final class VillaSuccess extends VillaState {
   final List<HomeModel> homeProperties;
 
-  const  VillaSuccess(this.homeProperties);
+  const VillaSuccess(this.homeProperties);
 }
+
 final class VillaFailure extends VillaState {
   final String errMsg;
 

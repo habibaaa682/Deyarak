@@ -14,22 +14,12 @@ class ImageSlideShow extends StatefulWidget {
   State<ImageSlideShow> createState() => _ImageSlideShow();
 }
 
-/*final List<String> imgpaths = [
-  'assets/images/villa2.jpg',
-  'assets/images/villa1.jpg',
-  'assets/images/villa3.jpg',
-  'assets/images/villa4.jpg',
-  'assets/images/villa4.jpg',
-  'assets/images/villa4.jpg',
-  'assets/images/villa4.jpg',
-];*/
 late List<Widget> pages;
 int activeimg = 0;
 PageController _pageController = PageController(initialPage: 0);
 
 class _ImageSlideShow extends State<ImageSlideShow>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-
   late AnimationController sizeanimationcontroller;
   late AnimationController coloranimationcontroller;
   late Animation changeColor;
@@ -128,20 +118,33 @@ class _ImageSlideShow extends State<ImageSlideShow>
                   onPressed: () {
                     sizeanimationcontroller.forward().then((value) => {
                           isActive
-                              ? {coloranimationcontroller.forward(),
-                            sizeanimationcontroller.reverse(),
-                            WishlistController(ApiService(Dio())).addToWishlist(
-                                context, userId: GlobalSharedPreferences.getString('userId'),
-                                propertyId:'662eb3e293cecf21985e3af6',
-                                token:GlobalSharedPreferences.getString('token'))
-                          }: {coloranimationcontroller.reverse(),
-                          sizeanimationcontroller.reverse(),
-                          WishlistController(ApiService(Dio())).removeFromWishlist(
-                            context, userId: GlobalSharedPreferences.getString('userId'),
-                            propertyId:'662eb3e293cecf21985e3af6' ,
-                            token: GlobalSharedPreferences.getString('token'),)
-                          }
-
+                              ? {
+                                  coloranimationcontroller.forward(),
+                                  sizeanimationcontroller.reverse(),
+                                  WishlistController(ApiService(Dio()))
+                                      .addToWishlist(context,
+                                          userId:
+                                              GlobalSharedPreferences.getString(
+                                                  'userId'),
+                                          propertyId:
+                                              '662eb3e293cecf21985e3af6',
+                                          token:
+                                              GlobalSharedPreferences.getString(
+                                                  'token'))
+                                }
+                              : {
+                                  coloranimationcontroller.reverse(),
+                                  sizeanimationcontroller.reverse(),
+                                  WishlistController(ApiService(Dio()))
+                                      .removeFromWishlist(
+                                    context,
+                                    userId: GlobalSharedPreferences.getString(
+                                        'userId'),
+                                    propertyId: '662eb3e293cecf21985e3af6',
+                                    token: GlobalSharedPreferences.getString(
+                                        'token'),
+                                  )
+                                }
                         });
                     isActive = !isActive;
                   },

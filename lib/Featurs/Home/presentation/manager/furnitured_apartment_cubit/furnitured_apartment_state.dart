@@ -8,12 +8,15 @@ sealed class FurnituredApartmentState extends Equatable {
 }
 
 final class FurnituredApartmentInitial extends FurnituredApartmentState {}
+
 final class FurnituredApartmentLoading extends FurnituredApartmentState {}
+
 final class FurnituredApartmentSuccess extends FurnituredApartmentState {
   final List<HomeModel> homeProperties;
 
   const FurnituredApartmentSuccess(this.homeProperties);
 }
+
 final class FurnituredApartmentFailure extends FurnituredApartmentState {
   final String errMsg;
 

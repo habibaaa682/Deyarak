@@ -11,7 +11,6 @@ class VillaListView extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<VillaCubit, VillaState>(
@@ -26,12 +25,12 @@ class VillaListView extends StatelessWidget {
               );
             },
           );
-        }
-        else if (state is VillaFailure) {
+        } else if (state is VillaFailure) {
           return CustomErrorWidget(errMsg: state.errMsg);
         } else {
           return const CustomLoadingIndicator();
         }
       },
     );
-  }}
+  }
+}

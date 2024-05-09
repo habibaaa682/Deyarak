@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../data/Models/home_model/home_model.dart';
-import '../../../data/repos/home_properties_repo.dart';
+import '../../../data/repos/home repo/home_properties_repo.dart';
 
 part 'apartment_cubit_state.dart';
 
@@ -11,7 +11,8 @@ class ApartmentCubitCubit extends Cubit<ApartmentCubitState> {
   final HomePropertiesRepo homePropertiesRepo;
   Future<void> fetchApartmentProperties() async {
     emit(ApartmentCubitLoading());
-    var result = await homePropertiesRepo.fetchHomeProperties(fields:'?category=apartment');
+    var result = await homePropertiesRepo.fetchHomeProperties(
+        fields: '?category=apartment');
     result.fold((failure) {
       emit(ApartmentCubitFailure(failure.errMessage));
     }, (homeProperties) {
