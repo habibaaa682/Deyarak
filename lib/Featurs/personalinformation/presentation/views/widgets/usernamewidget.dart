@@ -22,7 +22,7 @@ class usernamewidget extends StatelessWidget {
             'Edit User Name',
             style: Fonts.textstyle24,
           ),
-          customtextfield(
+         /* customtextfield(
               hinttext: '  Ahmed',
               labeltext: '  First Name',
               keyboard: TextInputType.name,
@@ -59,6 +59,8 @@ class usernamewidget extends StatelessWidget {
               }
             },
           ),
+
+          */
           const SizedBox(height: 15),
           Button(
             text: 'Save',

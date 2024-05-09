@@ -31,6 +31,10 @@ class LoginController {
         passwordController.clear();
         String userId = response.data['data']['user']['_id'];
         GlobalSharedPreferences.setString('userId', userId);
+        String userToken = response.data['token'];
+        GlobalSharedPreferences.setString('token', userToken);
+        GlobalSharedPreferences.getString('token');
+        print(userToken);
         print('this is the token');
         print(userId);
         print('this is the token');

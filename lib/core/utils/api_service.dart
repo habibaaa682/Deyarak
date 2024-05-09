@@ -18,8 +18,9 @@ class ApiService {
   }
 
   Future<Response<dynamic>> post(
-      {required String endPointPath, required String token}) async {
+      {required String endPointPath, required String token,Map<String,dynamic>? data}) async {
     var response = await _dio.post('$baseUrl$endPointPath',
+        data: data,
         options: Options(
           headers: {
             'Authorization': 'Bearer $token',

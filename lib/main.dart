@@ -1,10 +1,13 @@
 import 'package:deyarakapp/Featurs/Home/data/repos/home%20repo/home_repo_implementation.dart';
-
+import 'package:deyarakapp/Featurs/Home/data/repos/property%20details%20rebo/property_datails_repo_impl.dart';
+import 'package:deyarakapp/Featurs/Home/data/repos/related%20suggestion%20repo/related_suggestion_repo.dart';
+import 'package:deyarakapp/Featurs/Home/data/repos/related%20suggestion%20repo/related_suggestion_repo_impl.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/manager/apartment_cubit/apartment_cubit_cubit.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/manager/family_house_cubit/family_house_cubit.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/manager/furnitured_apartment_cubit/furnitured_apartment_cubit.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/manager/home_properties_cubit/home_properties_cubit.dart';
-
+import 'package:deyarakapp/Featurs/Home/presentation/manager/property_detailes_cubit/property_detailes_cubit.dart';
+import 'package:deyarakapp/Featurs/Home/presentation/manager/related_suggestions_cubit/related_suggestions_cubit.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/manager/villa_cubit/villa_cubit.dart';
 import 'package:deyarakapp/Featurs/Home_Map/data/repos/maprepoimp.dart';
 import 'package:deyarakapp/Featurs/Home_Map/presentation/manger/cubit/mapcubit_cubit.dart';
