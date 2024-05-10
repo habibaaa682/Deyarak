@@ -16,7 +16,6 @@ import '../../../../../../core/utils/service_locator.dart';
 import '../../../../../../core/widgets/custom_error_widget.dart';
 import '../../../../../../core/widgets/custom_loading_indicator.dart';
 import '../../../../data/repos/property details rebo/property_datails_repo_impl.dart';
-import '../../../manager/home_properties_cubit/home_properties_cubit.dart';
 import '../home_view_widgets/image_slide_show.dart';
 
 class PropertyDetailesBody extends StatefulWidget {
