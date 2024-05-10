@@ -5,6 +5,7 @@ import 'package:deyarakapp/Featurs/Home/data/repos/related%20suggestion%20repo/r
 
 import 'package:deyarakapp/Featurs/Home_Map/data/repos/maprepoimp.dart';
 import 'package:deyarakapp/Featurs/profile/data/repos/profilerepoImp.dart';
+import 'package:deyarakapp/Featurs/wishlist/data/repos/wishlist%20repo/wishlist_repo_impl.dart';
 import 'package:deyarakapp/core/utils/api_service.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -37,7 +38,12 @@ void setupServiceLocator() {
     ),
   );
   getIt.registerSingleton<RelatedSuggestionsRepoImpl>(
-   RelatedSuggestionsRepoImpl(
+    RelatedSuggestionsRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+  getIt.registerSingleton<WishlistRepoImpl>(
+    WishlistRepoImpl(
       getIt.get<ApiService>(),
     ),
   );

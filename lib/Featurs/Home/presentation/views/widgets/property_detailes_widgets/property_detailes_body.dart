@@ -1,6 +1,7 @@
 import 'package:deyarakapp/Featurs/Home/presentation/manager/property_detailes_cubit/property_detailes_cubit.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/property_slideshow.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/amenties.dart';
+import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/contact_method_bar.dart';
 
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/profilecard.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/property_description.dart';
@@ -41,60 +42,65 @@ class _PropertyDetailesBodyState extends State<PropertyDetailesBody> {
     return BlocBuilder<PropertyDetailesCubit, PropertyDetailesState>(
       builder: (context, state) {
         if (state is PropertyDetailesSuccess) {
-          return ScrollConfiguration(
-            behavior: ScrollBehavior().copyWith(overscroll: false),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 32),
-                    child: PropertySlideShow(
-                      propertyModel: state.propertydetailes[0],
+          return Scaffold(
+            bottomNavigationBar: ContactMethodBar(phone: state.propertydetailes[0].data!.owner!.phone.toString(), email:state.propertydetailes[0].data!.owner!.email.toString() ,),
+            body: ScrollConfiguration(
+              behavior: ScrollBehavior().copyWith(overscroll: false),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 32),
+                      child: PropertySlideShow(
+                        propertyModel: state.propertydetailes[0],
+                      ),
                     ),
-                  ),
-                  Padding(
+                    Padding(
+                        padding: EdgeInsets.only(left: 24, right: 24, bottom: 8),
+                        child: Expanded(
+                            child: ProprtyInfoColumn(
+                          propertyModel: state.propertydetailes[0],
+                        ))),
+                    Padding(
                       padding: EdgeInsets.only(left: 24, right: 24, bottom: 8),
                       child: Expanded(
-                          child: ProprtyInfoColumn(
+                          child: Amenties(
                         propertyModel: state.propertydetailes[0],
-                      ))),
-                  Padding(
-                    padding: EdgeInsets.only(left: 24, right: 24, bottom: 8),
-                    child: Expanded(
-                        child: Amenties(
+                      )),
+                    ),
+                    const ViewOnMapButton(),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.black,
+                      ),
+                    ),
+                    ProfileCard(
                       propertyModel: state.propertydetailes[0],
-                    )),
-                  ),
-                  const ViewOnMapButton(),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: Divider(
-                      thickness: 1,
-                      color: Colors.black,
                     ),
-                  ),
-                  ProfileCard(
-                    propertyModel: state.propertydetailes[0],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 24,
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 24,
+                      ),
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.black,
+                      ),
                     ),
-                    child: Divider(
-                      thickness: 1,
-                      color: Colors.black,
+                    Description(
+                      discription:
+                          state.propertydetailes[0].data!.description.toString(),
                     ),
-                  ),
-                  Description(
-                    discription:
-                        state.propertydetailes[0].data!.description.toString(),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                   RelatedSuggestion(propertyId: state.propertydetailes[0].data!.id.toString(),)
-                ],
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    RelatedSuggestion(
+                      propertyId: state.propertydetailes[0].data!.id.toString(),
+                    )
+                  ],
+                ),
               ),
             ),
           );

@@ -8,12 +8,15 @@ sealed class RelatedSuggestionsState extends Equatable {
 }
 
 final class RelatedSuggestionsInitial extends RelatedSuggestionsState {}
+
 final class RelatedSuggestionsLoading extends RelatedSuggestionsState {}
+
 final class RelatedSuggestionsSuccess extends RelatedSuggestionsState {
   final List<RelatedSuggestionModel> relatedSuggestions;
 
-  const  RelatedSuggestionsSuccess(this.relatedSuggestions);
+  const RelatedSuggestionsSuccess(this.relatedSuggestions);
 }
+
 final class RelatedSuggestionsFailure extends RelatedSuggestionsState {
   final String errMsg;
 

@@ -40,7 +40,8 @@ class Amenties extends StatelessWidget {
               return AmentiesRow(
                   label: propertyModel.data!.amenities![index].toString(),
                   icon: AmentiesController.amentiesIcon(
-                      amentyname: amentiesnames[index]));
+                      amentyname:
+                          propertyModel.data!.amenities![index].toString()));
             },
           ),
         )

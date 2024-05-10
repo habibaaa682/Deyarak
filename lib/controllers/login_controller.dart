@@ -31,9 +31,12 @@ class LoginController {
         passwordController.clear();
         String userId = response.data['data']['user']['_id'];
         GlobalSharedPreferences.setString('userId', userId);
-        print('this is the token');
-        print(userId);
-        print('this is the token');
+        // print('this is the token');
+        //print(userId);
+        //print('this is the token');
+        String userToken = response.data['token'];
+        GlobalSharedPreferences.setString('token', userToken);
+        print(userToken);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('logged in successfully!'),

@@ -6,10 +6,10 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class ContactMethodBar extends StatelessWidget {
-  ContactMethodBar({super.key});
+  ContactMethodBar({super.key, required this.phone, required this.email});
 
-  final String phone = '+96612345678';
-  final String email = 'hasnaa.n.zanaty@gmail.com';
+  final String phone ;
+  final String email ;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(

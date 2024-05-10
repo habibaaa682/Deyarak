@@ -71,7 +71,7 @@ class _profilewidgetState extends State<profilewidget> {
                     }
                   },
                 ),
-              /*  RelatedSuggestion(),*/
+                /*  RelatedSuggestion(),*/
                 SizedBox(
                   height: 12,
                 ),

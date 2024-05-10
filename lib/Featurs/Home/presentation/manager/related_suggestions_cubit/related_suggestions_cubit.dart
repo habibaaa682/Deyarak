@@ -6,19 +6,20 @@ import 'package:equatable/equatable.dart';
 part 'related_suggestions_state.dart';
 
 class RelatedSuggestionsCubit extends Cubit<RelatedSuggestionsState> {
-  RelatedSuggestionsCubit(this.relatedSuggestionRepo) : super(RelatedSuggestionsInitial());
+  RelatedSuggestionsCubit(this.relatedSuggestionRepo)
+      : super(RelatedSuggestionsInitial());
   final RelatedSuggestionRepo relatedSuggestionRepo;
 
   Future<void> fetchRelatedSuggestions({required String propertyId}) async {
     emit(RelatedSuggestionsLoading());
-    var result = await relatedSuggestionRepo.fetchRelatedSuggestion(propertyId: propertyId);
+    var result = await relatedSuggestionRepo.fetchRelatedSuggestion(
+        propertyId: propertyId);
     result.fold((failure) {
       emit(RelatedSuggestionsFailure(failure.errMessage));
     }, (relatedSuggestions) {
-        emit(
-          RelatedSuggestionsSuccess(relatedSuggestions),
-        );
-
+      emit(
+        RelatedSuggestionsSuccess(relatedSuggestions),
+      );
     });
   }
 }

@@ -71,7 +71,7 @@ class DeyarakApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-          RelatedSuggestionsCubit(getIt.get<RelatedSuggestionsRepoImpl>()),
+              RelatedSuggestionsCubit(getIt.get<RelatedSuggestionsRepoImpl>()),
         ),
       ],
       child: MaterialApp.router(

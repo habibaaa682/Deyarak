@@ -25,11 +25,16 @@ class PropertyInfoRow extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            value,
-            style: const TextStyle(
-                color: Color.fromARGB(255, 78, 78, 78),
-                fontWeight: FontWeight.w500),
+          Flexible(
+            child: Text(
+              value,
+             softWrap: true,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              style: const TextStyle(
+                  color: Color.fromARGB(255, 78, 78, 78),
+                  fontWeight: FontWeight.w500),
+            ),
           ),
           Icon(
             icon,

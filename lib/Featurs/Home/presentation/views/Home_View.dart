@@ -1,4 +1,4 @@
-import 'package:deyarakapp/BottomNavigationViews/wishlist_view.dart';
+import 'package:deyarakapp/Featurs/wishlist/presentation/views/wishlist_view.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/home_view_body.dart';
 import 'package:deyarakapp/Featurs/menu/presentation/views/menuview.dart';
 import 'package:deyarakapp/constants.dart';

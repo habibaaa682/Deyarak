@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 class PropertyItem extends StatefulWidget {
   const PropertyItem({super.key, required this.homeModelobject});
-  final HomeModel homeModelobject;
+  final dynamic homeModelobject;
 
   @override
   State<PropertyItem> createState() => _PropertyItemState();
@@ -94,6 +94,7 @@ class _PropertyItemState extends State<PropertyItem> {
                     Text(widget.homeModelobject.locations!.address.toString(),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
+
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
