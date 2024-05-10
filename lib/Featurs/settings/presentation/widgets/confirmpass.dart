@@ -30,7 +30,7 @@ class confirmpasswidget extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.045,
               ),
-              customtextfield(
+             /* customtextfield(
                   password: true,
                   hinttext: '',
                   labeltext: 'confirm password',
@@ -42,6 +42,8 @@ class confirmpasswidget extends StatelessWidget {
                       return null;
                     }
                   }),
+
+              */
               Button(
                 text: 'Deactivate',
                 ontap: () {

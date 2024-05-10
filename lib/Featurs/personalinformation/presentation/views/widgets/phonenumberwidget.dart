@@ -23,7 +23,7 @@ class phonenumberwidget extends StatelessWidget {
             'Add Phone Number',
             style: Fonts.textstyle24,
           ),
-          customtextfield(
+        /*  customtextfield(
               password: false,
               hinttext: '  01033886218',
               labeltext: '  Add Phone Number',
@@ -41,6 +41,8 @@ class phonenumberwidget extends StatelessWidget {
                   return null;
                 }
               }),
+
+         */
           const SizedBox(height: 15),
           Button(
             text: 'Save',

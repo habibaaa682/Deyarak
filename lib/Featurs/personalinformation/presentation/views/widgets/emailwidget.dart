@@ -22,7 +22,8 @@ class emailwidget extends StatelessWidget {
             'Edit Email',
             style: Fonts.textstyle24,
           ),
-          customtextfield(
+        /*  customtextfield(
+
             password: false,
             hinttext: '  AhmedMohamed@gmail.com',
             labeltext: '  Email',
@@ -41,8 +42,10 @@ class emailwidget extends StatelessWidget {
               } else {
                 return null;
               }
-            },
+            }, textEditingController: null,
           ),
+
+         */
           const SizedBox(height: 15),
           Button(
             text: 'Save',

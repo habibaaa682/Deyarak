@@ -50,7 +50,7 @@ class _profilecardState extends State<profilecard> {
                 Text(
                   widget.userobj[0].name.toString(),
                   style:
-                      Fonts.textstyle30.copyWith(fontWeight: FontWeight.bold),
+                      Fonts.textstyle24.copyWith(fontWeight: FontWeight.bold),
                 ),
               ],
             ),

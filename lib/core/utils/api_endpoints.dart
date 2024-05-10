@@ -7,4 +7,6 @@ class _AuthEndPoints {
   final String registerEmail = 'api/v1/users/signup';
   final String loginEmail = 'api/v1/users/login';
   final String addToWishlist = 'api/v1/users/add-to-wishlist/';
+  final String contactus = 'api/v1/users/contactus';
 }
+
