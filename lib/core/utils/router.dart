@@ -1,5 +1,4 @@
 import 'package:deyarakapp/Featurs/Home/presentation/views/Home_View.dart';
-import 'package:deyarakapp/Featurs/Home/presentation/views/property_detailes_view.dart';
 import 'package:deyarakapp/Featurs/aboutus/presentation/aboutusview.dart';
 import 'package:deyarakapp/Featurs/contactus/presentation/contactusview.dart';
 import 'package:deyarakapp/Featurs/login_screen/Login_Screen.dart';
