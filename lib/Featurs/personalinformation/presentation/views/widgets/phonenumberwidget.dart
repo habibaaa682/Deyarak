@@ -30,7 +30,11 @@ class phonenumberwidget extends StatelessWidget {
             'Edit Phone Number',
             style: Fonts.textstyle24,
           ),
+<<<<<<< HEAD
           customtextfield(
+=======
+          /*  customtextfield(
+>>>>>>> 9952ff5f59005f7c2c47d4330108926d08ce4047
               password: false,
               hinttext: '  ',
               labeltext: '  Edit Phone Number',

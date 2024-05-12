@@ -10,35 +10,33 @@ class HomeSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Row(
-          children: [
-            const Expanded(
-              child: CustomSearchField(),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  border: Border.all(
-                    color: Colors.grey,
-                  )),
-              child: IconButton(
-                  onPressed: () {
-                    GoRouter.of(context).push(AppRouter.kFilter);
-                  },
-                  icon: const Icon(
-                    FontAwesomeIcons.sliders,
-                    size: 18,
-                    color: Colors.black,
-                  )),
-            )
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Row(
+        children: [
+          const Expanded(
+            child: CustomSearchField(),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                border: Border.all(
+                  color: Colors.grey,
+                )),
+            child: IconButton(
+                onPressed: () {
+                  GoRouter.of(context).push(AppRouter.kFilter);
+                },
+                icon: const Icon(
+                  FontAwesomeIcons.sliders,
+                  size: 18,
+                  color: Colors.black,
+                )),
+          )
+        ],
       ),
     );
   }

@@ -1,10 +1,13 @@
+import 'package:deyarakapp/Featurs/Home_Map/presentation/views/Home_Map_view.dart';
 import 'package:deyarakapp/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ViewOnMapButton extends StatelessWidget {
+  final double lat;
+  final double lng;
   const ViewOnMapButton({
-    super.key,
+    super.key, required this.lat, required this.lng,
   });
 
   @override
@@ -19,7 +22,17 @@ class ViewOnMapButton extends StatelessWidget {
                 backgroundColor: const MaterialStatePropertyAll(kprimarycolor),
                 shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)))),
-            onPressed: () {},
+            onPressed: () {
+
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return MapView(
+                    lat: lat ,
+                    lng: lng,
+                  );
+                },
+              ));
+            },
             icon: const Icon(Icons.location_on_outlined),
             label: const Text(
               'View on Map',

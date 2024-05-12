@@ -12,7 +12,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class contactuswidget extends StatelessWidget {
-  contactUsController contactusController = Get.put(contactUsController(ApiService(Dio())));
+  contactUsController contactusController =
+      Get.put(contactUsController(ApiService(Dio())));
 
   @override
   Widget build(BuildContext context) {
@@ -31,32 +32,31 @@ class contactuswidget extends StatelessWidget {
               password: false,
               hinttext: '',
               labeltext: 'User Name',
-
             ),
             customtextfield(
-                textEditingController: contactusController.phoneController,
-                hinttext: '',
-                labeltext: 'Phone Number',
-
-                password: false,
-                ),
+              textEditingController: contactusController.phoneController,
+              hinttext: '',
+              labeltext: 'Phone Number',
+              password: false,
+            ),
             customtextfield(
               textEditingController: contactusController.messageTitleController,
               password: false,
               hinttext: '',
               labeltext: 'Message Title',
-
-
             ),
             Padding(
               padding: const EdgeInsets.only(top: 12),
-              child: messagecontactus(textEditingController: contactusController.messageController,),
+              child: messagecontactus(
+                textEditingController: contactusController.messageController,
+              ),
             ),
             const SizedBox(height: 15),
             Button(
               text: 'Send',
               ontap: () {
-                contactUsController(ApiService(Dio())).contactUsMessage(context);
+                contactUsController(ApiService(Dio()))
+                    .contactUsMessage(context);
               },
               raduis: 15,
               colorr: kprimarycolor,

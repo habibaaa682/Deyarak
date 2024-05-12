@@ -7,8 +7,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/utils/api_service.dart';
 
-
-
 class contactUsController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -17,34 +15,26 @@ class contactUsController {
   final ApiService apiService;
   Dio dio = Dio();
 
-  contactUsController( this.apiService);
+  contactUsController(this.apiService);
 
   Future<void> contactUsMessage(BuildContext context) async {
-
     try {
       print('this is contact us token');
       String token = GlobalSharedPreferences.getString('token');
       print(token);
-      Map<String,dynamic> body = {
+      Map<String, dynamic> body = {
         "name": nameController.text,
         "phone": phoneController.text,
-        "messageTitle":messageTitleController.text,
-        "message":messageController.text,
-
+        "messageTitle": messageTitleController.text,
+        "message": messageController.text,
       };
-
 
       final response = await apiService.post(
           endPointPath: 'contacts/contactus',
-          token:  GlobalSharedPreferences.getString(
-              'token'),
-      data: body);
+          token: GlobalSharedPreferences.getString('token'),
+          data: body);
 
-
-
-
-
-       print(response);
+      print(response);
       if (response.statusCode == 201) {
         nameController.clear();
         phoneController.clear();
@@ -58,7 +48,6 @@ class contactUsController {
           ),
         );
         GoRouter.of(context).pop();
-
       }
     } on DioError catch (e) {
       if (e.response != null) {

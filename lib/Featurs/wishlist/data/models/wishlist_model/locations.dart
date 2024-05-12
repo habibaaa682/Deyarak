@@ -15,7 +15,7 @@ class Locations extends Equatable {
 
   factory Locations.fromJson(Map<String, dynamic> json) => Locations(
         type: json['type'] as String?,
-        coordinates:(json['coordinates'] as List<dynamic>?)?.cast<double>(),
+        coordinates: (json['coordinates'] as List<dynamic>?)?.cast<double>(),
         address: json['address'] as String?,
         description: json['description'] as String?,
       );

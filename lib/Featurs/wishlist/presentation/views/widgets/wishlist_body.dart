@@ -33,18 +33,16 @@ class _WishlistBodyState extends State<WishlistBody> {
           return Column(
             children: [
               const Padding(
-                padding: EdgeInsets.only(
-                  left: 24,
-                  right: 12,
-                  top: 24,
-                ),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: SafeArea(
-                      child: Text(
-                    'Wishlist',
-                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
-                  )),
+                padding: EdgeInsets.symmetric(horizontal: 26, vertical: 16),
+                child: SafeArea(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Wishlist',
+                      style:
+                          TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
+                    ),
+                  ),
                 ),
               ),
               Expanded(

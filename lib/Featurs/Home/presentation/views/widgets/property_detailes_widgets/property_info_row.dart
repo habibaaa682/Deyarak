@@ -28,7 +28,7 @@ class PropertyInfoRow extends StatelessWidget {
           Flexible(
             child: Text(
               value,
-             softWrap: true,
+              softWrap: true,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               style: const TextStyle(

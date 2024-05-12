@@ -94,7 +94,6 @@ class _PropertyItemState extends State<PropertyItem> {
                     Text(widget.homeModelobject.locations!.address.toString(),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
-
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
