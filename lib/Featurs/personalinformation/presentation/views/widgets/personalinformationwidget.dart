@@ -91,7 +91,7 @@ class _personalinformationwidgetState extends State<personalinformationwidget> {
               },
               child: Personalinformationitem(
                 base: 'User Name',
-                hint: 'Ahmed Mohamed',
+                hint: '',
                 last: 'Edit',
               ),
             ),
@@ -101,7 +101,7 @@ class _personalinformationwidgetState extends State<personalinformationwidget> {
               },
               child: Personalinformationitem(
                 base: 'Email',
-                hint: 'AhmedMohamed@gmail.com',
+                hint: '',
                 last: 'Edit',
               ),
             ),
@@ -111,8 +111,8 @@ class _personalinformationwidgetState extends State<personalinformationwidget> {
               },
               child: Personalinformationitem(
                 base: 'Phone Number',
-                hint: 'provide Phone Number',
-                last: 'Add',
+                hint: '',
+                last: 'Edit',
               ),
             ),
           ],
