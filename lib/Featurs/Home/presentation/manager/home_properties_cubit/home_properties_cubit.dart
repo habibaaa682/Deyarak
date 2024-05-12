@@ -15,15 +15,17 @@ class HomePropertiesCubit extends Cubit<HomePropertiesState> {
     result.fold((failure) {
       emit(HomePropertiesFailure(failure.errMessage));
     }, (homeProperties) {
-      if (fields == '') {
-        emit(
-          AllHomePropertiesSuccess(homeProperties),
-        );
-      } else {
-        emit(
-          ApartmentPropertiesSuccess(homeProperties),
-        );
+      if (fields.toLowerCase().contains('address')) {
+        emit(SearchPropertiesSuccess(homeProperties));
+      } else  {
+        emit(AllHomePropertiesSuccess(homeProperties));
       }
-    });
+
+      }
+
+    );
   }
 }
+/*lse if(fields.toLowerCase().contains('address')) {
+ApartmentPropertiesSuccess(homeProperties);
+}*/

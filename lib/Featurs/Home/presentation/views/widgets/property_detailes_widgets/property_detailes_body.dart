@@ -97,10 +97,13 @@ class _PropertyDetailesBodyState extends State<PropertyDetailesBody> {
                           .toString(),
                     ),
                     const SizedBox(
-                      height: 50,
+                      height: 20,
                     ),
-                    RelatedSuggestion(
-                      propertyId: state.propertydetailes[0].data!.id.toString(),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom:20),
+                      child: RelatedSuggestion(
+                        propertyId: state.propertydetailes[0].data!.id.toString(),
+                      ),
                     )
                   ],
                 ),

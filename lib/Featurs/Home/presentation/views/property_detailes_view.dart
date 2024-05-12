@@ -2,6 +2,7 @@ import 'package:deyarakapp/Featurs/Home/data/repos/property%20details%20rebo/pro
 import 'package:deyarakapp/Featurs/Home/presentation/manager/property_detailes_cubit/property_detailes_cubit.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/contact_method_bar.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/property_detailes_body.dart';
+import 'package:deyarakapp/controllers/sharedPrefrenceController.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,7 @@ class _PropertyDetailesViewState extends State<PropertyDetailesView> {
     // TODO: implement initState
     super.initState();
     print(widget.propertyId);
+  
   }
 
   Widget build(BuildContext context) {

@@ -5,9 +5,11 @@ import 'package:deyarakapp/Featurs/Home/data/repos/home%20repo/home_properties_r
 import 'package:deyarakapp/core/Errors/Failure.dart';
 import 'package:deyarakapp/core/utils/api_service.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 
 class HomeRepoImpl implements HomePropertiesRepo {
   final ApiService apiService;
+  TextEditingController address = TextEditingController();
 
   HomeRepoImpl(this.apiService);
   @override

@@ -1,12 +1,16 @@
+import 'package:deyarakapp/Featurs/Home/presentation/manager/home_properties_cubit/home_properties_cubit.dart';
 import 'package:deyarakapp/Featurs/wishlist/presentation/views/wishlist_view.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/home_view_body.dart';
 import 'package:deyarakapp/Featurs/menu/presentation/views/menuview.dart';
 import 'package:deyarakapp/constants.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../core/utils/service_locator.dart';
 import '../../../Home_Map/presentation/views/Home_Map_view.dart';
+import '../../data/repos/home repo/home_repo_implementation.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -17,6 +21,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView>
     with AutomaticKeepAliveClientMixin {
+
   int currentindex = 0;
 
   List<Widget> pages = const <Widget>[
@@ -77,7 +82,10 @@ class _HomeViewState extends State<HomeView>
               ]),
         ),
       ),
-      body: IndexedStack(index: currentindex, children: pages),
+      body: BlocProvider(
+          create: (context)=> HomePropertiesCubit(getIt.get<HomeRepoImpl>())
+            ,
+          child: IndexedStack(index: currentindex, children: pages)),
     );
   }
 

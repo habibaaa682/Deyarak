@@ -40,7 +40,7 @@ class _MapState extends State<Map_w> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .72,
+      height: MediaQuery.of(context).size.height * .81,
       width: double.infinity,
       child:GoogleMap(
           initialCameraPosition: _kGooglePlex,

@@ -1,11 +1,20 @@
+import 'package:deyarakapp/controllers/sharedPrefrenceController.dart';
 import 'package:deyarakapp/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-class CustomSearchField extends StatelessWidget {
+class CustomSearchField extends StatefulWidget {
   const CustomSearchField({
-    super.key,
+    super.key, required this.onSubmitted,
   });
+  final Function(String)onSubmitted;
+  @override
+  State<CustomSearchField> createState() => _CustomSearchFieldState();
+}
 
+class _CustomSearchFieldState extends State<CustomSearchField> {
+
+String myText='';
+  final TextEditingController textEditingController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -13,6 +22,13 @@ class CustomSearchField extends StatelessWidget {
       shadowColor: Colors.grey,
       elevation: 3,
       child: TextField(
+       onSubmitted:(text){
+         widget.onSubmitted(text);
+        // textEditingController.clear();
+       }
+
+        ,
+        controller: textEditingController,
         decoration: InputDecoration(
           labelText: 'Where to?',
           labelStyle:
@@ -21,7 +37,10 @@ class CustomSearchField extends StatelessWidget {
           focusedBorder: Styles.borderstyle,
           enabledBorder: Styles.borderstyle,
           prefixIcon: IconButton(
-              onPressed: () {},
+              onPressed: () {
+
+
+              },
               icon: const Icon(
                 Icons.search,
                 size: 32,
@@ -30,5 +49,12 @@ class CustomSearchField extends StatelessWidget {
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    textEditingController.dispose();
+    super.dispose();
+
   }
 }

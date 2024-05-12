@@ -41,10 +41,10 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
           children: [
 
      
-   const Padding(
+   /*const Padding(
       padding: EdgeInsets.only(bottom: 16),
-      child:  HomeSearchBar(),
-    ),
+      child: HomeSearchBar(),
+    ),*/
             // IconRow(),
             BlocBuilder<MapCubit, MapState>(builder: (context, state) {
               if (state is MapcubitSuccess) {

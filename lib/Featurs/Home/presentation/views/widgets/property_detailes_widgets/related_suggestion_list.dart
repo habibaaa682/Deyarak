@@ -43,6 +43,7 @@ class _RelatedSuggestionState extends State<RelatedSuggestion> {
         ),
         BlocBuilder<RelatedSuggestionsCubit, RelatedSuggestionsState>(
           builder: (context, state) {
+
             if (state is RelatedSuggestionsSuccess) {
               return SizedBox(
                 height: MediaQuery.of(context).size.height * .36,
