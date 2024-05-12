@@ -33,8 +33,7 @@ class WishlistRepoImpl implements WishlistRepo {
         });
 
         print(wishlistItems);
-
-    } else {
+      } else {
         return left(ServerFailure('failed to fetch wishlist '));
       }
 

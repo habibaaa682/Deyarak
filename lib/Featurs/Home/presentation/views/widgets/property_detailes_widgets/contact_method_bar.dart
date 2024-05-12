@@ -8,8 +8,8 @@ import 'package:url_launcher/url_launcher_string.dart';
 class ContactMethodBar extends StatelessWidget {
   ContactMethodBar({super.key, required this.phone, required this.email});
 
-  final String phone ;
-  final String email ;
+  final String phone;
+  final String email;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(

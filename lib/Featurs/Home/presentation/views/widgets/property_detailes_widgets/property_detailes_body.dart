@@ -42,7 +42,10 @@ class _PropertyDetailesBodyState extends State<PropertyDetailesBody> {
       builder: (context, state) {
         if (state is PropertyDetailesSuccess) {
           return Scaffold(
-            bottomNavigationBar: ContactMethodBar(phone: state.propertydetailes[0].data!.owner!.phone.toString(), email:state.propertydetailes[0].data!.owner!.email.toString() ,),
+            bottomNavigationBar: ContactMethodBar(
+              phone: state.propertydetailes[0].data!.owner!.phone.toString(),
+              email: state.propertydetailes[0].data!.owner!.email.toString(),
+            ),
             body: ScrollConfiguration(
               behavior: ScrollBehavior().copyWith(overscroll: false),
               child: SingleChildScrollView(
@@ -56,7 +59,8 @@ class _PropertyDetailesBodyState extends State<PropertyDetailesBody> {
                       ),
                     ),
                     Padding(
-                        padding: EdgeInsets.only(left: 24, right: 24, bottom: 8),
+                        padding:
+                            EdgeInsets.only(left: 24, right: 24, bottom: 8),
                         child: Expanded(
                             child: ProprtyInfoColumn(
                           propertyModel: state.propertydetailes[0],
@@ -68,7 +72,7 @@ class _PropertyDetailesBodyState extends State<PropertyDetailesBody> {
                         propertyModel: state.propertydetailes[0],
                       )),
                     ),
-                    const ViewOnMapButton(),
+                     ViewOnMapButton(lat: state.propertydetailes[0].data!.locations!.coordinates![0].toDouble(),lng: state.propertydetailes[0].data!.locations!.coordinates![1].toDouble()),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24),
                       child: Divider(
@@ -89,8 +93,8 @@ class _PropertyDetailesBodyState extends State<PropertyDetailesBody> {
                       ),
                     ),
                     Description(
-                      discription:
-                          state.propertydetailes[0].data!.description.toString(),
+                      discription: state.propertydetailes[0].data!.description
+                          .toString(),
                     ),
                     const SizedBox(
                       height: 50,

@@ -9,4 +9,3 @@ class _AuthEndPoints {
   final String addToWishlist = 'api/v1/users/add-to-wishlist/';
   final String contactus = 'api/v1/users/contactus';
 }
-

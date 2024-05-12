@@ -19,7 +19,7 @@ class _HomeViewBodyState extends State<HomeViewBody>
     return Scaffold(
       floatingActionButton: const AddFloatingActionButton(),
       body: Column(children: [
-        const HomeSearchBar(),
+        const SafeArea(child:  HomeSearchBar()),
         HomeTabBar(tabController: tabController),
         HomeTabBarView(
           tabController: tabController,

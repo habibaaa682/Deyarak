@@ -31,7 +31,6 @@ class _PropertyDetailesViewState extends State<PropertyDetailesView> {
           iconTheme: const IconThemeData(color: Colors.black),
           backgroundColor: Colors.transparent,
         ),
-
         body: BlocProvider(
           create: (context) =>
               PropertyDetailesCubit(getIt.get<PropertyDetailesRepoImpl>()),

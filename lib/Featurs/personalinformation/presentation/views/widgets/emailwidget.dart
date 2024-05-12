@@ -22,7 +22,7 @@ class emailwidget extends StatelessWidget {
             'Edit Email',
             style: Fonts.textstyle24,
           ),
-        /*  customtextfield(
+          /*  customtextfield(
 
             password: false,
             hinttext: '  AhmedMohamed@gmail.com',
