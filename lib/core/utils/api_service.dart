@@ -43,4 +43,19 @@ class ApiService {
         ));
     return response;
   }
+
+  Future<Response<dynamic>> patch(
+      {required String endPointPath,
+        required String token,
+        Map<String, dynamic>? data}) async {
+    var response = await _dio.patch('$baseUrl$endPointPath',
+        data: data,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+            'Content-Type': 'application/json',
+          },
+        ));
+    return response;
+  }
 }
