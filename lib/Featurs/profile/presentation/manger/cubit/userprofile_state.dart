@@ -18,7 +18,7 @@ final class UserprofileFailure extends UserprofileState {
 }
 
 final class UserprofileSuccess extends UserprofileState {
-  final List<User> userprofile;
+  final List<Profile> userprofile;
 
   UserprofileSuccess(this.userprofile);
 }

@@ -17,13 +17,10 @@ class HomePropertiesCubit extends Cubit<HomePropertiesState> {
     }, (homeProperties) {
       if (fields.toLowerCase().contains('address')) {
         emit(SearchPropertiesSuccess(homeProperties));
-      } else  {
+      } else {
         emit(AllHomePropertiesSuccess(homeProperties));
       }
-
-      }
-
-    );
+    });
   }
 }
 /*lse if(fields.toLowerCase().contains('address')) {

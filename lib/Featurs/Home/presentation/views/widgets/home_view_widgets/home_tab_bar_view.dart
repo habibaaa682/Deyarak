@@ -13,9 +13,13 @@ import '../../../manager/home_properties_cubit/home_properties_cubit.dart';
 
 class HomeTabBarView extends StatefulWidget {
   final TabController tabController;
-  const HomeTabBarView({super.key, required this.tabController, required this.searchText, required this.onSearch});
- final String searchText;
-  final Function(String)onSearch;
+  const HomeTabBarView(
+      {super.key,
+      required this.tabController,
+      required this.searchText,
+      required this.onSearch});
+  final String searchText;
+  final Function(String) onSearch;
   @override
   State<HomeTabBarView> createState() => _HomeTabBarViewState();
 }
@@ -32,9 +36,9 @@ class _HomeTabBarViewState extends State<HomeTabBarView>
     super.initState();
     print(widget.searchText);
     widget.tabController.addListener(_onTabChanged);
-    homePropertiesCubit= context.read<HomePropertiesCubit>();
-    homePropertiesCubit.fetchHomeProperties(fields:'?address=${widget.searchText}');
-
+    homePropertiesCubit = context.read<HomePropertiesCubit>();
+    homePropertiesCubit.fetchHomeProperties(
+        fields: '?address=${widget.searchText}');
   }
 
   @override
@@ -47,12 +51,12 @@ class _HomeTabBarViewState extends State<HomeTabBarView>
     final index = widget.tabController.index;
     switch (index) {
       case 0:
-        homePropertiesCubit.fetchHomeProperties(fields:'?address=${widget.searchText}');
+        homePropertiesCubit.fetchHomeProperties(
+            fields: '?address=${widget.searchText}');
 
         break;
       case 1:
-        _homePropertiesCubit.fetchHomeProperties(
-            fields: '?category=apartment');
+        _homePropertiesCubit.fetchHomeProperties(fields: '?category=apartment');
         break;
       case 2:
         _homePropertiesCubit.fetchHomeProperties(fields: '?category=villa');
@@ -71,15 +75,16 @@ class _HomeTabBarViewState extends State<HomeTabBarView>
 
   @override
   Widget build(BuildContext context) {
-
     super.build(context);
     return Expanded(
       child: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
         child: TabBarView(
           controller: widget.tabController,
-          children:  [
-            HomePropertiesListView(searchText: widget.searchText,),
+          children: [
+            HomePropertiesListView(
+              searchText: widget.searchText,
+            ),
             ApartmentPropertiesListView(),
             HomeFamilyListView(),
             FurnituredListView(),

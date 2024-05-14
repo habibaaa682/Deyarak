@@ -72,7 +72,13 @@ class _PropertyDetailesBodyState extends State<PropertyDetailesBody> {
                         propertyModel: state.propertydetailes[0],
                       )),
                     ),
-                     ViewOnMapButton(lat: state.propertydetailes[0].data!.locations!.coordinates![0].toDouble(),lng: state.propertydetailes[0].data!.locations!.coordinates![1].toDouble()),
+                    ViewOnMapButton(
+                        lat: state.propertydetailes[0].data!.locations!
+                            .coordinates![0]
+                            .toDouble(),
+                        lng: state.propertydetailes[0].data!.locations!
+                            .coordinates![1]
+                            .toDouble()),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24),
                       child: Divider(
@@ -100,9 +106,10 @@ class _PropertyDetailesBodyState extends State<PropertyDetailesBody> {
                       height: 20,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom:20),
+                      padding: const EdgeInsets.only(bottom: 20),
                       child: RelatedSuggestion(
-                        propertyId: state.propertydetailes[0].data!.id.toString(),
+                        propertyId:
+                            state.propertydetailes[0].data!.id.toString(),
                       ),
                     )
                   ],

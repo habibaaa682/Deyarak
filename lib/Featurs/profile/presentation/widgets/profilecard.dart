@@ -1,10 +1,12 @@
-import 'package:deyarakapp/Featurs/profile/data/models/user/user.profile.dart';
+
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/models/profile.dart';
+
 // ignore: must_be_immutable
 class profilecard extends StatefulWidget {
-  final List<User> userobj;
+  final List<Profile> userobj;
 
   profilecard({super.key, required this.userobj});
 
@@ -40,7 +42,7 @@ class _profilecardState extends State<profilecard> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
                     child: Image.network(
-                      widget.userobj[0].photo!.url.toString(),
+                      widget.userobj[0].photo.toString(),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,

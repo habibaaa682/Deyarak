@@ -23,7 +23,6 @@ class _PropertyDetailesViewState extends State<PropertyDetailesView> {
     // TODO: implement initState
     super.initState();
     print(widget.propertyId);
-  
   }
 
   Widget build(BuildContext context) {

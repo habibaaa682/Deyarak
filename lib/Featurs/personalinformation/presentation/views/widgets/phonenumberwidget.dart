@@ -13,7 +13,8 @@ import '../../../../../core/utils/api_service.dart';
 import '../../../data/phonenumbercontroller.dart';
 
 class phonenumberwidget extends StatelessWidget {
-  PhonenumberController phonenumberController= Get.put(PhonenumberController(ApiService(Dio())));
+  PhonenumberController phonenumberController =
+      Get.put(PhonenumberController(ApiService(Dio())));
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,21 +31,18 @@ class phonenumberwidget extends StatelessWidget {
             'Edit Phone Number',
             style: Fonts.textstyle24,
           ),
-
-           customtextfield(
-
-              password: false,
-              hinttext: '  ',
-              labeltext: '  Edit Phone Number',
-            textEditingController:phonenumberController.phoneController ,
-           ),
-
-
+          customtextfield(
+            password: false,
+            hinttext: '  ',
+            labeltext: '  Edit Phone Number',
+            textEditingController: phonenumberController.phoneController,
+          ),
           const SizedBox(height: 15),
           Button(
             text: 'Save',
             ontap: () {
-              PhonenumberController(ApiService(Dio())).updatephonenumber(context);
+              PhonenumberController(ApiService(Dio()))
+                  .updatephonenumber(context);
             },
             raduis: 15,
             colorr: kprimarycolor,

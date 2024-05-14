@@ -7,7 +7,9 @@ class ViewOnMapButton extends StatelessWidget {
   final double lat;
   final double lng;
   const ViewOnMapButton({
-    super.key, required this.lat, required this.lng,
+    super.key,
+    required this.lat,
+    required this.lng,
   });
 
   @override
@@ -23,11 +25,10 @@ class ViewOnMapButton extends StatelessWidget {
                 shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)))),
             onPressed: () {
-
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
                   return MapView(
-                    lat: lat ,
+                    lat: lat,
                     lng: lng,
                   );
                 },

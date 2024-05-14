@@ -7,25 +7,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePropertiesListView extends StatefulWidget {
   const HomePropertiesListView({
-    super.key,  required this.searchText,
+    super.key,
+    required this.searchText,
   });
-final String searchText;
+  final String searchText;
   @override
   State<HomePropertiesListView> createState() => _HomePropertiesListViewState();
 }
 
 class _HomePropertiesListViewState extends State<HomePropertiesListView> {
- late String text;
+  late String text;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
   }
+
   @override
   Widget build(BuildContext context) {
-    HomePropertiesCubit homePropertiesCubit= context.read<HomePropertiesCubit>();
-    homePropertiesCubit.fetchHomeProperties(fields:'?address=${widget.searchText}');
+    HomePropertiesCubit homePropertiesCubit =
+        context.read<HomePropertiesCubit>();
+    homePropertiesCubit.fetchHomeProperties(
+        fields: '?address=${widget.searchText}');
 
     return BlocBuilder<HomePropertiesCubit, HomePropertiesState>(
       builder: (context, state) {
@@ -39,9 +42,8 @@ class _HomePropertiesListViewState extends State<HomePropertiesListView> {
               );
             },
           );
-        }else if(state is SearchPropertiesSuccess){
-          return
-            ListView.builder(
+        } else if (state is SearchPropertiesSuccess) {
+          return ListView.builder(
             itemCount: state.homeProperties.length,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
             itemBuilder: (context, index) {
@@ -50,16 +52,12 @@ class _HomePropertiesListViewState extends State<HomePropertiesListView> {
               );
             },
           );
-
-        }
-
-        else if (state is HomePropertiesFailure) {
+        } else if (state is HomePropertiesFailure) {
           return CustomErrorWidget(errMsg: state.errMsg);
         } else {
           return const CustomLoadingIndicator();
         }
       },
     );
-
   }
 }

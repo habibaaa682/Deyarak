@@ -8,10 +8,15 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
 class Map_w extends StatefulWidget {
-final double lat;
-final double lng;
+  final double lat;
+  final double lng;
   final List<Mappmodel> mapmodelobj;
-  const Map_w({super.key, required this.mapmodelobj, this.lat=30.550968,  this.lng=31.008668, });
+  const Map_w({
+    super.key,
+    required this.mapmodelobj,
+    this.lat = 30.550968,
+    this.lng = 31.008668,
+  });
 
   @override
   State<Map_w> createState() => _MapState();
@@ -21,28 +26,24 @@ class _MapState extends State<Map_w> {
   var mymarkers = HashSet<Marker>();
   Completer<GoogleMapController> _controller = Completer();
 
-  late CameraPosition _kGooglePlex ;
-
-
+  late CameraPosition _kGooglePlex;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _kGooglePlex  = CameraPosition(
-    target: LatLng(widget.lat, widget.lng
-    ),
-    zoom: 12,
+    _kGooglePlex = CameraPosition(
+      target: LatLng(widget.lat, widget.lng),
+      zoom: 12,
     );
-
   }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .81,
-      width: double.infinity,
-      child:GoogleMap(
+        height: MediaQuery.of(context).size.height * .81,
+        width: double.infinity,
+        child: GoogleMap(
           initialCameraPosition: _kGooglePlex,
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
@@ -61,8 +62,6 @@ class _MapState extends State<Map_w> {
           },
           markers: mymarkers,
         ));
-
-
   }
 }
 

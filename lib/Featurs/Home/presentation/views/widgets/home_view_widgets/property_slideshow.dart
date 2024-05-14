@@ -130,8 +130,9 @@ class _PropertySlideShow extends State<PropertySlideShow>
                                           userId:
                                               GlobalSharedPreferences.getString(
                                                   'userId'),
-                                          propertyId:
-                                              widget.propertyModel.data!.id.toString(),
+                                          propertyId: widget
+                                              .propertyModel.data!.id
+                                              .toString(),
                                           token:
                                               GlobalSharedPreferences.getString(
                                                   'token'))
@@ -144,7 +145,8 @@ class _PropertySlideShow extends State<PropertySlideShow>
                                     context,
                                     userId: GlobalSharedPreferences.getString(
                                         'userId'),
-                                    propertyId:   widget.propertyModel.data!.id.toString(),
+                                    propertyId: widget.propertyModel.data!.id
+                                        .toString(),
                                     token: GlobalSharedPreferences.getString(
                                         'token'),
                                   )

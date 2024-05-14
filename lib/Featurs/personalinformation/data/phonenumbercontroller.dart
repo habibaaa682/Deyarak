@@ -6,15 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/utils/api_service.dart';
 
-
-
 class PhonenumberController {
   TextEditingController phoneController = TextEditingController();
   final ApiService apiService;
 
   Dio dio = Dio();
 
-  PhonenumberController( this.apiService);
+  PhonenumberController(this.apiService);
 
   Future<void> updatephonenumber(BuildContext context) async {
     try {
@@ -22,15 +20,14 @@ class PhonenumberController {
       String token = GlobalSharedPreferences.getString('token');
       print(token);
 
-      Map <String,dynamic> body = {
+      Map<String, dynamic> body = {
         "name": phoneController.text,
         "role": "user"
       };
 
       final response = await apiService.patch(
           endPointPath: 'users/updateMe',
-          token:  GlobalSharedPreferences.getString(
-              'token'),
+          token: GlobalSharedPreferences.getString('token'),
           data: body);
 
       if (response.statusCode == 201) {
@@ -43,8 +40,6 @@ class PhonenumberController {
           ),
         );
         GoRouter.of(context).pop();
-
-
       }
     } on DioError catch (e) {
       if (e.response != null) {
@@ -60,7 +55,8 @@ class PhonenumberController {
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Unknown error occurred during updating phone number'),
+              content:
+                  Text('Unknown error occurred during updating phone number'),
               backgroundColor: Colors.red,
             ),
           );

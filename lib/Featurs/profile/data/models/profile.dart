@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import 'photo.profile.dart';
-
-class User extends Equatable {
-  final Photo? photo;
+class Profile extends Equatable {
+  final String? photo;
   final String? id;
   final String? name;
   final String? email;
@@ -11,9 +9,10 @@ class User extends Equatable {
   final String? role;
   final double? ratingsAverage;
   final int? ratingsQuantity;
+  final List<dynamic>? wishlist;
   final int? v;
 
-  const User({
+  const Profile({
     this.photo,
     this.id,
     this.name,
@@ -22,13 +21,12 @@ class User extends Equatable {
     this.role,
     this.ratingsAverage,
     this.ratingsQuantity,
+    this.wishlist,
     this.v,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
-        photo: json['photo'] == null
-            ? null
-            : Photo.fromJson(json['photo'] as Map<String, dynamic>),
+  factory Profile.fromJson(Map<String, dynamic> json) => Profile(
+        photo: json['photo'] as String?,
         id: json['_id'] as String?,
         name: json['name'] as String?,
         email: json['email'] as String?,
@@ -36,11 +34,12 @@ class User extends Equatable {
         role: json['role'] as String?,
         ratingsAverage: (json['ratingsAverage'] as num?)?.toDouble(),
         ratingsQuantity: json['ratingsQuantity'] as int?,
+        wishlist: json['wishlist'] as List<dynamic>?,
         v: json['__v'] as int?,
       );
 
   Map<String, dynamic> toJson() => {
-        'photo': photo?.toJson(),
+        'photo': photo,
         '_id': id,
         'name': name,
         'email': email,
@@ -48,6 +47,7 @@ class User extends Equatable {
         'role': role,
         'ratingsAverage': ratingsAverage,
         'ratingsQuantity': ratingsQuantity,
+        'wishlist': wishlist,
         '__v': v,
       };
 
@@ -62,6 +62,7 @@ class User extends Equatable {
       role,
       ratingsAverage,
       ratingsQuantity,
+      wishlist,
       v,
     ];
   }

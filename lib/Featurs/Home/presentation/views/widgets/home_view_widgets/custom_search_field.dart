@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 class CustomSearchField extends StatefulWidget {
   const CustomSearchField({
-    super.key, required this.onSubmitted,
+    super.key,
+    required this.onSubmitted,
   });
-  final Function(String)onSubmitted;
+  final Function(String) onSubmitted;
   @override
   State<CustomSearchField> createState() => _CustomSearchFieldState();
 }
 
 class _CustomSearchFieldState extends State<CustomSearchField> {
-
-String myText='';
-  final TextEditingController textEditingController=TextEditingController();
+  String myText = '';
+  final TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -22,12 +22,10 @@ String myText='';
       shadowColor: Colors.grey,
       elevation: 3,
       child: TextField(
-       onSubmitted:(text){
-         widget.onSubmitted(text);
-        // textEditingController.clear();
-       }
-
-        ,
+        onSubmitted: (text) {
+          widget.onSubmitted(text);
+          // textEditingController.clear();
+        },
         controller: textEditingController,
         decoration: InputDecoration(
           labelText: 'Where to?',
@@ -37,10 +35,7 @@ String myText='';
           focusedBorder: Styles.borderstyle,
           enabledBorder: Styles.borderstyle,
           prefixIcon: IconButton(
-              onPressed: () {
-
-
-              },
+              onPressed: () {},
               icon: const Icon(
                 Icons.search,
                 size: 32,
@@ -50,11 +45,11 @@ String myText='';
       ),
     );
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
     textEditingController.dispose();
     super.dispose();
-
   }
 }
