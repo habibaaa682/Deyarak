@@ -3,7 +3,6 @@ import 'package:deyarakapp/Featurs/Home/data/Models/property_modell/property_mod
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/property_info_row.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../data/Models/property_model/property_model.dart';
 
 class ProprtyInfoColumn extends StatefulWidget {
   ProprtyInfoColumn({

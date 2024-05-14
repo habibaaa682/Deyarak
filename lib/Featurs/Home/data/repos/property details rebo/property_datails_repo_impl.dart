@@ -6,7 +6,6 @@ import 'package:dio/dio.dart';
 
 import '../../../../../controllers/sharedPrefrenceController.dart';
 import '../../../../../core/utils/api_service.dart';
-import '../../Models/property_model/property_model.dart';
 
 class PropertyDetailesRepoImpl implements PropertyDetailsRepo {
   final ApiService apiService;
