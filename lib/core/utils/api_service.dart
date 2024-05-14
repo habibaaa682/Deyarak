@@ -48,14 +48,11 @@ class ApiService {
     return response;
   }
 
-  Future<Response<dynamic>> patch(
-      {required String endPointPath,
-      required String token,
-<<<<<<< HEAD
-      Map<String, dynamic>? data}) async {
-=======
-      required Map<String, dynamic>? data}) async {
->>>>>>> d286ec902efe6053b440075b21497db073756bd3
+  Future<Response<dynamic>> patch({
+    required String endPointPath,
+    required String token,
+    required Map<String, dynamic>? data,
+  }) async {
     var response = await _dio.patch('$baseUrl$endPointPath',
         data: data,
         options: Options(
@@ -66,10 +63,8 @@ class ApiService {
         ));
     return response;
   }
-<<<<<<< HEAD
 
   Future<Response<dynamic>> patchFormData({
-
     required String endPointPath,
     required String token,
     required FormData data,
@@ -91,13 +86,13 @@ class ApiService {
       print('Error during PATCH request: $e');
       throw e; // Re-throw the error to be handled by the caller
     }
-=======
-  Future<Response<dynamic>> delete(
-      {required String endPointPath,
-        required String token,
-       }) async {
-    var response = await _dio.delete('$baseUrl$endPointPath',
+  }
 
+  Future<Response<dynamic>> delete({
+    required String endPointPath,
+    required String token,
+  }) async {
+    var response = await _dio.delete('$baseUrl$endPointPath',
         options: Options(
           headers: {
             'Authorization': 'Bearer $token',
@@ -105,6 +100,5 @@ class ApiService {
           },
         ));
     return response;
->>>>>>> d286ec902efe6053b440075b21497db073756bd3
   }
 }

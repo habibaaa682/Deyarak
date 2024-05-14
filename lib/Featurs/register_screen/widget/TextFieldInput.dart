@@ -13,7 +13,7 @@ class TextFieldInputt extends StatelessWidget {
     required this.formatter,
     this.keybordtype,
     required this.password,
-    required this.validatee,
+
     required this.colorr,
     required this.textEditingController,
   });
@@ -27,8 +27,7 @@ class TextFieldInputt extends StatelessWidget {
       []; // ex : FilteringTextInputFormatter.digitsOnly
   TextInputType? keybordtype; // ex : TextInputType.phone
   bool password; //ex true or false
-  FormFieldValidator<String>
-      validatee; //ex   if (value == null || value.isEmpty) {return 'Username cannot be empty.';
+ //ex   if (value == null || value.isEmpty) {return 'Username cannot be empty.';
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class TextFieldInputt extends StatelessWidget {
       child: Form(
         child: TextFormField(
           controller: textEditingController,
-          validator: validatee,
+
           obscureText: password,
           inputFormatters: formatter,
           keyboardType: keybordtype,

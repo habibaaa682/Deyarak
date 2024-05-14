@@ -1,3 +1,5 @@
+
+
 import 'package:deyarakapp/Featurs/menu/presentation/views/widgets/menuitemwidget.dart';
 import 'package:deyarakapp/Featurs/menu/presentation/views/widgets/profilemenuwidget.dart';
 import 'package:deyarakapp/Featurs/profile/presentation/manger/cubit/userprofile_cubit.dart';
@@ -10,11 +12,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
-class menuwidget extends StatelessWidget {
+import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../../constants.dart';
+
+class menuwidget extends StatefulWidget {
+  @override
+  State<menuwidget> createState() => _menuwidgetState();
+}
+
+class _menuwidgetState extends State<menuwidget> {
   @override
   Widget build(BuildContext context) {
+    var queryheight = MediaQuery.of(context).size.height;
+    var querywidth = MediaQuery.of(context).size.width;
+
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 20, left: 16),
@@ -70,8 +85,33 @@ class menuwidget extends StatelessWidget {
               GoRouter.of(context).push(AppRouter.kcontactus);
             },
             child: menuitemwidget(
-                text: 'Contact Us', icon: Icons.headset_mic_outlined))
+                text: 'Contact Us', icon: Icons.headset_mic_outlined)),
+        SizedBox(
+          height: queryheight / 8,
+        ),
+        Button(
+          text: 'Log Out',
+          ontap: () {
+            logoutUser();
+
+          },
+          raduis: 35,
+          colorr:kprimarycolor ,
+          width: querywidth /400,
+          marginn: 0,
+          height: queryheight / 37,
+          textcolor: Colors.white,
+        ),
       ],
     );
   }
+  void logoutUser() async{
+    prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+    GoRouter.of(context as BuildContext).push(AppRouter.ksplash);
+
+  }
+
+
 }
+

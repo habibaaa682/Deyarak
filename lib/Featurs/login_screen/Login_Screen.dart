@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'CreateAccount_Text.dart';
 // import 'forget_pass.dart';
 
@@ -49,17 +50,7 @@ class Login_screen extends StatelessWidget {
               icon: Icons.person,
               formatter: [],
               password: false,
-              validatee: (value) {
-                // ignore: unnecessary_null_comparison
-                if (value == null || value.isEmpty) {
-                  return 'Email cannot be empty.';
-                } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                    .hasMatch(value)) {
-                  return 'Please enter a valid email.';
-                } else {
-                  return null;
-                }
-              },
+
             ),
             SizedBox(
               height: queryheight / 45,
@@ -72,19 +63,7 @@ class Login_screen extends StatelessWidget {
               icon: Icons.lock,
               formatter: [],
               password: true,
-              validatee: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Password cannot be empty.';
-                } else if (value.length < 4) {
-                  return 'Pssword must be at least 4 characters long.';
-                } else if (value.length > 20) {
-                  return 'Pssword cannot be longer than 20 characters.';
-                } else if (!RegExp(r"^[a-zA-Z0-9._]+$").hasMatch(value)) {
-                  return 'password can only contain letters, numbers, periods, and underscores.';
-                } else {
-                  return null;
-                }
-              },
+
             ),
             SizedBox(
               height: queryheight / 100,
@@ -95,8 +74,10 @@ class Login_screen extends StatelessWidget {
             ),
             Button(
               text: 'Sign IN',
-              ontap: () {
+              ontap: () async {
                 loginController.loginWithEmail(context);
+                prefs = await SharedPreferences.getInstance();
+                prefs?.setBool("isLoggedIn", true);
               },
               raduis: 35,
               colorr: Colors.white,

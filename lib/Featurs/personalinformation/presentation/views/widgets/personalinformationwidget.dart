@@ -1,4 +1,4 @@
-import 'dart:io';
+
 
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/appbarwidget.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/personalinformationitem.dart';
@@ -8,7 +8,7 @@ import 'package:deyarakapp/core/utils/router.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
+
 
 import '../../../../../core/utils/api_service.dart';
 

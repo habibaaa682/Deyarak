@@ -1,6 +1,6 @@
-import 'dart:convert';
+
 import 'package:deyarakapp/controllers/sharedPrefrenceController.dart';
-import 'package:deyarakapp/core/utils/api_endpoints.dart';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -21,12 +21,9 @@ class EmailController {
       print(token);
 
       Map<String, dynamic> body = {
-<<<<<<< HEAD
         "name": emailController.text,
-        "role": "user"
-=======
+        "role": "user",
         "email": emailController.text.toString(),
->>>>>>> d286ec902efe6053b440075b21497db073756bd3
       };
 
       final response = await apiService.patch(

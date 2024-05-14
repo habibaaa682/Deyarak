@@ -41,12 +41,7 @@ class phonenumberwidget extends StatelessWidget {
           Button(
             text: 'Save',
             ontap: () {
-<<<<<<< HEAD
-              PhonenumberController(ApiService(Dio()))
-                  .updatephonenumber(context);
-=======
               phonenumberController.updatephonenumber(context);
->>>>>>> d286ec902efe6053b440075b21497db073756bd3
             },
             raduis: 15,
             colorr: kprimarycolor,

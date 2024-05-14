@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class RegisterView extends StatelessWidget {
@@ -50,19 +51,7 @@ class RegisterView extends StatelessWidget {
                   colorr: Colors.white,
                   formatter: [],
                   password: false,
-                  validatee: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Username cannot be empty.';
-                    } else if (value.length < 4) {
-                      return 'Username must be at least 4 characters long.';
-                    } else if (value.length > 20) {
-                      return 'Username cannot be longer than 20 characters.';
-                    } else if (!RegExp(r"^[a-zA-Z0-9._]+$").hasMatch(value)) {
-                      return 'Username can only contain letters, numbers, periods, and underscores.';
-                    } else {
-                      return null;
-                    }
-                  },
+
                 ),
                 SizedBox(
                   height: queryheight / 45,
@@ -77,15 +66,7 @@ class RegisterView extends StatelessWidget {
                   colorr: Colors.white,
                   formatter: [FilteringTextInputFormatter.digitsOnly],
                   password: false,
-                  validatee: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Mobile number cannot be empty.';
-                    } else if (!RegExp(r'^[0-9]{10}$').hasMatch(value)) {
-                      return 'Please enter a valid mobile number .';
-                    } else {
-                      return null;
-                    }
-                  },
+
                 ),
                 SizedBox(
                   height: queryheight / 45,
@@ -100,16 +81,8 @@ class RegisterView extends StatelessWidget {
                   formatter: [],
                   keybordtype: TextInputType.emailAddress,
                   password: false,
-                  validatee: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Email cannot be empty.';
-                    } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                        .hasMatch(value)) {
-                      return 'Please enter a valid email.';
-                    } else {
-                      return null;
-                    }
-                  },
+
+
                 ),
                 SizedBox(
                   height: queryheight / 45,
@@ -123,19 +96,8 @@ class RegisterView extends StatelessWidget {
                   colorr: Colors.white,
                   formatter: [],
                   password: true,
-                  validatee: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Pssword cannot be empty.';
-                    } else if (value.length < 4) {
-                      return 'Pssword must be at least 4 characters long.';
-                    } else if (value.length > 20) {
-                      return 'Pssword cannot be longer than 20 characters.';
-                    } else if (!RegExp(r"^[a-zA-Z0-9._]+$").hasMatch(value)) {
-                      return 'Pssword can only contain letters, numbers, periods, and underscores.';
-                    } else {
-                      return null;
-                    }
-                  },
+
+
                 ),
                 SizedBox(
                   height: queryheight / 45,
@@ -149,27 +111,18 @@ class RegisterView extends StatelessWidget {
                   colorr: Colors.white,
                   formatter: [],
                   password: true,
-                  validatee: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Pssword cannot be empty.';
-                    } else if (value.length < 4) {
-                      return 'Pssword must be at least 4 characters long.';
-                    } else if (value.length > 20) {
-                      return 'Pssword cannot be longer than 20 characters.';
-                    } else if (!RegExp(r"^[a-zA-Z0-9._]+$").hasMatch(value)) {
-                      return 'Pssword can only contain letters, numbers, periods, and underscores.';
-                    } else {
-                      return null;
-                    }
-                  },
+
+
                 ),
                 SizedBox(
                   height: queryheight / 20,
                 ),
                 Button(
                   text: 'Sign UP',
-                  ontap: () {
+                  ontap: () async {
                     registerationController.registerWithEmail(context);
+                     prefs = await SharedPreferences.getInstance();
+                    prefs?.setBool("isLoggedIn", true);
                   },
                   raduis: 35,
                   colorr: Colors.white,

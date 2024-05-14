@@ -7,6 +7,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../constants.dart';
 
 class screen_splash extends StatefulWidget {
   const screen_splash({Key? key}) : super(key: key);
@@ -40,7 +43,18 @@ class _screen_splashState extends State<screen_splash> {
 
   void trans_to_login() {
     Future.delayed(const Duration(seconds: 7), () {
-      GoRouter.of(context).push(AppRouter.kwelcome);
+      navigateUser();
     });
+  }
+
+  void navigateUser() async {
+     prefs = await SharedPreferences.getInstance();
+    var status = prefs.getBool('isLoggedIn') ?? false;
+    print(status);
+    if (status) {
+      GoRouter.of(context).push(AppRouter.khome);
+    } else {
+      GoRouter.of(context).push(AppRouter.kwelcome);
+    }
   }
 }
