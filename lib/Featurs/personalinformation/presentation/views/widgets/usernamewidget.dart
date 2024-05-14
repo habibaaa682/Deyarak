@@ -41,7 +41,7 @@ class usernamewidget extends StatelessWidget {
           Button(
             text: 'Save',
             ontap: () {
-              UsernameController(ApiService(Dio())).updateUsername(context);
+              usernameController.updateUsername(context);
             },
             raduis: 15,
             colorr: kprimarycolor,

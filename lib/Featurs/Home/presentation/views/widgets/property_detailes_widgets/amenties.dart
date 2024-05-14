@@ -1,12 +1,12 @@
 import 'package:deyarakapp/Featurs/Home/data/Models/amentiesController.dart';
-import 'package:deyarakapp/Featurs/Home/data/Models/property_model/property_model.dart';
+import 'package:deyarakapp/Featurs/Home/data/Models/property_modell/property_modell.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/amenties_row.dart';
 
 import 'package:flutter/material.dart';
 
 class Amenties extends StatelessWidget {
   const Amenties({super.key, required this.propertyModel});
-  final PropertyModel propertyModel;
+  final PropertyModell propertyModel;
   final List<String> amentiesnames = const [
     'Wifi',
     'Pool',
@@ -34,6 +34,7 @@ class Amenties extends StatelessWidget {
         SizedBox(
           height: 100,
           child: ListView.builder(
+            padding: EdgeInsets.only(top: 10),
             shrinkWrap: true,
             itemCount: propertyModel.data!.amenities!.length,
             itemBuilder: (context, index) {

@@ -18,6 +18,7 @@ class Data extends Equatable {
   final bool? furnished;
   final bool? finished;
   final bool? elevator;
+  final bool? isOwner;
   final List<String>? amenities;
   final String? description;
   final Owner? owner;
@@ -39,6 +40,7 @@ class Data extends Equatable {
     this.furnished,
     this.finished,
     this.elevator,
+    this.isOwner,
     this.amenities,
     this.description,
     this.owner,
@@ -65,6 +67,7 @@ class Data extends Equatable {
         furnished: json['furnished'] as bool?,
         finished: json['finished'] as bool?,
         elevator: json['elevator'] as bool?,
+        isOwner: json['isOwner'] as bool?,
         amenities: (json['amenities'] as List<dynamic>?)?.cast<String>(),
         description: json['description'] as String?,
         owner: json['owner'] == null
@@ -89,12 +92,13 @@ class Data extends Equatable {
         'furnished': furnished,
         'finished': finished,
         'elevator': elevator,
+        'isOwner': isOwner,
         'amenities': amenities,
         'description': description,
         'owner': owner?.toJson(),
         '__v': v,
         'totalRooms': totalRooms,
-        'id': id,
+        'id': id2,
       };
 
   @override
@@ -113,6 +117,7 @@ class Data extends Equatable {
       furnished,
       finished,
       elevator,
+      isOwner,
       amenities,
       description,
       owner,

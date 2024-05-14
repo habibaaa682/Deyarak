@@ -11,7 +11,7 @@ class Owner extends Equatable {
   final String? role;
   final double? ratingsAverage;
   final int? ratingsQuantity;
-  final List<dynamic>? wishlist;
+  final List<String>? wishlist;
 
   const Owner({
     this.photo,
@@ -36,7 +36,7 @@ class Owner extends Equatable {
         role: json['role'] as String?,
         ratingsAverage: (json['ratingsAverage'] as num?)?.toDouble(),
         ratingsQuantity: json['ratingsQuantity'] as int?,
-        wishlist: json['wishlist'] as List<dynamic>?,
+        wishlist: (json['wishlist'] as List<dynamic>?)?.cast<String>(),
       );
 
   Map<String, dynamic> toJson() => {

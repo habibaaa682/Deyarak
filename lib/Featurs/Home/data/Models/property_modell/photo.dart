@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 
 class Photo extends Equatable {
   final String? url;
-  final dynamic publicId;
+  final String? publicId;
 
   const Photo({this.url, this.publicId});
 
   factory Photo.fromJson(Map<String, dynamic> json) => Photo(
         url: json['url'] as String?,
-        publicId: json['publicId'] as dynamic,
+        publicId: json['publicId'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

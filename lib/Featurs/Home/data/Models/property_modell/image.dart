@@ -19,7 +19,7 @@ class Image extends Equatable {
         'url': url,
         'public_id': publicId,
         '_id': id,
-        'id': id,
+        'id': id2,
       };
 
   @override

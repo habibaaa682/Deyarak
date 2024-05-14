@@ -21,8 +21,12 @@ class EmailController {
       print(token);
 
       Map<String, dynamic> body = {
+<<<<<<< HEAD
         "name": emailController.text,
         "role": "user"
+=======
+        "email": emailController.text.toString(),
+>>>>>>> d286ec902efe6053b440075b21497db073756bd3
       };
 
       final response = await apiService.patch(
@@ -30,7 +34,7 @@ class EmailController {
           token: GlobalSharedPreferences.getString('token'),
           data: body);
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         emailController.clear();
 
         ScaffoldMessenger.of(context).showSnackBar(

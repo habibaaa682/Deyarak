@@ -1,4 +1,4 @@
-import 'package:deyarakapp/Featurs/Home/data/Models/property_model/property_model.dart';
+import 'package:deyarakapp/Featurs/Home/data/Models/property_modell/property_modell.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ class ProfileCard extends StatelessWidget {
     super.key,
     required this.propertyModel,
   });
-  final PropertyModel propertyModel;
+  final PropertyModell propertyModel;
   @override
   Widget build(BuildContext context) {
     return Row(children: [

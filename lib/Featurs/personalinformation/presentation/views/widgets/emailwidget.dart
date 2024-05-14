@@ -40,7 +40,7 @@ class emailwidget extends StatelessWidget {
           Button(
             text: 'Save',
             ontap: () {
-              EmailController(ApiService(Dio())).updateEmail(context);
+              emailController.updateEmail(context);
             },
             raduis: 15,
             colorr: kprimarycolor,
