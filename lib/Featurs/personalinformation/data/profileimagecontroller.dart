@@ -6,34 +6,29 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/utils/api_service.dart';
 
-
-
 class ProfileimageController {
   TextEditingController imageController = TextEditingController();
   final ApiService apiService;
 
   Dio dio = Dio();
 
-  ProfileimageController( this.apiService);
+  ProfileimageController(this.apiService);
 
   Future<void> updateProfileimage(BuildContext context) async {
     try {
-      print('this is User Name token');
       String token = GlobalSharedPreferences.getString('token');
       print(token);
 
-      Map <String,dynamic> body = {
-        "name": imageController.text,
-        "role": "user"
+      Map<String, dynamic> body = {
+        "photo": imageController.text,
       };
 
       final response = await apiService.patch(
           endPointPath: 'users/updateMe',
-          token:  GlobalSharedPreferences.getString(
-              'token'),
+          token: GlobalSharedPreferences.getString('token'),
           data: body);
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         imageController.clear();
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -43,7 +38,6 @@ class ProfileimageController {
           ),
         );
         GoRouter.of(context).pop();
-
       }
     } on DioError catch (e) {
       if (e.response != null) {

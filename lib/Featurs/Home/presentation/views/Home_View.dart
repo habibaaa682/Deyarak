@@ -21,7 +21,6 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView>
     with AutomaticKeepAliveClientMixin {
-
   int currentindex = 0;
 
   List<Widget> pages = const <Widget>[
@@ -83,8 +82,7 @@ class _HomeViewState extends State<HomeView>
         ),
       ),
       body: BlocProvider(
-          create: (context)=> HomePropertiesCubit(getIt.get<HomeRepoImpl>())
-            ,
+          create: (context) => HomePropertiesCubit(getIt.get<HomeRepoImpl>()),
           child: IndexedStack(index: currentindex, children: pages)),
     );
   }

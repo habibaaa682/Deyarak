@@ -13,7 +13,8 @@ import '../../../../../core/utils/api_service.dart';
 import '../../../data/usernamecontroller.dart';
 
 class usernamewidget extends StatelessWidget {
-  UsernameController usernameController= Get.put(UsernameController(ApiService(Dio())));
+  UsernameController usernameController =
+      Get.put(UsernameController(ApiService(Dio())));
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +31,17 @@ class usernamewidget extends StatelessWidget {
             'Edit User Name',
             style: Fonts.textstyle24,
           ),
-
           customtextfield(
-              hinttext: '',
-              labeltext: ' User Name',
-             
-              password: false, textEditingController: usernameController.nameController,
-             
-              ),
-       
+            hinttext: '',
+            labeltext: ' User Name',
+            password: false,
+            textEditingController: usernameController.nameController,
+          ),
           const SizedBox(height: 15),
           Button(
             text: 'Save',
             ontap: () {
-              UsernameController(ApiService(Dio())).updateUsername(context);
+              usernameController.updateUsername(context);
             },
             raduis: 15,
             colorr: kprimarycolor,

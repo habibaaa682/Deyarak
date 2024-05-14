@@ -6,10 +6,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../../../core/utils/router.dart';
 
 class HomeSearchBar extends StatelessWidget {
-   HomeSearchBar({super.key, required this.onSearch });
-  final Function(String)onSearch;
-
-
+  HomeSearchBar({super.key, required this.onSearch});
+  final Function(String) onSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,9 @@ class HomeSearchBar extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: CustomSearchField(onSubmitted: onSearch,),
+            child: CustomSearchField(
+              onSubmitted: onSearch,
+            ),
           ),
           const SizedBox(
             width: 20,

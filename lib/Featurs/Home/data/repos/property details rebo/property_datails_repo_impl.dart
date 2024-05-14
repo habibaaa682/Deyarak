@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:deyarakapp/Featurs/Home/data/Models/property_modell/property_modell.dart';
 import 'package:deyarakapp/Featurs/Home/data/repos/property%20details%20rebo/property_details_rebo.dart';
 import 'package:deyarakapp/core/Errors/Failure.dart';
 import 'package:dio/dio.dart';
@@ -13,7 +14,7 @@ class PropertyDetailesRepoImpl implements PropertyDetailsRepo {
   PropertyDetailesRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, List<PropertyModel>>> getCertainProperty(
+  Future<Either<Failure, List<PropertyModell>>> getCertainProperty(
       {required String propertyId}) async {
     try {
       print('token from property details end point');
@@ -23,7 +24,7 @@ class PropertyDetailesRepoImpl implements PropertyDetailsRepo {
           endPointPath: 'properties/$propertyId', token: token);
       var propertyDetailes;
       if (response['status'] == 'success') {
-        propertyDetailes = PropertyModel.fromJson(response['data']);
+        propertyDetailes = PropertyModell.fromJson(response['data']);
         print(propertyDetailes);
         print('property detailes data fetched');
       } else {

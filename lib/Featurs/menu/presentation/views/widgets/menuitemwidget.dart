@@ -2,7 +2,7 @@ import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class menuitemwidget extends StatelessWidget {
+class menuitemwidget extends StatefulWidget {
   String text;
   var icon;
   menuitemwidget({
@@ -10,6 +10,12 @@ class menuitemwidget extends StatelessWidget {
     required this.text,
     required this.icon,
   });
+
+  @override
+  State<menuitemwidget> createState() => _menuitemwidgetState();
+}
+
+class _menuitemwidgetState extends State<menuitemwidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,14 +25,14 @@ class menuitemwidget extends StatelessWidget {
         Row(
           children: [
             Icon(
-              icon,
+              widget.icon,
               size: 32,
             ),
             const SizedBox(
               width: 24,
             ),
             Text(
-              text,
+              widget.text,
               style: Fonts.textstyle16,
             ),
             const Spacer(),

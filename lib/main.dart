@@ -40,7 +40,6 @@ class DeyarakApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-
         BlocProvider(
           create: (context) => ApartmentCubitCubit(getIt.get<HomeRepoImpl>())
             ..fetchApartmentProperties(),

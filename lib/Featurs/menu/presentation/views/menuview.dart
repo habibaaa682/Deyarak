@@ -2,9 +2,14 @@ import 'package:deyarakapp/Featurs/menu/presentation/views/widgets/menuwidget.da
 
 import 'package:flutter/material.dart';
 
-class MenueView extends StatelessWidget {
+class MenueView extends StatefulWidget {
   const MenueView({super.key});
 
+  @override
+  State<MenueView> createState() => _MenueViewState();
+}
+
+class _MenueViewState extends State<MenueView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

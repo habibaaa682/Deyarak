@@ -6,15 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/utils/api_service.dart';
 
-
-
 class UsernameController {
   TextEditingController nameController = TextEditingController();
   final ApiService apiService;
-
   Dio dio = Dio();
 
-  UsernameController( this.apiService);
+  UsernameController(this.apiService);
 
   Future<void> updateUsername(BuildContext context) async {
     try {
@@ -22,18 +19,16 @@ class UsernameController {
       String token = GlobalSharedPreferences.getString('token');
       print(token);
 
-      Map <String,dynamic> body = {
-        "name": nameController.text,
-        "role": "user"
+      Map<String, dynamic> body = {
+        "name": nameController.text.toString(),
       };
-
+      print(nameController.text.toString());
       final response = await apiService.patch(
           endPointPath: 'users/updateMe',
-          token:  GlobalSharedPreferences.getString(
-              'token'),
+          token: GlobalSharedPreferences.getString('token'),
           data: body);
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         nameController.clear();
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -43,7 +38,6 @@ class UsernameController {
           ),
         );
         GoRouter.of(context).pop();
-
       }
     } on DioError catch (e) {
       if (e.response != null) {

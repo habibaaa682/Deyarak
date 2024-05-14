@@ -12,7 +12,7 @@ final class PropertyDetailesInitial extends PropertyDetailesState {}
 final class PropertyDetailesLoading extends PropertyDetailesState {}
 
 final class PropertyDetailesSuccess extends PropertyDetailesState {
-  final List<PropertyModel> propertydetailes;
+  final List<PropertyModell> propertydetailes;
 
   const PropertyDetailesSuccess(this.propertydetailes);
 }

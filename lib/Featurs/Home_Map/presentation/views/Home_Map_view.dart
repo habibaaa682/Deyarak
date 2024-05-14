@@ -12,24 +12,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-
-
 class MapView extends StatefulWidget {
-  const MapView({Key? key,  this.lat=30.550968,  this.lng=31.008668});
-final double lat;
-final double lng;
+  const MapView({Key? key, this.lat = 30.550968, this.lng = 31.008668});
+  final double lat;
+  final double lng;
   @override
   State<MapView> createState() => _MapViewState();
 }
 
 class _MapViewState extends State<MapView> with TickerProviderStateMixin {
-
-
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(vsync: this, length: 5);
     return Scaffold(
-
       // backgroundColor: Colors.white,
 //--------------------------------------------------
       // bottomNavigationBar: const BottomNavBar(),
@@ -39,9 +34,7 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-     
-   /*const Padding(
+            /*const Padding(
       padding: EdgeInsets.only(bottom: 16),
       child: HomeSearchBar(),
     ),*/
@@ -49,9 +42,8 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
             BlocBuilder<MapCubit, MapState>(builder: (context, state) {
               if (state is MapcubitSuccess) {
                 return Map_w(
-
                   mapmodelobj: state.map,
-                 lat: widget.lat,
+                  lat: widget.lat,
                   lng: widget.lng,
                 );
               } else if (state is MapcubitFailure) {

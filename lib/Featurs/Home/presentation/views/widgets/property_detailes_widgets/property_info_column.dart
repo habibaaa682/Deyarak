@@ -1,4 +1,5 @@
 import 'package:deyarakapp/Featurs/Home/data/Models/amentiesController.dart';
+import 'package:deyarakapp/Featurs/Home/data/Models/property_modell/property_modell.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/property_info_row.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class ProprtyInfoColumn extends StatefulWidget {
     super.key,
     required this.propertyModel,
   });
-  final PropertyModel propertyModel;
+  final PropertyModell propertyModel;
 
   @override
   State<ProprtyInfoColumn> createState() => _ProprtyInfoColumnState();
@@ -52,6 +53,7 @@ class _ProprtyInfoColumnState extends State<ProprtyInfoColumn> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+padding: EdgeInsets.only(top: 30),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: propertyinfo.length,

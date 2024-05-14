@@ -23,28 +23,28 @@ class _HomeViewBodyState extends State<HomeViewBody>
   void initState() {
     // TODO: implement initState
     super.initState();
-    homePropertiesCubit= context.read<HomePropertiesCubit>();
+    homePropertiesCubit = context.read<HomePropertiesCubit>();
 
     homePropertiesCubit.fetchHomeProperties();
-    searchText='';
+    searchText = '';
   }
+
   @override
   Widget build(BuildContext context) {
-
-    void handleSearch(String text){
+    void handleSearch(String text) {
       setState(() {
-        searchText= text;
+        searchText = text;
       });
-
     }
-
-
 
     TabController tabController = TabController(vsync: this, length: 5);
     return Scaffold(
       floatingActionButton: const AddFloatingActionButton(),
       body: Column(children: [
-        SafeArea(child:  HomeSearchBar(onSearch: handleSearch,)),
+        SafeArea(
+            child: HomeSearchBar(
+          onSearch: handleSearch,
+        )),
         HomeTabBar(tabController: tabController),
         HomeTabBarView(
           onSearch: handleSearch,

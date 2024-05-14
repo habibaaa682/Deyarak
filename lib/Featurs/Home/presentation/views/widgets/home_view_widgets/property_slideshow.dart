@@ -1,4 +1,5 @@
 import 'package:deyarakapp/Featurs/Home/data/Models/property_model/property_model.dart';
+import 'package:deyarakapp/Featurs/Home/data/Models/property_modell/property_modell.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_widgets/image_place_holder.dart';
 import 'package:deyarakapp/controllers/Wishlist_controllers/add_to_user_wishlist.dart';
 import 'package:dio/dio.dart';
@@ -13,7 +14,7 @@ class PropertySlideShow extends StatefulWidget {
     super.key,
     required this.propertyModel,
   });
-  final PropertyModel propertyModel;
+  final PropertyModell propertyModel;
   @override
   State<PropertySlideShow> createState() => _PropertySlideShow();
 }
@@ -130,8 +131,9 @@ class _PropertySlideShow extends State<PropertySlideShow>
                                           userId:
                                               GlobalSharedPreferences.getString(
                                                   'userId'),
-                                          propertyId:
-                                              widget.propertyModel.data!.id.toString(),
+                                          propertyId: widget
+                                              .propertyModel.data!.id
+                                              .toString(),
                                           token:
                                               GlobalSharedPreferences.getString(
                                                   'token'))
@@ -144,7 +146,8 @@ class _PropertySlideShow extends State<PropertySlideShow>
                                     context,
                                     userId: GlobalSharedPreferences.getString(
                                         'userId'),
-                                    propertyId:   widget.propertyModel.data!.id.toString(),
+                                    propertyId: widget.propertyModel.data!.id
+                                        .toString(),
                                     token: GlobalSharedPreferences.getString(
                                         'token'),
                                   )

@@ -23,7 +23,6 @@ final class AllHomePropertiesSuccess extends HomePropertiesState {
   const AllHomePropertiesSuccess(this.homeProperties);
 }
 
-
 final class SearchPropertiesSuccess extends HomePropertiesState {
   final List<HomeModel> homeProperties;
 

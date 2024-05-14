@@ -23,16 +23,11 @@ class _PropertyDetailesViewState extends State<PropertyDetailesView> {
     // TODO: implement initState
     super.initState();
     print(widget.propertyId);
-  
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          iconTheme: const IconThemeData(color: Colors.black),
-          backgroundColor: Colors.transparent,
-        ),
+
         body: BlocProvider(
           create: (context) =>
               PropertyDetailesCubit(getIt.get<PropertyDetailesRepoImpl>()),

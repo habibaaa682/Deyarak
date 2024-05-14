@@ -46,10 +46,24 @@ class ApiService {
 
   Future<Response<dynamic>> patch(
       {required String endPointPath,
-        required String token,
-        Map<String, dynamic>? data}) async {
+      required String token,
+      required Map<String, dynamic>? data}) async {
     var response = await _dio.patch('$baseUrl$endPointPath',
         data: data,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+            'Content-Type': 'application/json',
+          },
+        ));
+    return response;
+  }
+  Future<Response<dynamic>> delete(
+      {required String endPointPath,
+        required String token,
+       }) async {
+    var response = await _dio.delete('$baseUrl$endPointPath',
+
         options: Options(
           headers: {
             'Authorization': 'Bearer $token',

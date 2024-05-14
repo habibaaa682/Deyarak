@@ -14,7 +14,7 @@ import '../../../../../core/utils/api_service.dart';
 import '../../../data/usernamecontroller.dart';
 
 class emailwidget extends StatelessWidget {
-  EmailController emailController= Get.put(EmailController(ApiService(Dio())));
+  EmailController emailController = Get.put(EmailController(ApiService(Dio())));
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,21 +30,17 @@ class emailwidget extends StatelessWidget {
             'Edit Email',
             style: Fonts.textstyle24,
           ),
-         customtextfield(
-
-
+          customtextfield(
             password: false,
             hinttext: '',
             labeltext: '  Email',
-             textEditingController: emailController.emailController,
+            textEditingController: emailController.emailController,
           ),
-
-
           const SizedBox(height: 15),
           Button(
             text: 'Save',
             ontap: () {
-              EmailController(ApiService(Dio())).updateEmail(context);
+              emailController.updateEmail(context);
             },
             raduis: 15,
             colorr: kprimarycolor,
