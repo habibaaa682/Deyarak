@@ -1,5 +1,3 @@
-
-
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/appbarwidget.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/personalinformationitem.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/uploadimagewidget.dart';
@@ -7,8 +5,9 @@ import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widget
 import 'package:deyarakapp/core/utils/router.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:go_router/go_router.dart';
-
 
 import '../../../../../core/utils/api_service.dart';
 
@@ -31,7 +30,7 @@ class _personalinformationwidgetState extends State<personalinformationwidget> {
               text: 'Personal Information',
               h: 0.03,
             ),
-            UploadImageWidget(ApiService(Dio())),
+            UploadImageWidget(), //ApiService(Dio())),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.045,
             ),

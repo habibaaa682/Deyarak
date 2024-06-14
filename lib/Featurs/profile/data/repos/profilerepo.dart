@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:deyarakapp/Featurs/profile/data/models/profile.dart';
+import 'package:deyarakapp/Featurs/profile/data/models/profile/profile.dart';
 
 import 'package:deyarakapp/core/Errors/Failure.dart';
 

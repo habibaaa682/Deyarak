@@ -1,8 +1,6 @@
-
+import 'package:deyarakapp/Featurs/profile/data/models/profile/profile.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
-
-import '../../data/models/profile.dart';
 
 class confirmation extends StatefulWidget {
   final List<Profile> userobj;

@@ -56,35 +56,104 @@ class RegisterationController {
         final errorData = e.response!.data;
         if (errorData.containsKey('message')) {
           final errorMessage = errorData['message'];
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(errorMessage),
-              backgroundColor: Colors.red,
-            ),
-          );
+
+          showDialog(
+              context: context,
+              builder: (context) {
+                return SimpleDialog(
+                  backgroundColor:Colors.red ,
+                  title: Text(errorMessage),
+                  contentPadding: EdgeInsets.all(16),
+                  children: [
+
+                    Row(
+                      children: [
+
+                        TextButton(
+                            onPressed: () {
+                              GoRouter.of(context).pop();
+                            },
+                            child: Text('OK',style:TextStyle(color: Colors.white),)),
+                      ],
+                    ),
+                  ],
+                );
+              });
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Unknown error occurred during registration'),
-              backgroundColor: Colors.red,
-            ),
-          );
+
+
+          showDialog(
+              context: context,
+              builder: (context) {
+                return SimpleDialog(
+                  backgroundColor:Colors.red ,
+                  title: Text('Unknown error occurred during registration'),
+                  contentPadding: EdgeInsets.all(16),
+                  children: [
+
+                    Row(
+                      children: [
+
+                        TextButton(
+                            onPressed: () {
+                              GoRouter.of(context).pop();
+                            },
+                            child: Text('OK',style:TextStyle(color: Colors.white),)),
+                      ],
+                    ),
+                  ],
+                );
+              });
         }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error during registration: ${e.message}'),
-            backgroundColor: Colors.red,
-          ),
-        );
+
+        showDialog(
+            context: context,
+            builder: (context) {
+              return SimpleDialog(
+                backgroundColor:Colors.red ,
+                title: Text('Error during registration: ${e.message}'),
+                contentPadding: EdgeInsets.all(16),
+                children: [
+
+                  Row(
+                    children: [
+
+                      TextButton(
+                          onPressed: () {
+                            GoRouter.of(context).pop();
+                          },
+                          child: Text('OK',style:TextStyle(color: Colors.white),)),
+                    ],
+                  ),
+                ],
+              );
+            });
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error during registration: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
+
+      showDialog(
+          context: context,
+          builder: (context) {
+            return SimpleDialog(
+              backgroundColor:Colors.red ,
+              title: Text('Error during registration: $e'),
+              contentPadding: EdgeInsets.all(16),
+              children: [
+
+                Row(
+                  children: [
+
+                    TextButton(
+                        onPressed: () {
+                          GoRouter.of(context).pop();
+                        },
+                        child: Text('OK',style:TextStyle(color: Colors.white),)),
+                  ],
+                ),
+              ],
+            );
+          });
     }
   }
 }

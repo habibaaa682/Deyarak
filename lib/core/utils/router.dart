@@ -43,6 +43,7 @@ abstract class AppRouter {
   static const kresetpass = '/ResetPasswordScreen';
   static const kconfirmnewpassword = '/ConfirmPassword';
   static const kpropertydetails = '/property_detailes_view';
+  static const kforgetpassword = '/Reset_pass_screen';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -124,6 +125,10 @@ abstract class AppRouter {
       GoRoute(
         path: kconfirmnewpassword,
         builder: (context, state) => ConfirmNewPassword(),
+      ),
+      GoRoute(
+        path: kconfirmnewpassword,
+        builder: (context, state) => ResetPasswordScreen(),
       ),
     ],
   );

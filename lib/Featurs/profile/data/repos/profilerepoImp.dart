@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-
+import 'package:deyarakapp/Featurs/profile/data/models/profile/profile.dart';
 
 import 'package:deyarakapp/Featurs/profile/data/repos/profilerepo.dart';
 import 'package:deyarakapp/core/Errors/Failure.dart';
@@ -9,7 +9,6 @@ import 'package:deyarakapp/core/utils/api_service.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../controllers/sharedPrefrenceController.dart';
-import '../models/profile.dart';
 
 class profilerepimp implements profilerepo {
   final ApiService apiService;

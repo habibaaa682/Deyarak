@@ -1,8 +1,6 @@
-
+import 'package:deyarakapp/Featurs/profile/data/models/profile/profile.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../profile/data/models/profile.dart';
 
 // ignore: must_be_immutable
 class profilemenuwidget extends StatefulWidget {
@@ -32,7 +30,7 @@ class _profilemenuwidgetState extends State<profilemenuwidget> {
             ClipRRect(
               borderRadius: BorderRadius.circular(45),
               child: Image.network(
-                widget.userobj[0].photo.toString(),
+                widget.userobj[0].photo!.url.toString(),
                 width: 80,
                 height: 80,
                 fit: BoxFit.cover,

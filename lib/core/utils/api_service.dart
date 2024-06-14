@@ -68,24 +68,27 @@ class ApiService {
     required String endPointPath,
     required String token,
     required FormData data,
+    validateStatus,
   }) async {
-    try {
-      var response = await _dio.patch(
-        '$baseUrl$endPointPath',
-        data: data,
-        options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-            'Content-Type': 'multipart/form-data', // Change content type
-          },
-        ),
-      );
-      return response;
-    } catch (e) {
-      // Handle errors
-      print('Error during PATCH request: $e');
-      throw e; // Re-throw the error to be handled by the caller
-    }
+   try {
+     var response = await _dio.patch(
+       '$baseUrl$endPointPath',
+       data: data,
+       options: Options(
+         headers: {
+           'Authorization': 'Bearer $token',
+           'Content-Type': 'multipart/form-data', // Change content type
+         },
+         validateStatus: validateStatus??(status)=>status!<500,
+       ),
+     );
+     return response;
+   }catch(e){
+     print(e);
+     rethrow;
+   }
+
+
   }
 
   Future<Response<dynamic>> delete({
