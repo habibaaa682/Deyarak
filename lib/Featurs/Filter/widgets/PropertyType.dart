@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PropertyType extends StatefulWidget {
-  const PropertyType({Key? key}) : super(key: key);
+  late  TextEditingController textEditingController;
+  PropertyType({super.key,required this.textEditingController});
 
   @override
   State<PropertyType> createState() => _PropertyTypeState();
@@ -162,6 +163,7 @@ class _PropertyTypeState extends State<PropertyType>
             typeColors[key] = const Color.fromARGB(255, 250, 250, 250));
         typeColors[type] = const Color.fromARGB(255, 237, 178, 170);
       }
+      widget.textEditingController.text =type;
       print(selectedTypes);
     });
   }

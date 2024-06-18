@@ -12,7 +12,6 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../core/utils/api_service.dart';
 
-
 class emailwidget extends StatelessWidget {
   EmailController emailController = Get.put(EmailController(ApiService(Dio())));
   @override

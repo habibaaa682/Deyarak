@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Radio_ extends StatefulWidget {
-  const Radio_({Key? key, required this.text}) : super(key: key);
+  Radio_({super.key, required this.text,   required this.textEditingController});
 
   final String text;
+  TextEditingController textEditingController;
 
   @override
   State<Radio_> createState() => _RadioState();
@@ -14,6 +15,8 @@ class Radio_ extends StatefulWidget {
 
 Color colorYes = Colors.white;
 Color colorNo = Colors.white;
+bool flagg=false;
+
 
 class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
   @override
@@ -37,8 +40,17 @@ class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
                   GestureDetector(
                     onTap: () {
                       setState(() {
+
                         colorYes = kprimarycolor;
+
                         colorNo = Colors.white;
+                        if(colorYes==kprimarycolor&&colorNo==Colors.white){
+                          flagg=true;
+                          widget.textEditingController=flagg as TextEditingController ;
+                        }else{
+                          flagg=false;
+                          widget.textEditingController=flagg as TextEditingController ;
+                        }
                       });
                     },
                     child: Container(
@@ -62,6 +74,13 @@ class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
                       setState(() {
                         colorYes = kprimarycolor;
                         colorNo = Colors.white;
+                        if(colorYes==kprimarycolor&&colorNo==Colors.white){
+                          flagg=true;
+                          widget.textEditingController=flagg as TextEditingController ;
+                        }else{
+                          flagg=false;
+                          widget.textEditingController=flagg as TextEditingController ;
+                        }
                       });
                     },
                     child: const Text(
@@ -69,6 +88,7 @@ class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
+
                   SizedBox(
                     width: 50,
                   ),
@@ -77,6 +97,13 @@ class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
                       setState(() {
                         colorNo = kprimarycolor;
                         colorYes = Colors.white;
+                        if(colorYes==kprimarycolor&&colorNo==Colors.white){
+                          flagg=true;
+                          widget.textEditingController=flagg as TextEditingController ;
+                        }else{
+                          flagg=false;
+                          widget.textEditingController=flagg as TextEditingController ;
+                        }
                       });
                     },
                     child: Container(
@@ -100,6 +127,13 @@ class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
                       setState(() {
                         colorNo = kprimarycolor;
                         colorYes = Colors.white;
+                        if(colorYes==kprimarycolor&&colorNo==Colors.white){
+                          flagg=true;
+                          widget.textEditingController=flagg as TextEditingController ;
+                        }else{
+                          flagg=false;
+                          widget.textEditingController=flagg as TextEditingController ;
+                        }
                       });
                     },
                     child: const Text(

@@ -57,10 +57,10 @@ class _FilterState extends State<FilterBody>
 // Rooms & Bathrooms
           TitleOfWidget(title: "Rooms&Bathrooms"),
 // Rooms
-          Rooms(title: 'Rooms'),
+          //Rooms(title: 'Rooms'),
 
 // Bathrooms
-          Rooms(title: 'Bathrooms'),
+         // Rooms(title: 'Bathrooms'),
 
 //---------------------------------------------------------------------------------------------
 // Divider 2
@@ -69,7 +69,7 @@ class _FilterState extends State<FilterBody>
 // Property_Type
           TitleOfWidget(title: "Property Type"),
 
-          const PropertyType(),
+         // const PropertyType(),
 
 //---------------------------------------------------------------------------------------------
 // Divider 2

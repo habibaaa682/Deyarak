@@ -9,6 +9,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../login_screen/presentation/widgets/confirm_pass_text_field.dart';
+
 class confirmpasswidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,12 @@ class confirmpasswidget extends StatelessWidget {
               Text(
                   'Complete your deactivation request by entering the password associated with your account.',
                   style: Fonts.textstyle14.copyWith(color: Colors.grey)),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.045,
+              ),
+               ConfirmationTextField(
+                hint: 'Confirm Password',
+              ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.045,
               ),

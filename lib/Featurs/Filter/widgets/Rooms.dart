@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class Rooms extends StatefulWidget {
   final String title;
+  late  TextEditingController textEditingController;
 
   Rooms({
     Key? key,
     required this.title,
+    required this.textEditingController
   }) : super(key: key);
 
   @override
@@ -245,7 +247,8 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
             typeColors[key] = const Color.fromARGB(255, 250, 250, 250));
         typeColors[type] = const Color.fromARGB(255, 237, 178, 170);
       }
-      print(selectedTypes);
+      widget.textEditingController.text =type;
+      print(type);
     });
   }
 

@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 
-class PropertyDiscription extends StatefulWidget {
-  const PropertyDiscription({
-    super.key,
-  });
+class PropertyDiscription extends StatelessWidget {
+  TextEditingController textEditingController;
+  PropertyDiscription({super.key, required this.textEditingController});
 
-  @override
-  State<PropertyDiscription> createState() => _PropertyDiscriptionState();
-}
-
-class _PropertyDiscriptionState extends State<PropertyDiscription>
-    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Padding(
       padding: const EdgeInsets.all(12),
       child: TextFormField(
+          controller: textEditingController,
           maxLines: 12,
           minLines: 5,
           decoration: InputDecoration(
