@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PropertyType extends StatefulWidget {
-  const PropertyType({Key? key}) : super(key: key);
-
+   PropertyType({Key? key,this.selectedType='Apartment'}) : super(key: key);
+   String selectedType;
   @override
   State<PropertyType> createState() => _PropertyTypeState();
 }
@@ -158,6 +158,8 @@ class _PropertyTypeState extends State<PropertyType>
       } else {
         selectedTypes.updateAll((key, value) => selectedTypes[key] = false);
         selectedTypes[type] = true;
+        widget.selectedType=type;
+        print(widget.selectedType);
         typeColors.updateAll((key, value) =>
             typeColors[key] = const Color.fromARGB(255, 250, 250, 250));
         typeColors[type] = const Color.fromARGB(255, 237, 178, 170);

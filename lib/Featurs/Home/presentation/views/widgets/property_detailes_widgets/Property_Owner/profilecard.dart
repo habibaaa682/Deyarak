@@ -1,5 +1,5 @@
 import 'package:deyarakapp/Featurs/Home/data/Models/property_modell/property_modell.dart';
-import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/owner_profile.dart';
+import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/Property_Owner/owner_profile.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:deyarakapp/core/utils/router.dart';
 import 'package:flutter/material.dart';

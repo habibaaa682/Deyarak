@@ -69,7 +69,7 @@ class _FilterState extends State<FilterBody>
 // Property_Type
           TitleOfWidget(title: "Property Type"),
 
-          const PropertyType(),
+          PropertyType(),
 
 //---------------------------------------------------------------------------------------------
 // Divider 2

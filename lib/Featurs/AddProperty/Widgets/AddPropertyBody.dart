@@ -78,7 +78,7 @@ class _AddPropertyState extends State<AddPropertyBody>
 // Property Type
           TitleOfWidget(title: "Property Type"),
 
-          const PropertyType(),
+           PropertyType(),
 //---------------------------------------------------------------------------------------------
 // Divider 5
           const Divider_(),

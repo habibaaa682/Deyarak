@@ -27,6 +27,7 @@ class _WishlistBodyState extends State<WishlistBody> {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocBuilder<WishlistCubit, WishlistState>(
       builder: (context, state) {
         if (state is WishlistSuccess) {

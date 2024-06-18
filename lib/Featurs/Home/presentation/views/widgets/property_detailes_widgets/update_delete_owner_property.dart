@@ -1,3 +1,4 @@
+import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/update_property.dart';
 import 'package:deyarakapp/controllers/property_controller.dart';
 import 'package:deyarakapp/controllers/sharedPrefrenceController.dart';
 import 'package:deyarakapp/core/utils/api_service.dart';
@@ -25,6 +26,7 @@ final String propertyId;
           Spacer(),
           IconButton(
             onPressed: () {
+
             },
             icon: Icon(Icons.edit),
           ),

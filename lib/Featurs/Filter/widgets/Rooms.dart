@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 
 class Rooms extends StatefulWidget {
   final String title;
-
+   String selectedRooms;
+  String selectedHalls;
+  String selectedBaths;
   Rooms({
     Key? key,
     required this.title,
+    this.selectedRooms='1',
+    this.selectedHalls='1',
+    this.selectedBaths='1',
+
   }) : super(key: key);
 
   @override
@@ -14,8 +20,8 @@ class Rooms extends StatefulWidget {
 
 class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
   Map<String, bool> selectedTypes = {
-    'Any': true, // Apartment is true by default
-    '1': false,
+     // Apartment is true by default
+    '1': true,
     '2': false,
     '3': false,
     '4': false,
@@ -28,8 +34,7 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
   };
 
   Map<String, Color> typeColors = {
-    'Any': const Color(0xffFF725E),
-    '1': const Color.fromARGB(255, 250, 250, 250),
+    '1': const Color(0xffFF725E),
     '2': const Color.fromARGB(255, 250, 250, 250),
     '3': const Color.fromARGB(255, 250, 250, 250),
     '4': const Color.fromARGB(255, 250, 250, 250),
@@ -70,16 +75,7 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              BuildroomRow(
-                  text: 'Any',
-                  onTap: () {
-                    toggleType('Any');
-                  },
-                  scaleFactor: scaleFactor,
-                  containerWidth: containerWidth,
-                  containerHeight: containerHeight,
-                  paddingSize: paddingSize,
-                  textSize: textSize),
+
               BuildroomRow(
                   text: '1',
                   onTap: () {
@@ -207,9 +203,10 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
             decoration: BoxDecoration(
               border: Border.all(color: const Color(0xffD9D9D9)),
               color: selectedTypes[text]!
-                  ? const Color(0xffFF725E)
+                  ?const Color(0xffFF725E)
                   : const Color(0xffD9D9D9),
               borderRadius: BorderRadius.circular(35 * scaleFactor),
+
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -236,16 +233,19 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
   void toggleType(String type) {
     setState(() {
       if (selectedTypes[type] == true) {
+
         selectedTypes[type] = false;
         typeColors[type] = const Color.fromARGB(255, 250, 250, 250);
       } else {
         selectedTypes.updateAll((key, value) => selectedTypes[key] = false);
         selectedTypes[type] = true;
+        widget.selectedRooms=type;
+        print(widget.selectedRooms);
         typeColors.updateAll((key, value) =>
             typeColors[key] = const Color.fromARGB(255, 250, 250, 250));
         typeColors[type] = const Color.fromARGB(255, 237, 178, 170);
       }
-      print(selectedTypes);
+      //print(selectedTypes);
     });
   }
 

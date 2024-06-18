@@ -78,7 +78,6 @@ class _profilewidgetState extends State<profilewidget> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.045,
                 ),
-                deactivateaccountitemwidget(base: 'report', hint: ''),
               ],
             ),
           ),

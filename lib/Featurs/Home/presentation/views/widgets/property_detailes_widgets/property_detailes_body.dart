@@ -3,7 +3,7 @@ import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/home_view_wid
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/amenties.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/contact_method_bar.dart';
 
-import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/profilecard.dart';
+import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/Property_Owner/profilecard.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/property_description.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/property_info_column.dart';
 import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/related_suggestion_list.dart';
