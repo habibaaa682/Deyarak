@@ -1,4 +1,3 @@
-import 'package:deyarakapp/Featurs/profile/data/models/user/user.profile.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,10 +5,10 @@ import 'package:get/get.dart';
 import '../../../../../data/Models/property_modell/property_modell.dart';
 
 class Owner_Confirmation extends StatefulWidget {
-  final PropertyModell  propertyModell;
+  final PropertyModell propertyModell;
   Owner_Confirmation({
-    super.key, required this.propertyModell,
-
+    super.key,
+    required this.propertyModell,
   });
 
   @override
@@ -25,7 +24,7 @@ class _Owner_ConfirmationState extends State<Owner_Confirmation> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "${ widget.propertyModell.data!.owner!.name.toString()}'s Confirmed Information ",
+            "${widget.propertyModell.data!.owner!.name.toString()}'s Confirmed Information ",
             style: Fonts.textstyle16.copyWith(fontWeight: FontWeight.bold),
           ),
           SizedBox(

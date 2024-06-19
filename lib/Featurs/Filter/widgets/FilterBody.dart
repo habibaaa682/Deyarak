@@ -6,7 +6,10 @@ import 'package:deyarakapp/Featurs/Filter/widgets/Rang_Slider.dart';
 import 'package:deyarakapp/Featurs/Filter/widgets/Rooms.dart';
 import 'package:deyarakapp/Featurs/Filter/widgets/TitleOfWidget.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/appbarwidget.dart';
+import 'package:deyarakapp/controllers/Add-PropertyController/AddPropertyController.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class FilterBody extends StatefulWidget {
   const FilterBody({super.key});
@@ -16,6 +19,8 @@ class FilterBody extends StatefulWidget {
 
 class _FilterState extends State<FilterBody>
     with AutomaticKeepAliveClientMixin {
+  AddPropertyController addPropertyController =
+      Get.put(AddPropertyController());
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -57,10 +62,10 @@ class _FilterState extends State<FilterBody>
 // Rooms & Bathrooms
           TitleOfWidget(title: "Rooms&Bathrooms"),
 // Rooms
-          Rooms(title: 'Rooms'),
+          //Rooms(title: 'Rooms'),
 
 // Bathrooms
-          Rooms(title: 'Bathrooms'),
+          // Rooms(title: 'Bathrooms'),
 
 //---------------------------------------------------------------------------------------------
 // Divider 2
@@ -68,8 +73,9 @@ class _FilterState extends State<FilterBody>
 //---------------------------------------------------------------------------------------------
 // Property_Type
           TitleOfWidget(title: "Property Type"),
-
-          PropertyType(),
+          PropertyType(
+            textEditingController: addPropertyController.CategoryController,
+          ),
 
 //---------------------------------------------------------------------------------------------
 // Divider 2

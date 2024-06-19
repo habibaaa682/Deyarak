@@ -1,5 +1,4 @@
 import 'package:deyarakapp/Featurs/Home/presentation/views/Home_View.dart';
-import 'package:deyarakapp/Featurs/Home/presentation/views/widgets/property_detailes_widgets/Property_Owner/owner_profile.dart';
 import 'package:deyarakapp/Featurs/aboutus/presentation/aboutusview.dart';
 import 'package:deyarakapp/Featurs/contactus/presentation/contactusview.dart';
 import 'package:deyarakapp/Featurs/login_screen/Login_Screen.dart';
@@ -44,7 +43,7 @@ abstract class AppRouter {
   static const kresetpass = '/ResetPasswordScreen';
   static const kconfirmnewpassword = '/ConfirmPassword';
   static const kpropertydetails = '/property_detailes_view';
-  static const kOwnerProfile = '/owner_profile';
+  static const kforgetpassword = '/Reset_pass_screen';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -127,7 +126,10 @@ abstract class AppRouter {
         path: kconfirmnewpassword,
         builder: (context, state) => ConfirmNewPassword(),
       ),
-
+      GoRoute(
+        path: kconfirmnewpassword,
+        builder: (context, state) => ResetPasswordScreen(),
+      ),
     ],
   );
 }

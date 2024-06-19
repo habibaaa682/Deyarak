@@ -12,15 +12,21 @@ import 'package:deyarakapp/Featurs/Filter/widgets/Rooms.dart';
 import 'package:deyarakapp/Featurs/Filter/widgets/TitleOfWidget.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/appbarwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../controllers/Add-PropertyController/AddPropertyController.dart';
 
 class AddPropertyBody extends StatefulWidget {
-  const AddPropertyBody({Key? key}) : super(key: key);
+  AddPropertyBody({Key? key}) : super(key: key);
   @override
   State<AddPropertyBody> createState() => _AddPropertyState();
 }
 
 class _AddPropertyState extends State<AddPropertyBody>
     with AutomaticKeepAliveClientMixin {
+  AddPropertyController addPropertyController =
+      Get.put(AddPropertyController());
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -48,15 +54,15 @@ class _AddPropertyState extends State<AddPropertyBody>
 //---------------------------------------------------------------------------------------------
 // Slider_M
           Slider_M(
-            title: 'Price',
-            initialValue: 50000.0,
-            kind: 'EGP',
-          ),
+              title: 'Price',
+              initialValue: 50000.0,
+              kind: 'EGP',
+              textEditingController: addPropertyController.PriceController),
           Slider_M(
-            title: 'Size',
-            initialValue: 1000.0,
-            kind: 'M^2',
-          ),
+              title: 'Size',
+              initialValue: 1000.0,
+              kind: 'M^2',
+              textEditingController: addPropertyController.SizeController),
 //---------------------------------------------------------------------------------------------
 // Divider 2
           const Divider_(),
@@ -68,9 +74,14 @@ class _AddPropertyState extends State<AddPropertyBody>
           const Divider_(),
 //---------------------------------------------------------------------------------------------
 // Rooms
-          Rooms(title: 'Rooms'),
-          Rooms(title: 'Halls'),
-          Rooms(title: 'Bathrooms'),
+          Rooms(
+              title: 'Rooms',
+              textEditingController: addPropertyController.NroomsController),
+          // Rooms(title: 'Halls',textEditingController: addPropertyController.PriceController),
+          Rooms(
+              title: 'Bathrooms',
+              textEditingController:
+                  addPropertyController.NbathroomsController),
 //---------------------------------------------------------------------------------------------
 // Divider 4
           const Divider_(),
@@ -78,18 +89,30 @@ class _AddPropertyState extends State<AddPropertyBody>
 // Property Type
           TitleOfWidget(title: "Property Type"),
 
-           PropertyType(),
+          PropertyType(
+            textEditingController: addPropertyController.CategoryController,
+          ),
 //---------------------------------------------------------------------------------------------
 // Divider 5
           const Divider_(),
 //---------------------------------------------------------------------------------------------
 // Radio_
-          const BuildingAge(),
-          const PropertyDiscription(),
+          BuildingAge(
+            textEditingController: addPropertyController.BuildingAgeController,
+          ),
+          PropertyDiscription(
+            textEditingController: addPropertyController.DescriptionController,
+          ),
 
-          const Radio_(text: 'Finished :'),
-          const Radio_(text: 'Furnished :'),
-          const Radio_(text: 'Elevator :'),
+          Radio_(
+              text: 'Finished :',
+              textEditingController: addPropertyController.FinishedController),
+          Radio_(
+              text: 'Furnished :',
+              textEditingController: addPropertyController.FurnishedController),
+          Radio_(
+              text: 'Elevator :',
+              textEditingController: addPropertyController.ElevatorController),
 //---------------------------------------------------------------------------------------------
 // Divider 6
           const Divider_(),

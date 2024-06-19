@@ -11,8 +11,9 @@ class AddPropertyView extends StatefulWidget {
 class _AddPropertyViewState extends State<AddPropertyView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: AddPropertyBody(),
+
     );
   }
 }

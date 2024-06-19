@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:deyarakapp/Featurs/profile/data/models/profile/profile.dart';
 
-import 'package:deyarakapp/Featurs/profile/data/models/user/user.profile.dart';
 import 'package:deyarakapp/Featurs/profile/data/repos/profilerepo.dart';
 import 'package:deyarakapp/core/Errors/Failure.dart';
 
@@ -16,7 +16,7 @@ class profilerepimp implements profilerepo {
   profilerepimp(this.apiService);
 
   @override
-  Future<Either<Failure, List<User>>> getuserprofile() async {
+  Future<Either<Failure, List<Profile>>> getuserprofile() async {
     try {
       print('token from userdata end point');
 
@@ -26,7 +26,7 @@ class profilerepimp implements profilerepo {
           await apiService.get(endPointPath: 'users/me', token: token);
       var userData;
       if (response['status'] == 'success') {
-        userData = User.fromJson(response['data']['data']);
+        userData = Profile.fromJson(response['data']['data']);
         print(userData);
       } else {
         return left(ServerFailure('failed to fetch user data'));

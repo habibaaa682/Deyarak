@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:deyarakapp/Featurs/profile/data/models/user/user.profile.dart';
+import 'package:deyarakapp/Featurs/profile/data/models/profile/profile.dart';
+
 import 'package:deyarakapp/Featurs/profile/data/repos/profilerepo.dart';
 import 'package:equatable/equatable.dart';
 

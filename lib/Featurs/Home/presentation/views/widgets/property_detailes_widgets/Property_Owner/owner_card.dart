@@ -1,5 +1,4 @@
 import 'package:deyarakapp/Featurs/Home/data/Models/property_modell/property_modell.dart';
-import 'package:deyarakapp/Featurs/profile/data/models/user/user.profile.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +6,10 @@ import 'package:flutter/material.dart';
 class OwnerCard extends StatefulWidget {
   final PropertyModell propertyObj;
 
-  OwnerCard({super.key, required this.propertyObj, });
+  OwnerCard({
+    super.key,
+    required this.propertyObj,
+  });
 
   @override
   State<OwnerCard> createState() => _OwnerCardState();
@@ -31,7 +33,7 @@ class _OwnerCardState extends State<OwnerCard> {
         child: Row(children: [
           Padding(
             padding:
-            const EdgeInsets.only(left: 24, top: 24, bottom: 12, right: 50),
+                const EdgeInsets.only(left: 24, top: 24, bottom: 12, right: 50),
             child: Column(
               children: [
                 Container(
@@ -51,7 +53,7 @@ class _OwnerCardState extends State<OwnerCard> {
                 Text(
                   widget.propertyObj.data!.owner!.name.toString(),
                   style:
-                  Fonts.textstyle24.copyWith(fontWeight: FontWeight.bold),
+                      Fonts.textstyle24.copyWith(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -83,7 +85,7 @@ class _OwnerCardState extends State<OwnerCard> {
                 Text(
                   widget.propertyObj.data!.owner!.phone.toString(),
                   style:
-                  Fonts.textstyle18.copyWith(fontWeight: FontWeight.bold),
+                      Fonts.textstyle18.copyWith(fontWeight: FontWeight.bold),
                 ),
                 Text(
                   'Phone Number',

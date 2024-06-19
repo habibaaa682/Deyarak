@@ -5,28 +5,39 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../core/utils/router.dart';
 
-class RegisterationController {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController passwordConfirmController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+
+class AddPropertyController {
+  TextEditingController PriceController = TextEditingController();
+  TextEditingController SizeController = TextEditingController();
+  TextEditingController NroomsController = TextEditingController();
+  TextEditingController NbathroomsController = TextEditingController();
+  TextEditingController CategoryController = TextEditingController();
+  TextEditingController FinishedController = TextEditingController();
+  TextEditingController FurnishedController = TextEditingController();
+  TextEditingController ElevatorController = TextEditingController();
+  TextEditingController BuildingAgeController = TextEditingController();
+  TextEditingController DescriptionController = TextEditingController();
+
   Dio dio = Dio();
 
-  Future<void> registerWithEmail(BuildContext context) async {
+  Future<void> AddingProperty(BuildContext context) async {
     try {
       var headers = {'Content-Type': 'application/json'};
       var url = Uri.parse(
-          ApiEndpoint.baseUrl + ApiEndpoint.authEndPoint.registerEmail);
+          ApiEndpoint.baseUrl + ApiEndpoint.authEndPoint.AddingProperty);
       Map body = {
-        "name": nameController.text,
-        "email": emailController.text.trim(),
-        "password": passwordController.text,
-        "passwordConfirm": passwordConfirmController.text,
-        "phone": phoneController.text,
-        "role": "user"
+        "price": PriceController.text,
+        "Size": SizeController.text,
+        "numberOfRooms": NroomsController.text,
+        "numberOfBathrooms": NbathroomsController.text,
+        "category": CategoryController.text,
+        "finished": FinishedController.text,
+        "furnished": FurnishedController.text,
+        "elevator": ElevatorController.text,
+        "propertyAge": BuildingAgeController.text,
+        "description": DescriptionController.text,
+
       };
       final response = await dio.post(
         url.toString(),
@@ -35,18 +46,23 @@ class RegisterationController {
       );
 
       if (response.statusCode == 201) {
-        nameController.clear();
-        emailController.clear();
-        passwordController.clear();
-        passwordConfirmController.clear();
-        phoneController.clear();
+        PriceController.clear();
+        SizeController.clear();
+        NroomsController.clear();
+        NbathroomsController.clear();
+        CategoryController.clear();
+        FinishedController.clear();
+        FurnishedController.clear();
+        ElevatorController.clear();
+        BuildingAgeController.clear();
+        DescriptionController.clear();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Registered successfully!'),
             backgroundColor: Colors.green,
           ),
         );
-        GoRouter.of(context).push(AppRouter.klogin);
+
         String userToken = response.data['token'];
         GlobalSharedPreferences.setString('token', userToken);
         GlobalSharedPreferences.getString('token');
@@ -87,7 +103,7 @@ class RegisterationController {
               builder: (context) {
                 return SimpleDialog(
                   backgroundColor:Colors.red ,
-                  title: Text('Unknown error occurred during registration'),
+                  title: Text('Unknown error occurred during Adding Property'),
                   contentPadding: EdgeInsets.all(16),
                   children: [
 
@@ -112,7 +128,7 @@ class RegisterationController {
             builder: (context) {
               return SimpleDialog(
                 backgroundColor:Colors.red ,
-                title: Text('Error during registration: ${e.message}'),
+                title: Text('Error during during Adding Property: ${e.message}'),
                 contentPadding: EdgeInsets.all(16),
                 children: [
 
@@ -137,7 +153,7 @@ class RegisterationController {
           builder: (context) {
             return SimpleDialog(
               backgroundColor:Colors.red ,
-              title: Text('Error during registration: $e'),
+              title: Text('Error during during Adding Property: $e'),
               contentPadding: EdgeInsets.all(16),
               children: [
 

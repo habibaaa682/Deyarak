@@ -1,10 +1,10 @@
-import 'package:deyarakapp/Featurs/profile/data/models/user/user.profile.dart';
+import 'package:deyarakapp/Featurs/profile/data/models/profile/profile.dart';
 import 'package:deyarakapp/core/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class profilemenuwidget extends StatefulWidget {
-  final List<User> userobj;
+  final List<Profile> userobj;
 
   profilemenuwidget({
     super.key,

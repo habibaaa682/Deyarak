@@ -1,12 +1,15 @@
-import 'dart:io';
-
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/appbarwidget.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/personalinformationitem.dart';
+import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/uploadimagewidget.dart';
 
 import 'package:deyarakapp/core/utils/router.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
+
+import '../../../../../core/utils/api_service.dart';
 
 class personalinformationwidget extends StatefulWidget {
   @override
@@ -15,7 +18,6 @@ class personalinformationwidget extends StatefulWidget {
 }
 
 class _personalinformationwidgetState extends State<personalinformationwidget> {
-  static File? selectedimage;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,60 +30,7 @@ class _personalinformationwidgetState extends State<personalinformationwidget> {
               text: 'Personal Information',
               h: 0.03,
             ),
-            selectedimage != null
-                ? Center(
-                    child: Stack(children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: FileImage(File(selectedimage!.path)),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      Positioned(
-                        child: IconButton(
-                          icon: Icon(Icons.add_a_photo),
-                          onPressed: () {
-                            getImage();
-                          },
-                        ),
-                        bottom: -10,
-                        left: 65,
-                      )
-                    ]),
-                  )
-                : Center(
-                    child: Stack(children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Image.asset(
-                            'assets/images/User-avatar.svg.png',
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        child: IconButton(
-                          icon: Icon(Icons.add_a_photo),
-                          onPressed: () {
-                            getImage();
-                          },
-                        ),
-                        bottom: -10,
-                        left: 65,
-                      )
-                    ]),
-                  ),
+            UploadImageWidget(), //ApiService(Dio())),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.045,
             ),
@@ -119,14 +68,5 @@ class _personalinformationwidgetState extends State<personalinformationwidget> {
         ),
       ),
     );
-  }
-
-  Future getImage() async {
-    final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (pickedFile == null) return;
-    setState(() {
-      selectedimage = File(pickedFile.path);
-    });
   }
 }

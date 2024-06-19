@@ -4,12 +4,14 @@ class Slider_M extends StatefulWidget {
   final String title;
   final String kind;
   final double initialValue;
+  late  TextEditingController textEditingController;
 
   Slider_M({
     super.key,
     required this.title,
     required this.kind,
     required this.initialValue,
+    required this.textEditingController
   });
 
   @override
@@ -24,7 +26,8 @@ class _Slider_MState extends State<Slider_M>
   void initState() {
     super.initState();
     value = widget.initialValue;
-    Controller = TextEditingController(text: value.toString());
+    widget.textEditingController = TextEditingController(text: value.toString());
+
   }
 
   @override
@@ -43,7 +46,7 @@ class _Slider_MState extends State<Slider_M>
                   height: 70,
                   width: 165,
                   child: TextField(
-                    controller: Controller,
+                    controller: widget.textEditingController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       suffixText: '${widget.kind}   ',
@@ -113,7 +116,7 @@ class _Slider_MState extends State<Slider_M>
           onChanged: (newValue) {
             setState(() {
               value = newValue;
-              Controller.text = value.toString();
+             widget.textEditingController.text = value.toString();
             });
           },
         )

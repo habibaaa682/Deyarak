@@ -94,17 +94,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   icon: Icons.person,
                   formatter: [],
                   password: false,
-                  validatee: (value) {
-                    // ignore: unnecessary_null_comparison
-                    if (value == null || value.isEmpty) {
-                      return 'Email cannot be empty.';
-                    } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                        .hasMatch(value)) {
-                      return 'Please enter a valid email.';
-                    } else {
-                      return null;
-                    }
-                  },
+
                 ),
                 const SizedBox(
                   height: 70,

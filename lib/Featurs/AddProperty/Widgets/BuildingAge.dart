@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 
-class BuildingAge extends StatefulWidget {
-  const BuildingAge({
-    super.key,
-  });
+class BuildingAge extends StatelessWidget {
+  TextEditingController textEditingController;
+  BuildingAge({super.key, required this.textEditingController});
 
-  @override
-  State<BuildingAge> createState() => _BuildingAgeState();
-}
-
-class _BuildingAgeState extends State<BuildingAge>
-    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Padding(
       padding: const EdgeInsets.all(10),
       child: TextField(
+        controller: textEditingController,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
             contentPadding:
