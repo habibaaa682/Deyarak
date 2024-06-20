@@ -20,6 +20,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../Featurs/AddProperty/AddPropertyView.dart';
 import '../../Featurs/Filter/FilterView.dart';
+import '../../Featurs/Home_Map/presentation/views/Home_Map_view.dart';
 
 abstract class AppRouter {
   static const kpersonalinformation = '/personalinformationview';
@@ -44,6 +45,7 @@ abstract class AppRouter {
   static const kconfirmnewpassword = '/ConfirmPassword';
   static const kpropertydetails = '/property_detailes_view';
   static const kforgetpassword = '/Reset_pass_screen';
+  static const kmap = '/Home_Map_view';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -129,6 +131,10 @@ abstract class AppRouter {
       GoRoute(
         path: kconfirmnewpassword,
         builder: (context, state) => ResetPasswordScreen(),
+      ),
+      GoRoute(
+        path: kmap,
+        builder: (context, state) => MapView(),
       ),
     ],
   );

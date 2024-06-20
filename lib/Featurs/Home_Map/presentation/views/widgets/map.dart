@@ -6,65 +6,95 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
-
 class Map_w extends StatefulWidget {
   final double lat;
   final double lng;
   final List<Mappmodel> mapmodelobj;
+  final Function(LatLng) onLocationSelected; // Callback to return selected location
+final TextEditingController coordinatesController;
   const Map_w({
-    super.key,
+    Key? key,
     required this.mapmodelobj,
-    this.lat = 30.550968,
-    this.lng = 31.008668,
-  });
+    required this.onLocationSelected,
+    this.lat = 50.550968,
+    this.lng = 51.008668, required this.coordinatesController,
+  }) : super(key: key);
 
   @override
   State<Map_w> createState() => _MapState();
 }
 
 class _MapState extends State<Map_w> {
-  var mymarkers = HashSet<Marker>();
-  Completer<GoogleMapController> _controller = Completer();
-
+  late GoogleMapController mapController;
+  Set<Marker> mymarkers = {};
+  LatLng? selectedLocation; // Track selected location
   late CameraPosition _kGooglePlex;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    // Initialize camera position
     _kGooglePlex = CameraPosition(
       target: LatLng(widget.lat, widget.lng),
       zoom: 12,
     );
+    selectedLocation=_kGooglePlex.target;
+    widget.coordinatesController.text=selectedLocation.toString();
+    print('Your Current Location is:$selectedLocation');
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+    // Set initial markers from mapmodelobj
+    setState(() {
+      for (int i = 0; i < widget.mapmodelobj.length; i++) {
+        mymarkers.add(Marker(
+          markerId: MarkerId(i.toString()),
+          position: LatLng(
+            widget.mapmodelobj[i].coordinates![0].toDouble(),
+            widget.mapmodelobj[i].coordinates![1].toDouble(),
+          ),
+          infoWindow: InfoWindow(
+            title: widget.mapmodelobj[i].address,
+            snippet: widget.mapmodelobj[i].description,
+          ),
+        ));
+      }
+    });
+  }
+
+  void _onMapTap(LatLng location) {
+    // Update selected location
+    setState(() {
+      selectedLocation = location;
+      print('Your Current Location is:$selectedLocation');
+      // Clear previous markers and add a new one for selected location
+      mymarkers.clear();
+      mymarkers.add(Marker(
+        markerId: MarkerId('selected-location'),
+        position: location,
+        infoWindow: InfoWindow(title: 'Selected Location'),
+        icon: BitmapDescriptor.defaultMarker,
+      ));
+    });
+    // Callback to return selected location to parent widget
+    widget.onLocationSelected(location);
   }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: MediaQuery.of(context).size.height * .81,
-        width: double.infinity,
-        child: GoogleMap(
-          initialCameraPosition: _kGooglePlex,
-          onMapCreated: (GoogleMapController controller) {
-            _controller.complete(controller);
-            setState(() {
-              for (int i = 0; i < widget.mapmodelobj.length; i++) {
-                mymarkers.add(Marker(
-                    markerId: MarkerId(i.toString()),
-                    position: LatLng(
-                        widget.mapmodelobj[i].coordinates![0].toDouble(),
-                        widget.mapmodelobj[i].coordinates![1].toDouble()),
-                    infoWindow: InfoWindow(
-                        title: widget.mapmodelobj[i].address,
-                        snippet: widget.mapmodelobj[i].description)));
-              }
-            });
-          },
-          markers: mymarkers,
-        ));
+      height: MediaQuery.of(context).size.height * .81,
+      width: double.infinity,
+      child: GoogleMap(
+        initialCameraPosition: _kGooglePlex,
+        markers: mymarkers,
+        onTap: _onMapTap,
+        onMapCreated: _onMapCreated,
+      ),
+    );
   }
 }
-
 /*var queryheight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(

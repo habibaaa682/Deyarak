@@ -68,7 +68,7 @@ class _AddPropertyState extends State<AddPropertyBody>
           const Divider_(),
 //---------------------------------------------------------------------------------------------
 // Add_Address
-          Add_Address(),
+          Add_Address(addressController: addPropertyController.addressController,),
 //---------------------------------------------------------------------------------------------
 // Divider 3
           const Divider_(),
@@ -120,7 +120,7 @@ class _AddPropertyState extends State<AddPropertyBody>
 // Amenities
           TitleOfWidget(title: "Amenities"),
 
-          CheckboxGroup(),
+          CheckboxGroup(textEditingController: addPropertyController.amentiesController,),
 //---------------------------------------------------------------------------------------------
 // End Divider
           const SizedBox(

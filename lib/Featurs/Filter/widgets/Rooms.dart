@@ -15,9 +15,10 @@ class Rooms extends StatefulWidget {
 }
 
 class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
+
   Map<String, bool> selectedTypes = {
-    'Any': true, // Apartment is true by default
-    '1': false,
+     // Apartment is true by default
+    '1': true,
     '2': false,
     '3': false,
     '4': false,
@@ -30,8 +31,8 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
   };
 
   Map<String, Color> typeColors = {
-    'Any': const Color(0xffFF725E),
-    '1': const Color.fromARGB(255, 250, 250, 250),
+
+    '1': const Color(0xffFF725E),
     '2': const Color.fromARGB(255, 250, 250, 250),
     '3': const Color.fromARGB(255, 250, 250, 250),
     '4': const Color.fromARGB(255, 250, 250, 250),
@@ -42,7 +43,12 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
     '9': const Color.fromARGB(255, 250, 250, 250),
     '10': const Color.fromARGB(255, 250, 250, 250),
   };
-
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.textEditingController.text='1';
+  }
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -72,16 +78,7 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              BuildroomRow(
-                  text: 'Any',
-                  onTap: () {
-                    toggleType('Any');
-                  },
-                  scaleFactor: scaleFactor,
-                  containerWidth: containerWidth,
-                  containerHeight: containerHeight,
-                  paddingSize: paddingSize,
-                  textSize: textSize),
+
               BuildroomRow(
                   text: '1',
                   onTap: () {
@@ -240,15 +237,18 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
       if (selectedTypes[type] == true) {
         selectedTypes[type] = false;
         typeColors[type] = const Color.fromARGB(255, 250, 250, 250);
+        widget.textEditingController.clear();
+        print(widget.title+':'+widget.textEditingController.text);
       } else {
         selectedTypes.updateAll((key, value) => selectedTypes[key] = false);
         selectedTypes[type] = true;
         typeColors.updateAll((key, value) =>
             typeColors[key] = const Color.fromARGB(255, 250, 250, 250));
         typeColors[type] = const Color.fromARGB(255, 237, 178, 170);
+        widget.textEditingController.text =type;
+        print(widget.title+':'+widget.textEditingController.text);
       }
-      widget.textEditingController.text =type;
-      print(type);
+
     });
   }
 

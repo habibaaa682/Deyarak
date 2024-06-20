@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'package:deyarakapp/controllers/sharedPrefrenceController.dart';
 import 'package:deyarakapp/core/utils/api_endpoints.dart';
 import 'package:dio/dio.dart';
@@ -20,6 +21,10 @@ class AddPropertyController {
   TextEditingController ElevatorController = TextEditingController();
   TextEditingController BuildingAgeController = TextEditingController();
   TextEditingController DescriptionController = TextEditingController();
+  TextEditingController amentiesController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController latlangController = TextEditingController();
+
   List<XFile>? imageFileListt = [];
 
   Dio dio = Dio();
@@ -27,9 +32,24 @@ class AddPropertyController {
   Future<void> AddingProperty(BuildContext context) async {
     try {
       var headers = {'Content-Type': 'application/json'};
+
       var url = Uri.parse(
           ApiEndpoint.baseUrl + ApiEndpoint.authEndPoint.AddingProperty);
       FormData formData = FormData.fromMap({
+
+      var url = ApiEndpoint.baseUrl + ApiEndpoint.authEndPoint.AddingProperty;
+
+      List<String> amenitiesList = amentiesController.text.split(',').map((e) => e.trim()).toList();
+
+      List<double> latlangList = [];
+      try {
+        latlangList = latlangController.text.split(',').map((e) => double.parse(e.trim())).toList();
+      } catch (e) {
+        print('Error parsing coordinates: $e');
+        // Handle error appropriately, e.g., show a message to the user
+      }
+      Map<String, dynamic> body = {
+
         "price": PriceController.text,
         "Size": SizeController.text,
         "numberOfRooms": NroomsController.text,
@@ -40,6 +60,7 @@ class AddPropertyController {
         "elevator": ElevatorController.text,
         "propertyAge": BuildingAgeController.text,
         "description": DescriptionController.text,
+
 
       });
       for (var file in imageFileListt!) {
@@ -52,6 +73,11 @@ class AddPropertyController {
           ),
         ));
       }
+
+        "amenities": amenitiesList,
+        "address":addressController.text,
+      };
+
       final response = await dio.post(
         url.toString(),
         data: jsonEncode(formData),
