@@ -8,8 +8,6 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http_parser/http_parser.dart';
 
-
-
 class AddPropertyController {
   TextEditingController PriceController = TextEditingController();
   TextEditingController SizeController = TextEditingController();
@@ -33,23 +31,21 @@ class AddPropertyController {
     try {
       var headers = {'Content-Type': 'application/json'};
 
-      var url = Uri.parse(
-          ApiEndpoint.baseUrl + ApiEndpoint.authEndPoint.AddingProperty);
-      FormData formData = FormData.fromMap({
-
       var url = ApiEndpoint.baseUrl + ApiEndpoint.authEndPoint.AddingProperty;
 
-      List<String> amenitiesList = amentiesController.text.split(',').map((e) => e.trim()).toList();
-
+      List<String> amenitiesList =
+      amentiesController.text.split(',').map((e) => e.trim()).toList();
       List<double> latlangList = [];
       try {
-        latlangList = latlangController.text.split(',').map((e) => double.parse(e.trim())).toList();
+        latlangList = latlangController.text
+            .split(',')
+            .map((e) => double.parse(e.trim()))
+            .toList();
       } catch (e) {
         print('Error parsing coordinates: $e');
         // Handle error appropriately, e.g., show a message to the user
       }
-      Map<String, dynamic> body = {
-
+      FormData formData = FormData.fromMap({
         "price": PriceController.text,
         "Size": SizeController.text,
         "numberOfRooms": NroomsController.text,
@@ -60,30 +56,23 @@ class AddPropertyController {
         "elevator": ElevatorController.text,
         "propertyAge": BuildingAgeController.text,
         "description": DescriptionController.text,
-
-
+        "amenities": amenitiesList,
+        "address": addressController.text,
       });
       for (var file in imageFileListt!) {
         formData.files.add(MapEntry(
           "images",
           await MultipartFile.fromFile(file.path,
               filename: file.name.split('/').last,
-              contentType: MediaType('image','jpg')
-
-          ),
+              contentType: MediaType('image', 'jpg')),
         ));
       }
-
-        "amenities": amenitiesList,
-        "address":addressController.text,
-      };
 
       final response = await dio.post(
         url.toString(),
         data: jsonEncode(formData),
         options: Options(headers: headers),
       );
-
 
       if (response.statusCode == 201) {
         PriceController.clear();
@@ -103,6 +92,7 @@ class AddPropertyController {
             backgroundColor: Colors.green,
           ),
         );
+        Navigator.pop(context);
 
         String userToken = response.data['token'];
         GlobalSharedPreferences.setString('token', userToken);
@@ -118,44 +108,44 @@ class AddPropertyController {
               context: context,
               builder: (context) {
                 return SimpleDialog(
-                  backgroundColor:Colors.red ,
+                  backgroundColor: Colors.red,
                   title: Text(errorMessage),
                   contentPadding: EdgeInsets.all(16),
                   children: [
-
                     Row(
                       children: [
-
                         TextButton(
                             onPressed: () {
                               GoRouter.of(context).pop();
                             },
-                            child: Text('OK',style:TextStyle(color: Colors.white),)),
+                            child: Text(
+                              'OK',
+                              style: TextStyle(color: Colors.white),
+                            )),
                       ],
                     ),
                   ],
                 );
               });
         } else {
-
-
           showDialog(
               context: context,
               builder: (context) {
                 return SimpleDialog(
-                  backgroundColor:Colors.red ,
+                  backgroundColor: Colors.red,
                   title: Text('Unknown error occurred during Adding Property'),
                   contentPadding: EdgeInsets.all(16),
                   children: [
-
                     Row(
                       children: [
-
                         TextButton(
                             onPressed: () {
                               GoRouter.of(context).pop();
                             },
-                            child: Text('OK',style:TextStyle(color: Colors.white),)),
+                            child: Text(
+                              'OK',
+                              style: TextStyle(color: Colors.white),
+                            )),
                       ],
                     ),
                   ],
@@ -163,24 +153,25 @@ class AddPropertyController {
               });
         }
       } else {
-
         showDialog(
             context: context,
             builder: (context) {
               return SimpleDialog(
-                backgroundColor:Colors.red ,
-                title: Text('Error during during Adding Property: ${e.message}'),
+                backgroundColor: Colors.red,
+                title:
+                Text('Error during during Adding Property: ${e.message}'),
                 contentPadding: EdgeInsets.all(16),
                 children: [
-
                   Row(
                     children: [
-
                       TextButton(
                           onPressed: () {
                             GoRouter.of(context).pop();
                           },
-                          child: Text('OK',style:TextStyle(color: Colors.white),)),
+                          child: Text(
+                            'OK',
+                            style: TextStyle(color: Colors.white),
+                          )),
                     ],
                   ),
                 ],
@@ -188,24 +179,24 @@ class AddPropertyController {
             });
       }
     } catch (e) {
-
       showDialog(
           context: context,
           builder: (context) {
             return SimpleDialog(
-              backgroundColor:Colors.red ,
+              backgroundColor: Colors.red,
               title: Text('Error during during Adding Property: $e'),
               contentPadding: EdgeInsets.all(16),
               children: [
-
                 Row(
                   children: [
-
                     TextButton(
                         onPressed: () {
                           GoRouter.of(context).pop();
                         },
-                        child: Text('OK',style:TextStyle(color: Colors.white),)),
+                        child: Text(
+                          'OK',
+                          style: TextStyle(color: Colors.white),
+                        )),
                   ],
                 ),
               ],
