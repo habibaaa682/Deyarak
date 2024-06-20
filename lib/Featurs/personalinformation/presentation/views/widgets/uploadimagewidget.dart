@@ -78,6 +78,7 @@ class _UploadImageWidgetState extends State<UploadImageWidget> {
                 ),
               ),
         ElevatedButton(
+
           onPressed: () async {
             if (_selectedImage != null) {
               final imageUrl =
@@ -93,6 +94,9 @@ class _UploadImageWidgetState extends State<UploadImageWidget> {
             }
           },
           child: Text('Upload Image'),
+          style: ElevatedButton.styleFrom(
+            primary: Color(0xffFF725E), // Set the button color
+          ),
         ),
       ],
     );

@@ -4,6 +4,8 @@ import 'package:deyarakapp/core/utils/api_endpoints.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:http_parser/http_parser.dart';
 
 
 
@@ -18,6 +20,7 @@ class AddPropertyController {
   TextEditingController ElevatorController = TextEditingController();
   TextEditingController BuildingAgeController = TextEditingController();
   TextEditingController DescriptionController = TextEditingController();
+  List<XFile>? imageFileListt = [];
 
   Dio dio = Dio();
 
@@ -26,7 +29,7 @@ class AddPropertyController {
       var headers = {'Content-Type': 'application/json'};
       var url = Uri.parse(
           ApiEndpoint.baseUrl + ApiEndpoint.authEndPoint.AddingProperty);
-      Map body = {
+      FormData formData = FormData.fromMap({
         "price": PriceController.text,
         "Size": SizeController.text,
         "numberOfRooms": NroomsController.text,
@@ -38,12 +41,23 @@ class AddPropertyController {
         "propertyAge": BuildingAgeController.text,
         "description": DescriptionController.text,
 
-      };
+      });
+      for (var file in imageFileListt!) {
+        formData.files.add(MapEntry(
+          "images",
+          await MultipartFile.fromFile(file.path,
+              filename: file.name.split('/').last,
+              contentType: MediaType('image','jpg')
+
+          ),
+        ));
+      }
       final response = await dio.post(
         url.toString(),
-        data: jsonEncode(body),
+        data: jsonEncode(formData),
         options: Options(headers: headers),
       );
+
 
       if (response.statusCode == 201) {
         PriceController.clear();
@@ -56,6 +70,7 @@ class AddPropertyController {
         ElevatorController.clear();
         BuildingAgeController.clear();
         DescriptionController.clear();
+        imageFileListt!.clear();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Registered successfully!'),

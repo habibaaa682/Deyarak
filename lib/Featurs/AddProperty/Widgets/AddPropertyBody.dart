@@ -47,7 +47,7 @@ class _AddPropertyState extends State<AddPropertyBody>
           const SizedBox(),
 //---------------------------------------------------------------------------------------------
 // Add_Photo
-          Add_Photo(),
+          Add_Photo(imageFileList: addPropertyController.imageFileListt,),
 //---------------------------------------------------------------------------------------------
 // Divider 1
           const Divider_(),

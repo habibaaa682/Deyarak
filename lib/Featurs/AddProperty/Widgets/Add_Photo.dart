@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Add_Photo extends StatefulWidget {
-  Add_Photo({super.key});
+  List<XFile>? imageFileList = [];
+  Add_Photo({super.key,required this.imageFileList});
 
   @override
   State<Add_Photo> createState() => _Add_PhotoState();
@@ -10,21 +12,47 @@ class Add_Photo extends StatefulWidget {
 
 class _Add_PhotoState extends State<Add_Photo> {
   final ImagePicker imagePicker = ImagePicker();
-  final int maxImages = 7;
-  final int minImages = 5;
-  List<XFile>? imageFileList = [];
+
+
   void selectImages() async {
-    final int maxImages = 7;
-    final int minImages = 5;
     final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
-    if (selectedImages!.isNotEmpty &&
-        selectedImages.length > minImages &&
-        selectedImages.length < maxImages) {
-      imageFileList!.addAll(selectedImages);
+
+    if (selectedImages != null) {
+      if (widget.imageFileList!.length + selectedImages.length <=7 ) {
+        setState(() {
+          widget.imageFileList!.addAll(selectedImages);
+        });
+      } else {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return SimpleDialog(
+                backgroundColor:Colors.red ,
+                title: Text('You can only 4 images..'
+                    'please select images again'),
+                contentPadding: EdgeInsets.all(16),
+                children: [
+
+                  Row(
+                    children: [
+
+                      TextButton(
+                          onPressed: () {
+                            GoRouter.of(context).pop();
+                          },
+                          child: Text('OK',style:TextStyle(color: Colors.white),)),
+                    ],
+                  ),
+                ],
+              );
+            });
+
+      }
     }
-    print("Image List Length:" + imageFileList!.length.toString());
-    setState(() {});
+
+    print("Image List Length: ${widget.imageFileList!.length}");
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -94,4 +122,5 @@ class _Add_PhotoState extends State<Add_Photo> {
       ],
     );
   }
+
 }
