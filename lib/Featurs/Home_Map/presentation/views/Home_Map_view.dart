@@ -8,6 +8,10 @@ import 'package:deyarakapp/core/widgets/custom_error_widget.dart';
 import 'package:deyarakapp/core/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../../controllers/Add-PropertyController/AddPropertyController.dart';
 
 
 class MapView extends StatefulWidget {
@@ -19,6 +23,8 @@ class MapView extends StatefulWidget {
 }
 
 class _MapViewState extends State<MapView> with TickerProviderStateMixin {
+  AddPropertyController addPropertyController =
+  Get.put(AddPropertyController());
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(vsync: this, length: 5);
@@ -42,7 +48,7 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
                 return Map_w(
                   mapmodelobj: state.map,
                   lat: widget.lat,
-                  lng: widget.lng,
+                  lng: widget.lng, onLocationSelected: (LatLng ) {  }, coordinatesController: addPropertyController.latlangController,
                 );
               } else if (state is MapcubitFailure) {
                 return CustomErrorWidget(errMsg: state.errMsg);

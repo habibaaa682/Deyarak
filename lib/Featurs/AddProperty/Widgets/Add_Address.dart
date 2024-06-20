@@ -1,29 +1,160 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:deyarakapp/Featurs/personalinformation/presentation/views/widgets/Button.dart';
 import 'package:deyarakapp/constants.dart';
-import 'package:deyarakapp/core/permission_service.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+import '../../../core/utils/router.dart';
 
 // import 'package:flutter/widgets.dart';
 // import 'package:deyarak/components/_showBottomSheet.dart';
 
 //_showBottomSheet
 class Add_Address extends StatefulWidget {
-  Add_Address({Key? key}) : super(key: key);
-
+  Add_Address({Key? key, required this.addressController}) : super(key: key);
+  final TextEditingController addressController;
   @override
   State<Add_Address> createState() => _Add_AddressState();
 }
 
 class _Add_AddressState extends State<Add_Address>
     with AutomaticKeepAliveClientMixin {
+  String?fullAddress;
   String? selectedGovernorate;
   String? selectedCity;
   final String hint = 'Add Address manually'; // Hint text for DropdownButton
-  List<String> governorates = ['Cairo', 'Alexandria', 'Giza'];
-  List<String> cities = ['Cairo', 'Alexandria', 'Giza'];
-  TextEditingController? StreetController;
-  TextEditingController? AptController;
+  List<String> governorates =  [
+    'Alexandria',
+    'Aswan',
+    'Asyut',
+    'Beheira',
+    'Beni Suef',
+    'Cairo',
+    'Dakahlia',
+    'Damietta',
+    'Faiyum',
+    'Gharbia',
+    'Giza',
+    'Ismailia',
+    'Kafr El Sheikh',
+    'Luxor',
+    'Matruh',
+    'Minya',
+    'Monufia',
+    'New Valley',
+    'North Sinai',
+    'Port Said',
+    'Qalyubia',
+    'Qena',
+    'Red Sea',
+    'Sharqia',
+    'Sohag',
+    'South Sinai',
+    'Suez',
+    'Helwan',
+    '6th of October'
+  ];
+  List<String> cities =  [
+    "Cairo",
+    "Alexandria",
+    "Giza",
+    "Shubra El-Kheima",
+    "Port Said",
+    "Suez",
+    "Mansoura",
+    "El-Mahalla El-Kubra",
+    "Tanta",
+    "Asyut",
+    "Ismailia",
+    "Faiyum",
+    "Zagazig",
+    "Damietta",
+    "Aswan",
+    "Minya",
+    "Damanhur",
+    "Beni Suef",
+    "Hurghada",
+    "Qena",
+    "Sohag",
+    "Shibin El Kom",
+    "Banha",
+    "Kafr El-Sheikh",
+    "Arish",
+    "Mallawi",
+    "6th of October City",
+    "10th of Ramadan City",
+    "New Cairo",
+    "Helwan",
+    "Obour City",
+    "Marsa Matruh",
+    "El Qoseir",
+    "Luxor",
+    "Badr City",
+    "Safaga",
+    "Sheikh Zayed City",
+    "New Damietta",
+    "New Minya",
+    "New Aswan",
+    "Al-Salam City",
+    "Ras Ghareb",
+    "Al-Qusayr",
+    "El Gouna",
+    "Sharm El-Sheikh",
+    "Dahab",
+    "Taba",
+    "Marsa Alam",
+    "El-Tor",
+    "Abu Simbel",
+    "Beni Mazar",
+    "Abu Hammad",
+    "Kafr Saqr",
+    "Belqas",
+    "Manshat al-Qanater",
+    "Abu Kabir",
+    "Bilbeis",
+    "Biyala",
+    "Tala",
+    "Kom Ombo",
+    "San el-Hagar",
+    "Mit Ghamr",
+    "Qalyub",
+    "Zefta",
+    "Samalut",
+    "Akhmim",
+    "Naqada",
+    "Edfu",
+    "Abu Tesht",
+    "Kous",
+    "Al-Hawamdia",
+    "Al-Fashn",
+    "Al-Kharga",
+    "Al-Badari",
+    "Al-Balyana",
+    "Sheikh Zuweid",
+    "El Hamool",
+    "Fuka",
+    "Baltim",
+    "Matay",
+    "Ibshaway",
+    "Tamiyah",
+    "Nasir City",
+    "Idku",
+    "Girga",
+    "Abnoub",
+    "Esna",
+    "Maghagha",
+    "Manfalut",
+    "Qus",
+    "Qusiyah",
+    "Sharm el-Sheikh",
+    "Tima",
+    "Dishna",
+    "Armant",
+    "6th of October"
+  ];
+  TextEditingController StreetController=TextEditingController();
+  TextEditingController AptController=TextEditingController();
   bool? done = false;
 
   @override
@@ -69,6 +200,7 @@ class _Add_AddressState extends State<Add_Address>
                 GestureDetector(
                   onTap: () {
                     Permission_Checker();
+
                     //openAppSettings();
                   },
                   child: const Text(
@@ -124,6 +256,7 @@ class _Add_AddressState extends State<Add_Address>
                 const SizedBox(height: 15),
                 _buildDropdown(
                     'Governorate', governorates, selectedGovernorate),
+
                 const SizedBox(height: 15),
                 _buildDropdown('City', cities, selectedCity),
                 const SizedBox(height: 15),
@@ -173,17 +306,26 @@ class _Add_AddressState extends State<Add_Address>
               fontSize: 17,
             ),
           ),
-          onChanged: (val) {
+          onFieldSubmitted: (val) {
             setState(() {
               if (labelText == 'Street Address') {
-                StreetController = TextEditingController(text: val);
+                StreetController.text=val;
+
               } else {
-                AptController = TextEditingController(text: val);
+                AptController.text=val;
+                fullAddress="$selectedGovernorate,$selectedCity,${StreetController.text},${AptController.text}";
+              //  print(fullAddress);
+                widget.addressController.text=fullAddress!;
               }
+
             });
+
           },
+
         ),
+
       ),
+
     );
   }
 
@@ -214,15 +356,31 @@ class _Add_AddressState extends State<Add_Address>
             setState(() {
               if (hint == 'Governorate') {
                 selectedGovernorate = val as String?;
+                print(selectedGovernorate);
               } else {
                 selectedCity = val as String?;
+                print(selectedCity);
               }
+
             });
           },
           value: selectedValue,
         ),
       ),
     );
+  }
+  Permission_Checker() async {
+
+      var status = await Permission.location.request();
+
+      if (status.isGranted) {
+        // Permission is granted, navigate to map screen
+        GoRouter.of(context).push(AppRouter.kmap);
+      } else {
+
+        print('Location permission is not granted');
+      }
+
   }
 
   @override

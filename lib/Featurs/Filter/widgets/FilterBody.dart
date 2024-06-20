@@ -84,7 +84,7 @@ class _FilterState extends State<FilterBody>
 // Cheaked Box
           TitleOfWidget(title: "Amenities"),
 
-          CheckboxGroup(),
+         // CheckboxGroup(),
 //---------------------------------------------------------------------------------------------
 // Divider 2
           const Divider_(),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CheckboxGroup extends StatefulWidget {
+  const CheckboxGroup({super.key, required this.textEditingController});
+
   @override
   _CheckboxGroupState createState() => _CheckboxGroupState();
+  final TextEditingController textEditingController;
 }
 
 class _CheckboxGroupState extends State<CheckboxGroup>
@@ -85,12 +88,17 @@ class _CheckboxGroupState extends State<CheckboxGroup>
           if (colors[index] == Colors.white) {
             colors[index] = const Color(0xffFF725E);
             checkboxValues[key] = true;
+            widget.textEditingController.text=key;
+            print(widget.textEditingController.text);
+
           } else {
             colors[index] = Colors.white;
             checkboxValues[key] = false;
+            widget.textEditingController.clear();
+            print(widget.textEditingController.text);
           }
         });
-        print(checkboxValues);
+
       },
       child: Container(
         height: containerHeight,
