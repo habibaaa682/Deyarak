@@ -48,7 +48,7 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
                 return Map_w(
                   mapmodelobj: state.map,
                   lat: widget.lat,
-                  lng: widget.lng, onLocationSelected: (LatLng ) {  }, coordinatesController: addPropertyController.latlangController,
+                  lng: widget.lng, onLocationSelected: (LatLng ) {  }, latController: addPropertyController.latController, langController: addPropertyController.langController,
                 );
               } else if (state is MapcubitFailure) {
                 return CustomErrorWidget(errMsg: state.errMsg);

@@ -245,7 +245,7 @@ class _RoomsState extends State<Rooms> with AutomaticKeepAliveClientMixin {
         typeColors.updateAll((key, value) =>
             typeColors[key] = const Color.fromARGB(255, 250, 250, 250));
         typeColors[type] = const Color.fromARGB(255, 237, 178, 170);
-        widget.textEditingController.text =type;
+        widget.textEditingController.text =type.toString();
         print(widget.title+':'+widget.textEditingController.text);
       }
 

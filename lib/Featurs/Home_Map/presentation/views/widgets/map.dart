@@ -11,13 +11,15 @@ class Map_w extends StatefulWidget {
   final double lng;
   final List<Mappmodel> mapmodelobj;
   final Function(LatLng) onLocationSelected; // Callback to return selected location
-final TextEditingController coordinatesController;
+final TextEditingController latController;
+  final TextEditingController langController;
   const Map_w({
     Key? key,
     required this.mapmodelobj,
     required this.onLocationSelected,
     this.lat = 50.550968,
-    this.lng = 51.008668, required this.coordinatesController,
+    this.lng = 51.008668, required this.latController,
+    required this.langController
   }) : super(key: key);
 
   @override
@@ -39,7 +41,10 @@ class _MapState extends State<Map_w> {
       zoom: 12,
     );
     selectedLocation=_kGooglePlex.target;
-    widget.coordinatesController.text=selectedLocation.toString();
+    widget.latController.text=_kGooglePlex.target.latitude.toString();
+    widget.langController.text=_kGooglePlex.target.longitude.toString();
+    print('lang:${widget.langController.text} lat:${ widget.latController.text}');
+
     print('Your Current Location is:$selectedLocation');
   }
 
@@ -67,7 +72,9 @@ class _MapState extends State<Map_w> {
     // Update selected location
     setState(() {
       selectedLocation = location;
-      print('Your Current Location is:$selectedLocation');
+      widget.latController.text=location.latitude.toString();
+      widget.langController.text=location.longitude.toString();
+         print('lang:${widget.langController.text} lat:${ widget.latController.text}');
       // Clear previous markers and add a new one for selected location
       mymarkers.clear();
       mymarkers.add(Marker(

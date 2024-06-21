@@ -15,10 +15,12 @@ class Radio_ extends StatefulWidget {
 
 Color colorYes = Colors.white;
 Color colorNo = Colors.white;
-bool flagg=false;
+
 
 
 class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
+
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -42,9 +44,8 @@ class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
                       setState(() {
                         colorYes = kprimarycolor;
                         colorNo = Colors.white;
-                        flagg = true;
-                        widget.textEditingController.text = flagg.toString();
-                        print(widget.text+widget.textEditingController.text );
+                        widget.textEditingController.text = 'true';
+                       // print(widget.text+widget.textEditingController.text );
                       });
                     },
                     child: Container(
@@ -68,9 +69,8 @@ class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
                       setState(() {
                         colorYes = kprimarycolor;
                         colorNo = Colors.white;
-                        flagg = true;
-                        widget.textEditingController.text = flagg.toString();
-                        print(widget.text+widget.textEditingController.text );
+                        widget.textEditingController.text = 'true';
+                        //print(widget.text+widget.textEditingController.text );
                       });
                     },
                     child: const Text(
@@ -86,9 +86,8 @@ class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
                       setState(() {
                         colorNo = kprimarycolor;
                         colorYes = Colors.white;
-                        flagg = false;
-                        widget.textEditingController.text = flagg.toString();
-                        print(widget.text+widget.textEditingController.text );
+                        widget.textEditingController.text = 'false';
+                   //     print(widget.text+widget.textEditingController.text );
                       });
                     },
                     child: Container(
@@ -112,9 +111,8 @@ class _RadioState extends State<Radio_> with AutomaticKeepAliveClientMixin {
                       setState(() {
                         colorNo = kprimarycolor;
                         colorYes = Colors.white;
-                        flagg = false;
-                        widget.textEditingController.text = flagg.toString();
-                        print(widget.text+widget.textEditingController.text );
+                        widget.textEditingController.text = 'false';
+                      //  print(widget.text+widget.textEditingController.text );
                       });
                     },
                     child: const Text(

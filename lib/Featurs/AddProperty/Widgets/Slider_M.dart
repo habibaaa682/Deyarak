@@ -4,7 +4,8 @@ class Slider_M extends StatefulWidget {
   final String title;
   final String kind;
   final double initialValue;
-  late  TextEditingController textEditingController;
+
+
 
   Slider_M({
     super.key,
@@ -12,7 +13,9 @@ class Slider_M extends StatefulWidget {
     required this.kind,
     required this.initialValue,
     required this.textEditingController
+
   });
+  TextEditingController textEditingController;
 
   @override
   State<Slider_M> createState() => _Slider_MState();
@@ -26,7 +29,7 @@ class _Slider_MState extends State<Slider_M>
   void initState() {
     super.initState();
     value = widget.initialValue;
-    widget.textEditingController = TextEditingController(text: value.toString());
+    widget.textEditingController.text= value.toString();
 
   }
 
@@ -51,7 +54,7 @@ class _Slider_MState extends State<Slider_M>
                     decoration: InputDecoration(
                       suffixText: '${widget.kind}   ',
                       contentPadding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                      EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(14),
                         borderSide: BorderSide(color: Colors.black),
@@ -66,8 +69,10 @@ class _Slider_MState extends State<Slider_M>
                     ),
                     onChanged: (val) {
                       setState(() {
-                        double parsedValue = double.tryParse(val) ?? 50000;
+                        double parsedValue = double.parse(val) ?? 50000;
                         value = parsedValue.clamp(0.0, widget.initialValue);
+                        widget.textEditingController.text=value.toString();
+
                       });
                     },
                   ),
@@ -116,7 +121,8 @@ class _Slider_MState extends State<Slider_M>
           onChanged: (newValue) {
             setState(() {
               value = newValue;
-             widget.textEditingController.text = value.toString();
+              widget.textEditingController.text = value.toString();
+              print('slider${widget.textEditingController.text}');
             });
           },
         )

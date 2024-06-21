@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../controllers/Add-PropertyController/AddPropertyController.dart';
 
 class EndOfAddProperty extends StatefulWidget {
   const EndOfAddProperty({
@@ -10,6 +14,8 @@ class EndOfAddProperty extends StatefulWidget {
 }
 
 class _EndOfAddPropertyState extends State<EndOfAddProperty> {
+  AddPropertyController addPropertyController =
+  Get.put(AddPropertyController());
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -34,7 +40,8 @@ class _EndOfAddPropertyState extends State<EndOfAddProperty> {
           ),
           onPressed: () {
             setState(() {
-              Navigator.pop(context);
+              addPropertyController.AddingProperty(context);
+
             });
           },
           child: const Padding(

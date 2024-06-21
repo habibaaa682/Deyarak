@@ -105,8 +105,8 @@ class _AddPropertyState extends State<AddPropertyBody>
           ),
 
           Radio_(
-              text: 'Finished :',
-              textEditingController: addPropertyController.FinishedController),
+              text: 'Finished :', textEditingController:addPropertyController.FinishedController ,
+             ),
           Radio_(
               text: 'Furnished :',
               textEditingController: addPropertyController.FurnishedController),

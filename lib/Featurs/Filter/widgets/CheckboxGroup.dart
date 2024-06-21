@@ -89,13 +89,13 @@ class _CheckboxGroupState extends State<CheckboxGroup>
             colors[index] = const Color(0xffFF725E);
             checkboxValues[key] = true;
             widget.textEditingController.text=key;
-            print(widget.textEditingController.text);
+         //   print(widget.textEditingController.text);
 
           } else {
             colors[index] = Colors.white;
             checkboxValues[key] = false;
             widget.textEditingController.clear();
-            print(widget.textEditingController.text);
+           // print(widget.textEditingController.text);
           }
         });
 

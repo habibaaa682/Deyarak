@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:ffi';
 import 'package:deyarakapp/controllers/sharedPrefrenceController.dart';
 import 'package:deyarakapp/core/utils/api_endpoints.dart';
@@ -14,50 +13,108 @@ class AddPropertyController {
   TextEditingController NroomsController = TextEditingController();
   TextEditingController NbathroomsController = TextEditingController();
   TextEditingController CategoryController = TextEditingController();
-  TextEditingController FinishedController = TextEditingController();
-  TextEditingController FurnishedController = TextEditingController();
-  TextEditingController ElevatorController = TextEditingController();
   TextEditingController BuildingAgeController = TextEditingController();
   TextEditingController DescriptionController = TextEditingController();
   TextEditingController amentiesController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-  TextEditingController latlangController = TextEditingController();
+  TextEditingController latController = TextEditingController();
+  TextEditingController langController = TextEditingController();
+  TextEditingController FurnishedController = TextEditingController();
+  TextEditingController  FinishedController= TextEditingController();
+  TextEditingController  ElevatorController= TextEditingController();
 
   List<XFile>? imageFileListt = [];
+
+
 
   Dio dio = Dio();
 
   Future<void> AddingProperty(BuildContext context) async {
     try {
+      int price;
+      int  size;
+      int  nOfRooms;
+      int  nOfBaths;
+      int  propertyAge;
+      bool  Furnished;
+      bool  Finished;
+      bool  Elevator;
+      if(FinishedController.text=='true'){
+        Finished=true;
+      }else{
+        Finished=false;
+      }
+      if(FurnishedController.text=='true'){
+        Furnished=true;
+      }else{
+        Furnished=false;
+      }
+      if(ElevatorController.text=='true'){
+        Elevator=true;
+      }else{
+        Elevator=false;
+      }
+      print('Furnished:${Furnished}');
+      print('Finished:${Finished}');
+      print('Elevator:${Elevator}');
+      print('nOfBaths:${NbathroomsController.text}');
+      print('nOfRooms:${NroomsController.text}');
+      print('propertyAge:${BuildingAgeController.text}');
+      print('category:${CategoryController.text}');
+      print('Description:${DescriptionController.text}');
+      print('manual address:${addressController.text}');
+      print('lat:${langController.text}');
+      print('lang:${latController.text}');
+      print('price:${PriceController.text}');
+      print('size:${SizeController.text}');
       var headers = {'Content-Type': 'application/json'};
 
       var url = ApiEndpoint.baseUrl + ApiEndpoint.authEndPoint.AddingProperty;
 
       List<String> amenitiesList =
+
       amentiesController.text.split(',').map((e) => e.trim()).toList();
-      List<double> latlangList = [];
+
+      // price=int.parse(PriceController.text.toString());
+      //size=int.parse(SizeController.text.toString());
+    //  print('price:${price}');
+      //print('size:${size}');
+      nOfRooms=int.parse(NroomsController.text);
+      nOfBaths=int.parse(NbathroomsController.text);
+      propertyAge=int.parse( BuildingAgeController.text);
+      print('rooms int:${nOfRooms}');
+      print('baths int:${nOfBaths}');
+      print('age int:${propertyAge}');
+
+      double latitude;
+      double longitude;
       try {
-        latlangList = latlangController.text
-            .split(',')
-            .map((e) => double.parse(e.trim()))
-            .toList();
+        latitude = double.parse(latController.text);
+        longitude = double.parse(langController.text);
       } catch (e) {
         print('Error parsing coordinates: $e');
         // Handle error appropriately, e.g., show a message to the user
+        return;
       }
+      List<double> latlangList = [latitude,longitude];
+      print(latitude);
+      print(longitude);
+
+
       FormData formData = FormData.fromMap({
         "price": PriceController.text,
         "Size": SizeController.text,
-        "numberOfRooms": NroomsController.text,
-        "numberOfBathrooms": NbathroomsController.text,
+        "numberOfRooms": nOfRooms,
+        "numberOfBathrooms": nOfBaths,
         "category": CategoryController.text,
-        "finished": FinishedController.text,
-        "furnished": FurnishedController.text,
-        "elevator": ElevatorController.text,
-        "propertyAge": BuildingAgeController.text,
+        "finished": Finished,
+        "furnished": Furnished,
+        "elevator": Elevator,
+        "propertyAge": propertyAge,
         "description": DescriptionController.text,
         "amenities": amenitiesList,
         "address": addressController.text,
+        "coordinates":latlangList,
       });
       for (var file in imageFileListt!) {
         formData.files.add(MapEntry(
@@ -70,96 +127,40 @@ class AddPropertyController {
 
       final response = await dio.post(
         url.toString(),
-        data: jsonEncode(formData),
+        data: formData,
         options: Options(headers: headers),
       );
 
       if (response.statusCode == 201) {
-        PriceController.clear();
-        SizeController.clear();
+
         NroomsController.clear();
         NbathroomsController.clear();
         CategoryController.clear();
-        FinishedController.clear();
-        FurnishedController.clear();
-        ElevatorController.clear();
         BuildingAgeController.clear();
         DescriptionController.clear();
         imageFileListt!.clear();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Registered successfully!'),
+            content: Text('Property Created successfully!'),
             backgroundColor: Colors.green,
           ),
         );
         Navigator.pop(context);
 
-        String userToken = response.data['token'];
-        GlobalSharedPreferences.setString('token', userToken);
-        GlobalSharedPreferences.getString('token');
+
       }
     } on DioError catch (e) {
+
       if (e.response != null) {
         final errorData = e.response!.data;
-        if (errorData.containsKey('message')) {
-          final errorMessage = errorData['message'];
 
-          showDialog(
-              context: context,
-              builder: (context) {
-                return SimpleDialog(
-                  backgroundColor: Colors.red,
-                  title: Text(errorMessage),
-                  contentPadding: EdgeInsets.all(16),
-                  children: [
-                    Row(
-                      children: [
-                        TextButton(
-                            onPressed: () {
-                              GoRouter.of(context).pop();
-                            },
-                            child: Text(
-                              'OK',
-                              style: TextStyle(color: Colors.white),
-                            )),
-                      ],
-                    ),
-                  ],
-                );
-              });
-        } else {
-          showDialog(
-              context: context,
-              builder: (context) {
-                return SimpleDialog(
-                  backgroundColor: Colors.red,
-                  title: Text('Unknown error occurred during Adding Property'),
-                  contentPadding: EdgeInsets.all(16),
-                  children: [
-                    Row(
-                      children: [
-                        TextButton(
-                            onPressed: () {
-                              GoRouter.of(context).pop();
-                            },
-                            child: Text(
-                              'OK',
-                              style: TextStyle(color: Colors.white),
-                            )),
-                      ],
-                    ),
-                  ],
-                );
-              });
-        }
-      } else {
+        print('DioError: $e');
         showDialog(
             context: context,
             builder: (context) {
               return SimpleDialog(
-                backgroundColor: Colors.red,
-                title:
-                Text('Error during during Adding Property: ${e.message}'),
+                backgroundColor: Colors.blue,
+                title: Text(e.toString()),
                 contentPadding: EdgeInsets.all(16),
                 children: [
                   Row(
@@ -178,11 +179,14 @@ class AddPropertyController {
               );
             });
       }
+
     } catch (e) {
       showDialog(
           context: context,
           builder: (context) {
+            print(e.toString());
             return SimpleDialog(
+
               backgroundColor: Colors.red,
               title: Text('Error during during Adding Property: $e'),
               contentPadding: EdgeInsets.all(16),
