@@ -41,6 +41,14 @@ class _MapState extends State<Map_w> {
       zoom: 12,
     );
     selectedLocation=_kGooglePlex.target;
+    mymarkers.add(Marker(
+      markerId: MarkerId('1'),
+      position: LatLng(
+        _kGooglePlex.target.longitude,
+        _kGooglePlex.target.latitude,
+      ),
+    ));
+
     widget.latController.text=_kGooglePlex.target.latitude.toString();
     widget.langController.text=_kGooglePlex.target.longitude.toString();
     print('lang:${widget.langController.text} lat:${ widget.latController.text}');
@@ -49,6 +57,7 @@ class _MapState extends State<Map_w> {
   }
 
   void _onMapCreated(GoogleMapController controller) {
+
     mapController = controller;
     // Set initial markers from mapmodelobj
     setState(() {
@@ -64,6 +73,7 @@ class _MapState extends State<Map_w> {
             snippet: widget.mapmodelobj[i].description,
           ),
         ));
+        markers: mymarkers;
       }
     });
   }
@@ -83,6 +93,7 @@ class _MapState extends State<Map_w> {
         infoWindow: InfoWindow(title: 'Selected Location'),
         icon: BitmapDescriptor.defaultMarker,
       ));
+      markers: mymarkers;
     });
     // Callback to return selected location to parent widget
     widget.onLocationSelected(location);
