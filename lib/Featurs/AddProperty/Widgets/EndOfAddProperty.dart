@@ -20,13 +20,7 @@ class _EndOfAddPropertyState extends State<EndOfAddProperty> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Spacer(
-          flex: 1,
-        ),
-        const Text(
-          'Clear All',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
+
         const Spacer(
           flex: 5,
         ),

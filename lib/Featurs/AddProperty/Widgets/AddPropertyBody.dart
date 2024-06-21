@@ -126,7 +126,7 @@ class _AddPropertyState extends State<AddPropertyBody>
           const SizedBox(
             height: 30,
             child: Divider(
-              color: Colors.black,
+              color: Colors.grey,
               thickness: 1,
             ),
           ),

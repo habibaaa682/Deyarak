@@ -18,18 +18,41 @@ class _Add_PhotoState extends State<Add_Photo> {
     final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
 
     if (selectedImages != null) {
-      if (widget.imageFileList!.length + selectedImages.length <=7 ) {
+      if (widget.imageFileList!.length + selectedImages.length <=7 &&widget.imageFileList!.length + selectedImages.length >=5 ) {
         setState(() {
           widget.imageFileList!.addAll(selectedImages);
         });
-      } else {
+      } else if(widget.imageFileList!.length + selectedImages.length >7 ){
         showDialog(
             context: context,
             builder: (context) {
               return SimpleDialog(
                 backgroundColor:Colors.red ,
-                title: Text('You can only 4 images..'
-                    'please select images again'),
+                title: Text('You have exceeded the maximum number of photos ,Please select 7 or less!'),
+                contentPadding: EdgeInsets.all(16),
+                children: [
+
+                  Row(
+                    children: [
+
+                      TextButton(
+                          onPressed: () {
+                            GoRouter.of(context).pop();
+                          },
+                          child: Text('OK',style:TextStyle(color: Colors.white),)),
+                    ],
+                  ),
+                ],
+              );
+            });
+
+      } else if(widget.imageFileList!.length + selectedImages.length <5){
+        showDialog(
+            context: context,
+            builder: (context) {
+              return SimpleDialog(
+                backgroundColor:Colors.red ,
+                title: Text('Minimum number of photos is 5,please select more photos!'),
                 contentPadding: EdgeInsets.all(16),
                 children: [
 
@@ -71,19 +94,7 @@ class _Add_PhotoState extends State<Add_Photo> {
             ),
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.only(left: 15),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'You wll need photos to get start you \n can add more changes later',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
-          ),
-        ),
+
         Align(
           alignment: Alignment.centerLeft,
           child: Container(

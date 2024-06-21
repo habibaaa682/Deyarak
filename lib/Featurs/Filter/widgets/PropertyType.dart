@@ -11,18 +11,24 @@ class PropertyType extends StatefulWidget {
 class _PropertyTypeState extends State<PropertyType>
     with AutomaticKeepAliveClientMixin {
   Map<String, bool> selectedTypes = {
-    'Apartment': true, // Apartment is true by default
-    'Furnished Apartment': false,
-    'FamilyHome': false,
-    'Villa': false,
+    'apartment': true, // Apartment is true by default
+    'furnished apartment': false,
+    'family house': false,
+    'villa': false,
   };
 
   Map<String, Color> typeColors = {
-    'Apartment': const Color(0xffFF725E),
-    'Furnished Apartment': const Color.fromARGB(255, 250, 250, 250),
-    'FamilyHome': const Color.fromARGB(255, 250, 250, 250),
-    'Villa': const Color.fromARGB(255, 250, 250, 250),
+    'apartment': const Color(0xffFF725E),
+    'furnished apartment': const Color.fromARGB(255, 250, 250, 250),
+    'family house': const Color.fromARGB(255, 250, 250, 250),
+    'villa': const Color.fromARGB(255, 250, 250, 250),
   };
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.textEditingController.text='apartment';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +50,8 @@ class _PropertyTypeState extends State<PropertyType>
               Spacer(flex: 1),
               _buildImageRow(
                 image: 'assets/images/apartment.png',
-                text: 'Apartment',
-                onTap: () => _toggleType('Apartment'),
+                text: 'apartment',
+                onTap: () => _toggleType('apartment'),
                 scaleFactor: scaleFactor,
                 imageSize: imageSize,
                 containerWidth: containerWidth,
@@ -56,8 +62,8 @@ class _PropertyTypeState extends State<PropertyType>
               Spacer(flex: 2),
               _buildImageRow(
                 image: 'assets/images/furniture (1).png',
-                text: 'Furnished Apartment',
-                onTap: () => _toggleType('Furnished Apartment'),
+                text: 'furnished apartment',
+                onTap: () => _toggleType('furnished apartment'),
                 scaleFactor: scaleFactor,
                 imageSize: imageSize,
                 containerWidth: containerWidth,
@@ -73,8 +79,8 @@ class _PropertyTypeState extends State<PropertyType>
               Spacer(flex: 1),
               _buildImageRow(
                 image: 'assets/images/home (1).png',
-                text: 'FamilyHome',
-                onTap: () => _toggleType('FamilyHome'),
+                text: 'family house',
+                onTap: () => _toggleType('family house'),
                 scaleFactor: scaleFactor,
                 imageSize: imageSize,
                 containerWidth: containerWidth,
@@ -85,8 +91,8 @@ class _PropertyTypeState extends State<PropertyType>
               Spacer(flex: 2),
               _buildImageRow(
                 image: 'assets/images/villaa.png',
-                text: 'Villa',
-                onTap: () => _toggleType('Villa'),
+                text: 'villa',
+                onTap: () => _toggleType('villa'),
                 scaleFactor: scaleFactor,
                 imageSize: imageSize,
                 containerWidth: containerWidth,

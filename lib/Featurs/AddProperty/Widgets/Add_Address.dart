@@ -267,7 +267,9 @@ class _Add_AddressState extends State<Add_Address>
                 const SizedBox(height: 15),
                 Button(
                   text: 'Confirm',
-                  ontap: () {},
+                  ontap: () {
+                    Navigator.pop(context);
+                  },
                   raduis: 15,
                   colorr: kprimarycolor,
                   width: 4.2,
@@ -306,7 +308,7 @@ class _Add_AddressState extends State<Add_Address>
               fontSize: 17,
             ),
           ),
-          onFieldSubmitted: (val) {
+          onChanged: (val) {
             setState(() {
               if (labelText == 'Street Address') {
                 StreetController.text=val;

@@ -8,8 +8,7 @@ class CheckboxGroup extends StatefulWidget {
   final TextEditingController textEditingController;
 }
 
-class _CheckboxGroupState extends State<CheckboxGroup>
-    with AutomaticKeepAliveClientMixin {
+class _CheckboxGroupState extends State<CheckboxGroup> with AutomaticKeepAliveClientMixin {
   late double containerWidth;
   late double containerHeight;
   late double leadingSize;
@@ -34,6 +33,8 @@ class _CheckboxGroupState extends State<CheckboxGroup>
     'Power Backup': false,
   };
 
+  List<String> selectedAmenities = [];
+
   @override
   void initState() {
     super.initState();
@@ -50,12 +51,10 @@ class _CheckboxGroupState extends State<CheckboxGroup>
     fontSize = 19 * scaleFactor;
 
     return Padding(
-      padding:
-          EdgeInsets.only(left: 18 * MediaQuery.of(context).size.width / 400),
+      padding: EdgeInsets.only(left: 18 * MediaQuery.of(context).size.width / 400),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          //--------------------------------------------
           // first column
           Column(
             mainAxisSize: MainAxisSize.min,
@@ -64,14 +63,11 @@ class _CheckboxGroupState extends State<CheckboxGroup>
                 buildCheckbox(i),
             ],
           ),
-          //--------------------------------------------
           // second column
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              for (int i = checkboxValues.length ~/ 2;
-                  i < checkboxValues.length;
-                  i++)
+              for (int i = checkboxValues.length ~/ 2; i < checkboxValues.length; i++)
                 buildCheckbox(i),
             ],
           ),
@@ -88,17 +84,14 @@ class _CheckboxGroupState extends State<CheckboxGroup>
           if (colors[index] == Colors.white) {
             colors[index] = const Color(0xffFF725E);
             checkboxValues[key] = true;
-            widget.textEditingController.text=key;
-         //   print(widget.textEditingController.text);
-
+            selectedAmenities.add(key);
           } else {
             colors[index] = Colors.white;
             checkboxValues[key] = false;
-            widget.textEditingController.clear();
-           // print(widget.textEditingController.text);
+            selectedAmenities.remove(key);
           }
+          widget.textEditingController.text = selectedAmenities.join(', ');
         });
-
       },
       child: Container(
         height: containerHeight,
@@ -132,6 +125,5 @@ class _CheckboxGroupState extends State<CheckboxGroup>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }
