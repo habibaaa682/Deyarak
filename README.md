@@ -27,7 +27,7 @@ This project showcases the power of Flutter in creating fast, beautiful, and cro
 ## 📦 Getting Started
 
 ```bash
-git clone https://github.com/habibaaa682/GP.git
-cd GP
+git clone https://github.com/habibaaa682/Deyarak.git
+cd Deyarak
 flutter pub get
 flutter run
